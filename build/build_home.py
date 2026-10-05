@@ -7,7 +7,7 @@ handled by the child theme (assets/css/cypress-hills.css, assets/js/cypress-hill
 import json
 import os
 
-from elementor_lib import box, check_clean, container, gap, img, mark_inner, px, typo, widget
+from elementor_lib import box, check_clean, container, fluid, gap, img, mark_inner, px, typo, widget
 import media as M
 
 NAVY, INK, GREEN, GREEN_D, GREEN_L = "#262A78", "#0F1130", "#55B847", "#2F7A28", "#8FD67F"
@@ -57,12 +57,12 @@ def kicker(text, color=GREEN_D, bar=True, seed=None):
                   **typo(size=13, weight=800, ls=2.1, transform="uppercase", lh=1.3))
 
 
-def display(text, size, size_t, size_m, color=NAVY, tag="h2", lh=0.98, ls=-1.6, weight=800,
+def display(text, size, color=NAVY, tag="h2", lh=0.98, ls=-0.02, weight=800,
             cls="ch-wide", seed=None, **extra):
+    """Display heading; size is a fluid() clamp copied from the design, ls is in em."""
     return widget("heading", seed=seed, title=text, header_size=tag, title_color=color,
                   css_classes=cls,
-                  **typo(size=size, size_t=size_t, size_m=size_m, weight=weight, style="italic",
-                         lh=lh, ls=ls), **extra)
+                  **typo(size=size, weight=weight, style="italic", lh=lh, ls=ls, ls_unit="em"), **extra)
 
 
 def para(html, color=TEXT, size=17, lh=1.7, cls="ch-mw-52", seed=None, **extra):
@@ -93,8 +93,8 @@ def hero():
     slides = [M.AERIAL, M.POOL, M.STONE, M.GREEN, M.COURSE, M.KITCHEN, M.NIGHT]
     panel = col([
         kicker("In Business Since 1994 | 35 Years of Industry Experience", GREEN_L, bar=False),
-        display("Transforming Landscapes, One Project at a Time", 52, 40, 32, WHITE, tag="h1",
-                lh=1.04, ls=-0.5),
+        display("Transforming Landscapes, One Project at a Time", fluid(32, 3.3, 52), WHITE, tag="h1",
+                lh=1.04, ls=-0.01),
         widget("button", text="Creative Outdoor Services", link={"url": "#services"},
                button_text_color=WHITE, background_color="rgba(0,0,0,0)",
                hover_color=INK, button_background_hover_color=GREEN,
@@ -142,9 +142,9 @@ def about():
     left = col([
         kicker("In Business Since 1994"),
         display("Landscaping in Toronto and <span class='ch-green'>Surrounding Areas</span>",
-                80, 58, 40, ls=-2),
+                fluid(40, 5, 80), ls=-0.025),
         widget("heading", title="Transform Your Outdoor Space with Landscape Design",
-               header_size="h3", title_color=INK, **typo(size=24, size_m=20, weight=700, lh=1.3)),
+               header_size="h3", title_color=INK, **typo(size=fluid(20, 1.6, 24), weight=700, lh=1.3)),
         para("Cypress Hills Landscaping Inc. has been your trusted source for residential and "
              "commercial landscape design in Toronto and the surrounding area since 1994. We’ve "
              "been serving our customers with custom landscaping solutions that ensure your "
@@ -157,7 +157,7 @@ def about():
                path="circle", text_color_normal=INK,
                **typo("text_typography", size=15, weight=800, ls=3)),
         widget("heading", title="35", header_size="div", title_color=INK, align="center",
-               css_classes="ch-wider", **typo(size=46, size_t=36, size_m=30, weight=900,
+               css_classes="ch-wider", **typo(size=fluid(30, 3.4, 46), weight=900,
                                               style="italic", lh=0.9)),
         widget("heading", title="Years", header_size="div", title_color=INK, align="center",
                **typo(size=11, weight=800, ls=1.5, transform="uppercase", lh=1.4)),
@@ -192,7 +192,7 @@ def what_we_do():
         return container([
             image(pics[name], cls="ch-chip-img", size="thumbnail"),
             widget("heading", title=name, header_size="div", title_color=NAVY if solid else WHITE,
-                   css_classes="ch-wide", **typo(size=28, size_t=24, size_m=20, weight=800,
+                   css_classes="ch-wide", **typo(size=fluid(20, 2, 28), weight=800,
                                                  style="italic", lh=1.1)),
         ], content_width="full", flex_direction="row", flex_align_items="center",
             flex_gap=gap(16), padding=box(10, 28, 10, 10), border_radius=box(999),
@@ -209,7 +209,7 @@ def what_we_do():
     head = container([
         row([
             col([kicker("Creative Outdoor Services", GREEN_L),
-                 display("What We Do", 96, 72, 44, WHITE, lh=0.92, ls=-2.4)], gap_px=20),
+                 display("What We Do", fluid(44, 6, 96), WHITE, lh=0.92, ls=-0.025)], gap_px=20),
             para("Our services include landscape design, pools &amp; water features, spas, custom "
                  "cabanas, outdoor kitchens, pergolas, stonework, woodwork, fireplaces, and outdoor "
                  "lighting. We specialize in outdoor spaces that are perfect for relaxing or "
@@ -237,8 +237,8 @@ def what_we_do():
 def custom_design():
     head = row([
         col([kicker("From vision to reality"),
-             display("Custom Landscape Design Tailored to Your Unique Vision", 70, 52, 36,
-                     lh=1, ls=-1.4)], gap_px=20, width=50, width_t=100),
+             display("Custom Landscape Design Tailored to Your Unique Vision", fluid(36, 4.4, 70),
+                     lh=1, ls=-0.02)], gap_px=20, width=50, width_t=100),
         col([para("At Cypress Hills Landscaping Inc., we understand that your outdoor space is an "
                   "extension of your home and personal style. That’s why we offer custom landscape "
                   "design to bring your vision to life. Our experienced designers will work closely "
@@ -286,7 +286,7 @@ SERVICES = [
 
 def services():
     head = row([
-        col([kicker("What we build"), display("Six crafts.<br>One crew.", 80, 58, 40, ls=-1.6)]),
+        col([kicker("What we build"), display("Six crafts.<br>One crew.", fluid(40, 5, 80))]),
         para("Every one is designed and built in-house by our own crew.", lh=1.6, cls="ch-mw-38"),
     ], seed="svc-head")
 
@@ -311,8 +311,8 @@ def services():
             container([
                 widget("heading", title=name, header_size="h3", title_color=INK,
                        css_classes="ch-svc-name ch-wide",
-                       **typo(size=48, size_t=40, size_m=28, weight=800, style="italic", lh=1,
-                              ls=-0.7)),
+                       **typo(size=fluid(28, 3, 48), weight=800, style="italic", lh=1,
+                              ls=-0.015, ls_unit="em")),
                 widget("text-editor", editor=f"<p>{desc}</p>", text_color=TEXT,
                        css_classes="ch-svc-desc", **typo(size=15, lh=1.5)),
             ], content_width="full", flex_direction="column", flex_gap=gap(8), padding=box(0),
@@ -356,7 +356,7 @@ PROJECTS = [
 
 def work():
     head = row([
-        col([kicker("Recent work"), display("Built across<br>Ontario.", 80, 58, 40, ls=-1.6)]),
+        col([kicker("Recent work"), display("Built across<br>Ontario.", fluid(40, 5, 80))]),
         pill_button("All projects", "/projects/"),
     ], seed="work-head")
 
@@ -371,8 +371,8 @@ def work():
                 widget("heading", title=f"{cat} · {town}", header_size="div", title_color=GREEN_L,
                        **typo(size=13, weight=800, ls=2.1, transform="uppercase", lh=1.3)),
                 widget("heading", title=title, header_size="h3", title_color=WHITE,
-                       css_classes="ch-wide", **typo(size=72, size_t=52, size_m=36, weight=800,
-                                                     style="italic", lh=0.98, ls=-1.4)),
+                       css_classes="ch-wide", **typo(size=fluid(36, 4.4, 72), weight=800,
+                                                     style="italic", lh=0.98, ls=-0.02, ls_unit="em")),
                 widget("text-editor", editor=f"<p>{desc}</p>", text_color="#E4E5F2",
                        css_classes="ch-mw-40", **typo(size=17, lh=1.55)),
                 container([widget("heading", title=t, header_size="span", title_color=WHITE,
@@ -422,8 +422,8 @@ STEPS = [
 def process():
     head = row([
         col([kicker("How a project runs", GREEN_L),
-             display("From an idea<br>to your <span class='ch-green'>keys.</span>", 80, 58, 40,
-                     WHITE, ls=-1.6)]),
+             display("From an idea<br>to your <span class='ch-green'>keys.</span>", fluid(40, 5, 80),
+                     WHITE)]),
         para("One project lead walks with you from the first site visit to the day we hand it over.",
              color="#C9CBE0", lh=1.6, cls="ch-mw-40"),
     ], seed="proc-head")
@@ -442,7 +442,7 @@ def process():
             circle,
             widget("heading", title=title, header_size="h3", title_color=WHITE, align="center",
                    css_classes="ch-step-title ch-wide",
-                   **typo(size=28, size_t=24, size_m=22, weight=800, style="italic", lh=1.2)),
+                   **typo(size=fluid(22, 2, 28), weight=800, style="italic", lh=1.2)),
             widget("text-editor", editor=f"<p>{desc}</p>", text_color="#E4E5F2", align="center",
                    css_classes="ch-step-desc ch-mw-28", **typo(size=15, lh=1.55)),
         ], content_width="full", flex_direction="column", flex_align_items="center",
@@ -461,7 +461,7 @@ def process():
 # ---------------------------------------------------------------------------
 def awards():
     r = row([
-        col([kicker("Recognition"), display("Awards Of Excellence", 66, 48, 36, lh=1, ls=-1.3)],
+        col([kicker("Recognition"), display("Awards Of Excellence", fluid(36, 4.2, 66), lh=1)],
             gap_px=18),
         image(M.AWARDS, cls="ch-award", _element_width="initial",
               _element_custom_width=px(620), _element_custom_width_mobile=px(100, "%")),
@@ -484,8 +484,8 @@ def contact(form_id):
 
     left = col([
         kicker("Work with Us", GREEN_L),
-        display("Let’s walk<br>your <span class='ch-green'>yard.</span>", 110, 76, 48, WHITE,
-                lh=0.9, ls=-3.3, weight=900, cls="ch-wider"),
+        display("Let’s walk<br>your <span class='ch-green'>yard.</span>", fluid(48, 6.4, 110), WHITE,
+                lh=0.9, ls=-0.03, weight=900, cls="ch-wider"),
         para("Create a serene and beautiful oasis right in your backyard. Get in touch with our "
              "experienced professionals today so we can begin creating your perfect outdoor retreat.",
              color="#E4E5F2", size=18, lh=1.6, cls="ch-mw-44"),

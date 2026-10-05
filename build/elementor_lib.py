@@ -33,10 +33,17 @@ def img(media):
     return {"id": media["id"], "url": media["url"], "alt": media.get("alt", ""), "source": "library"}
 
 
+def fluid(lo, vw, hi):
+    """Responsive size matching the design's CSS clamp(), via Elementor's custom unit."""
+    return f"clamp({lo}px, {vw}vw, {hi}px)"
+
+
 def typo(prefix="typography", family="Archivo", size=None, size_t=None, size_m=None, weight=None,
-         style=None, lh=None, lh_unit="em", ls=None, transform=None):
+         style=None, lh=None, lh_unit="em", ls=None, ls_unit="px", transform=None):
     s = {f"{prefix}_typography": "custom", f"{prefix}_font_family": family}
-    if size is not None:
+    if isinstance(size, str):
+        s[f"{prefix}_font_size"] = {"unit": "custom", "size": size, "sizes": []}
+    elif size is not None:
         s[f"{prefix}_font_size"] = px(size)
     if size_t is not None:
         s[f"{prefix}_font_size_tablet"] = px(size_t)
@@ -49,7 +56,7 @@ def typo(prefix="typography", family="Archivo", size=None, size_t=None, size_m=N
     if lh is not None:
         s[f"{prefix}_line_height"] = px(lh, lh_unit)
     if ls is not None:
-        s[f"{prefix}_letter_spacing"] = px(ls)
+        s[f"{prefix}_letter_spacing"] = px(ls, ls_unit)
     if transform:
         s[f"{prefix}_text_transform"] = transform
     return s

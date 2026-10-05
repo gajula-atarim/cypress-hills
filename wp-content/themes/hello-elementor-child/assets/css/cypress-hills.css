@@ -120,7 +120,9 @@ body:not(.home) #masthead { background: var(--ch-navy); }
 .ch-header-pill .hfe-nav-menu-icon,
 .ch-header-pill .hfe-nav-menu__toggle { color: #FFFFFF; }
 /* Let the menu shrink so the Contact Us button stays in the pill; only Home is highlighted. */
-.ch-header-pill .elementor-widget-navigation-menu { flex: 1 1 auto !important; width: auto !important; min-width: 0; max-width: 100%; }
+/* The nav+button row takes only the space left after the logo, and can shrink. */
+.ch-header-pill > .e-con { flex: 1 1 0% !important; width: auto !important; min-width: 0 !important; justify-content: flex-end; }
+.ch-header-pill .elementor-widget-navigation-menu { flex: 0 1 auto !important; width: auto !important; min-width: 0; max-width: 100%; }
 .ch-header-pill .elementor-widget-navigation-menu .hfe-nav-menu__layout-horizontal,
 .ch-header-pill .elementor-widget-navigation-menu .hfe-nav-menu { min-width: 0; }
 .ch-header-pill .elementor-widget-button { flex: 0 0 auto !important; width: auto !important; }

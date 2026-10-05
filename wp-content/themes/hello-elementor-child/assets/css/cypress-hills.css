@@ -56,6 +56,8 @@ body {
 
 /* Pill button with round green arrow (button widget + icon) */
 .ch-pill-btn .elementor-button { gap: 14px; }
+.ch-pill-btn .elementor-button-text { white-space: nowrap; }
+@media (max-width: 480px) { .ch-pill-btn .elementor-button-text { white-space: normal; } }
 .ch-pill-btn .elementor-button-content-wrapper { align-items: center; gap: 14px; }
 .ch-pill-btn .elementor-button-icon {
 	width: 42px;
@@ -118,6 +120,15 @@ body:not(.home) #masthead { background: var(--ch-navy); }
 .ch-header-pill .hfe-nav-menu__layout-horizontal .hfe-has-submenu-container > a.hfe-menu-item { gap: 6px; }
 .ch-header-pill .hfe-nav-menu-icon,
 .ch-header-pill .hfe-nav-menu__toggle { color: #FFFFFF; }
+/* Let the menu shrink so the Contact Us button stays in the pill; only Home is highlighted. */
+.ch-header-pill .elementor-widget-navigation-menu { flex: 0 1 auto !important; width: auto !important; min-width: 0; }
+.ch-header-pill .hfe-nav-menu .menu-item > a.hfe-menu-item,
+.ch-header-pill .hfe-nav-menu .menu-item > .hfe-has-submenu-container > a.hfe-menu-item { background-color: transparent !important; }
+.ch-header-pill .hfe-nav-menu .menu-item > a.hfe-menu-item:hover,
+.ch-header-pill .hfe-nav-menu .menu-item > .hfe-has-submenu-container > a.hfe-menu-item:hover,
+.home .ch-header-pill .hfe-nav-menu > li:first-child > a.hfe-menu-item { background-color: rgba(255, 255, 255, .18) !important; }
+.ch-header-pill .hfe-nav-menu .sub-menu a.hfe-sub-menu-item { background-color: #FFFFFF !important; }
+.ch-header-pill .hfe-nav-menu .sub-menu a.hfe-sub-menu-item:hover { background-color: var(--ch-cream) !important; }
 .ch-header-logo img { height: 46px !important; width: auto !important; max-width: none !important; }
 @media (max-width: 767px) { .ch-header-logo img { height: 38px !important; } }
 .ch-header-pill .hfe-nav-menu .current-menu-item > a.hfe-menu-item { background: rgba(255, 255, 255, .18); }
@@ -183,7 +194,7 @@ body:not(.home) #masthead { background: var(--ch-navy); }
 .ch-badge > .elementor-widget-text-path .elementor-widget-container,
 .ch-badge > .elementor-widget-text-path .e-text-path,
 .ch-badge > .elementor-widget-text-path svg { width: 100% !important; height: 100%; max-width: none !important; }
-.ch-badge > .elementor-widget-text-path svg { animation: chspin 18s linear infinite; transform-origin: 50% 50%; }
+.ch-badge > .elementor-widget-text-path svg { animation: chspin 18s linear infinite; transform-origin: 50% 50%; scale: .74; overflow: visible; }
 .ch-badge > .elementor-widget-heading { position: relative; z-index: 1; }
 
 /* --------------------------------------------------------------------------
@@ -345,7 +356,7 @@ body:not(.home) #masthead { background: var(--ch-navy); }
 .ch-stack-card:nth-child(4) { top: 168px; }
 .ch-stack-card .ch-stack-body { height: 100%; }
 @media (max-width: 767px) {
-	.ch-stack-card { height: auto; min-height: 520px; }
+	.ch-stack-card { position: relative !important; top: auto !important; height: auto; min-height: 520px; }
 	.ch-stack-card .ch-stack-body { height: auto; min-height: 520px; }
 }
 .ch-count .elementor-heading-title { font-variant-numeric: tabular-nums; display: flex; align-items: center; gap: 12px; }

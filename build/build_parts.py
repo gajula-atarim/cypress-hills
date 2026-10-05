@@ -17,7 +17,7 @@ def header():
                  menu_space_between=px(4),
                  color_menu_item=WHITE, color_menu_item_hover=WHITE, color_menu_item_active=WHITE,
                  bg_color_menu_item="rgba(0,0,0,0)", bg_color_menu_item_hover="rgba(255,255,255,0.16)",
-                 bg_color_menu_item_active="rgba(255,255,255,0.18)",
+                 bg_color_menu_item_active="rgba(0,0,0,0)",
                  background_color_dropdown_item=WHITE, background_color_dropdown_item_hover=CREAM,
                  background_color_dropdown_item_active=CREAM,
                  color_dropdown_item=NAVY, color_dropdown_item_hover=GREEN_D,

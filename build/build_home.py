@@ -89,50 +89,83 @@ def image(m, cls="", size="full", seed=None, **extra):
 # ---------------------------------------------------------------------------
 # 1. Hero — background slideshow + navy text panel
 # ---------------------------------------------------------------------------
-def hero():
-    slides = [M.AERIAL, M.POOL, M.STONE, M.GREEN, M.COURSE, M.KITCHEN, M.NIGHT]
-    panel = col([
-        kicker("In Business Since 1994 | 35 Years of Industry Experience", GREEN_L, bar=False),
-        display("Transforming Landscapes, One Project at a Time", fluid(32, 3.3, 52), WHITE, tag="h1",
-                lh=1.04, ls=-0.01),
-        widget("button", text="Creative Outdoor Services", link={"url": "#services"},
-               button_text_color=WHITE, background_color="rgba(0,0,0,0)",
-               hover_color=INK, button_background_hover_color=GREEN,
-               border_border="solid", border_width=box(2), border_color=WHITE,
-               button_hover_border_color=GREEN, border_radius=box(999),
-               text_padding=box(15, 26, 15, 26),
-               **typo(size=14, weight=700, ls=1.1, transform="uppercase", lh=1.2)),
-    ], seed="hero-panel", gap_px=26, width=32, width_t=45, width_m=88,
-        flex_justify_content="center", flex_align_items="flex-start",
-        padding=box(110, 56, 48, 56), padding_tablet=box(110, 36, 48, 36),
-        padding_mobile=box(110, 24, 40, 24),
-        background_background="classic", background_color=NAVY,
-        css_classes="ch-hero-panel", animation="fadeInLeft", animation_delay=400)
+HERO_SLIDES = [
+    (M.AERIAL, "In Business Since 1994 | 35 Years of Industry Experience",
+     "Transforming Landscapes, One Project at a Time", "Creative Outdoor Services", "#services"),
+    (M.POOL, "Pools", "The pool and the yard, built as one.", "Explore pools", "#services"),
+    (M.STONE, "Armour stone walls", "Stone walls set by our own crew and machines.", "See stonework", "#services"),
+    (M.GREEN, "Backyard putting greens", "Your own short game, steps from the house.", "See putting greens", "#services"),
+    (M.COURSE, "Golf course shaping", "Greens and bunkers shaped for real courses.", "Golf & turf", "#services"),
+    (M.KITCHEN, "Outdoor living", "Kitchens, cabanas and fire for long evenings.", "See outdoor living", "#services"),
+    (M.NIGHT, "Landscape lighting", "A yard that works after dark.", "See lighting", "#services"),
+]
 
-    return container([panel], seed="hero", content_width="full", flex_direction="row",
-                     flex_align_items="stretch", flex_justify_content="flex-start",
-                     min_height=px(760), min_height_tablet=px(620), min_height_mobile=px(560),
-                     padding=box(0), html_tag="header",
-                     background_background="slideshow",
-                     background_slideshow_gallery=[{"id": s["id"], "url": s["url"]} for s in slides],
-                     background_slideshow_loop="yes",
-                     background_slideshow_slide_duration=6000,
-                     background_slideshow_slide_transition="fade",
-                     background_slideshow_transition_duration=1200,
-                     background_slideshow_ken_burns="yes",
-                     background_slideshow_ken_burns_zoom_direction="in",
-                     background_slideshow_background_size="cover",
-                     background_slideshow_background_position="center center",
-                     background_overlay_background="gradient",
-                     background_overlay_color="rgba(15,17,48,0.55)",
-                     background_overlay_color_stop=px(0, "%"),
-                     background_overlay_color_b="rgba(15,17,48,0)",
-                     background_overlay_color_b_stop=px(22, "%"),
-                     background_overlay_gradient_type="linear", background_overlay_opacity=px(1),
-                     background_overlay_gradient_angle=px(180, "deg"),
-                     border_radius=box(0, 0, 230, 0), border_radius_tablet=box(0, 0, 140, 0),
-                     border_radius_mobile=box(0, 0, 110, 0),
-                     overflow="hidden", css_classes="ch-hero")
+
+def hero():
+    """Hero slider: one editable container per slide (photo + navy text panel).
+
+    The child theme script turns the .ch-slide containers into the design's slider
+    (image wipe + slow zoom, panel slide-in, staggered text reveal) and drives the
+    counter and the prev/next buttons below it.
+    """
+    slides = []
+    for i, (m, kick, title, cta, url) in enumerate(HERO_SLIDES):
+        panel = col([
+            widget("heading", title=kick, header_size="div", title_color=GREEN_L,
+                   css_classes="ch-slide-kicker",
+                   **typo(size=13, weight=800, ls=0.16, ls_unit="em", transform="uppercase", lh=1.4)),
+            display(title, fluid(32, 3.3, 52), WHITE, tag="h1" if i == 0 else "h2", lh=1.04,
+                    ls=-0.01, cls="ch-wide ch-slide-title"),
+            widget("button", text=cta, link={"url": url, "is_external": "", "nofollow": ""},
+                   button_text_color=WHITE, background_color="rgba(0,0,0,0)",
+                   hover_color=INK, button_background_hover_color=GREEN,
+                   border_border="solid", border_width=box(2), border_color=WHITE,
+                   button_hover_border_color=GREEN, border_radius=box(999),
+                   text_padding=box(15, 26, 15, 26), css_classes="ch-slide-cta",
+                   **typo(size=14, weight=700, ls=0.08, ls_unit="em", transform="uppercase", lh=1.2)),
+        ], seed=f"hero-panel-{i}", gap_px=26, flex_justify_content="center",
+            flex_align_items="flex-start",
+            padding=box(110, 56, 48, 56), padding_tablet=box(110, 36, 48, 36),
+            padding_mobile=box(100, 24, 40, 24),
+            background_background="classic", background_color=NAVY, css_classes="ch-slide-panel")
+        slides.append(container([image(m, cls="ch-slide-img"), panel], seed=f"hero-slide-{i}",
+                                content_width="full", padding=box(0), css_classes="ch-slide"))
+
+    stage = container(slides, seed="hero", content_width="full", padding=box(0),
+                      background_background="classic", background_color=INK, css_classes="ch-hero")
+
+    def arrow(label, cls, aria):
+        return widget("button", text=label, link={"url": "#", "is_external": "", "nofollow": ""},
+                      button_text_color=GREEN_D, background_color=WHITE, hover_color=GREEN_D,
+                      button_background_hover_color=WHITE, border_border="solid",
+                      border_width=box(1), border_color="#DAD6CC", button_hover_border_color=NAVY,
+                      border_radius=box(999), text_padding=box(0), css_classes=f"ch-hero-arrow {cls}",
+                      button_css_id="", **typo(size=24, weight=700, lh=1))
+
+    counter = container([
+        widget("heading", title="01", header_size="div", title_color=INK, css_classes="ch-hero-cur",
+               **typo(size=15, weight=800, lh=1)),
+        container([], content_width="full", padding=box(0), css_classes="ch-hero-bar"),
+        widget("heading", title=f"0{len(HERO_SLIDES)}", header_size="div", title_color="#A8A498",
+               css_classes="ch-hero-total", **typo(size=15, weight=800, lh=1)),
+    ], content_width="full", flex_direction="row", flex_wrap="nowrap", flex_align_items="center",
+        flex_gap=gap(14), padding=box(0), css_classes="ch-hero-count")
+
+    arrows = container([arrow("‹", "ch-hero-prev", "Previous"), arrow("›", "ch-hero-next", "Next")],
+                       content_width="full", flex_direction="row", flex_wrap="nowrap",
+                       flex_gap=gap(12), padding=box(0), css_classes="ch-hero-arrows")
+
+    controls = container([counter, arrows], seed="hero-controls", content_width="full",
+                         flex_direction="row", flex_wrap="nowrap",
+                         flex_justify_content="space-between", flex_align_items="center",
+                         flex_gap=gap(24), padding=box(22, 72, 28, 72),
+                         padding_tablet=box(20, 40, 24, 40), padding_mobile=box(18, 24, 22, 24),
+                         css_classes="ch-hero-controls")
+
+    return container([stage, controls], seed="hero-wrap", content_width="full",
+                     flex_direction="column", flex_gap=gap(0), padding=box(0),
+                     background_background="classic", background_color=CREAM,
+                     css_classes="ch-hero-wrap")
 
 
 # ---------------------------------------------------------------------------

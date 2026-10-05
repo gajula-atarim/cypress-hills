@@ -20,6 +20,69 @@
 		io.observe(el);
 	}
 
+	/* Hero: image wipe + slow zoom, then the navy panel slides in and its text reveals. */
+	function initHero() {
+		if (inEditor) { return; }
+		document.querySelectorAll('.ch-hero').forEach(function (stage) {
+			var slides = Array.prototype.filter.call(stage.children, function (el) { return el.classList.contains('ch-slide'); });
+			if (!slides.length) { return; }
+			var wrap = stage.closest('.ch-hero-wrap') || stage.parentElement;
+			var curEl = wrap.querySelector('.ch-hero-cur .elementor-heading-title');
+			var totalEl = wrap.querySelector('.ch-hero-total .elementor-heading-title');
+			var bar = wrap.querySelector('.ch-hero-bar');
+			var prevBtn = wrap.querySelector('.ch-hero-prev .elementor-button');
+			var nextBtn = wrap.querySelector('.ch-hero-next .elementor-button');
+			var IMG_ONLY = 2000, HOLD = 5000, N = slides.length;
+			var cur = 0, tPanel = 0, tNext = 0;
+			function pad(n) { return (n < 10 ? '0' : '') + n; }
+			if (totalEl) { totalEl.textContent = pad(N); }
+			if (prevBtn) { prevBtn.setAttribute('aria-label', 'Previous slide'); }
+			if (nextBtn) { nextBtn.setAttribute('aria-label', 'Next slide'); }
+
+			function ring() {
+				if (!nextBtn) { return; }
+				var old = nextBtn.querySelector('.ch-hero-ring');
+				if (old) { old.remove(); }
+				if (reduceMotion) { return; }
+				nextBtn.insertAdjacentHTML('beforeend', '<svg class="ch-hero-ring" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="28"></circle></svg>');
+				nextBtn.style.setProperty('--ch-ring', (IMG_ONLY + HOLD) + 'ms');
+			}
+			function arm() {
+				clearTimeout(tPanel); clearTimeout(tNext);
+				tPanel = setTimeout(function () { slides[cur].classList.add('is-panel'); }, reduceMotion ? 0 : IMG_ONLY);
+				if (!reduceMotion) { tNext = setTimeout(function () { go((cur + 1) % N); }, IMG_ONLY + HOLD); }
+				ring();
+			}
+			function paint() {
+				if (curEl) { curEl.textContent = pad(cur + 1); }
+				if (bar) { bar.style.setProperty('--ch-progress', ((cur + 1) / N * 100) + '%'); }
+			}
+			function go(i) {
+				if (i === cur) { return; }
+				var prev = cur;
+				slides.forEach(function (sl, k) {
+					sl.classList.remove('is-prev', 'is-panel');
+					if (k !== prev && k !== i) { sl.classList.remove('is-current'); }
+				});
+				slides[prev].classList.remove('is-current');
+				slides[prev].classList.add('is-prev');
+				void slides[i].offsetWidth; // restart the wipe from the left edge
+				slides[i].classList.add('is-current');
+				cur = i;
+				paint();
+				arm();
+			}
+			function click(dir) {
+				return function (e) { e.preventDefault(); go((cur + dir + N) % N); };
+			}
+			if (prevBtn) { prevBtn.addEventListener('click', click(-1)); }
+			if (nextBtn) { nextBtn.addEventListener('click', click(1)); }
+
+			paint();
+			setTimeout(function () { slides[0].classList.add('is-current'); arm(); }, 120);
+		});
+	}
+
 	/* Marquee: duplicate each track's chips once so translateX(-50%) loops seamlessly. */
 	function initMarquee() {
 		if (inEditor) { return; }
@@ -133,6 +196,7 @@
 	}
 
 	function init() {
+		initHero();
 		initMarquee();
 		initCompare();
 		initServices();

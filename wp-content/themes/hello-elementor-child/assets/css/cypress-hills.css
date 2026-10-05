@@ -138,18 +138,154 @@ body:not(.home) #masthead { background: var(--ch-navy); }
 .ch-header-pill .hfe-nav-menu .current-menu-item > a.hfe-menu-item { background: rgba(255, 255, 255, .18); }
 
 /* --------------------------------------------------------------------------
-   Hero
+   Hero slider (each .ch-slide is an Elementor container: photo + text panel)
    -------------------------------------------------------------------------- */
-.ch-hero { overflow: hidden; }
-.ch-hero .elementor-background-slideshow { z-index: 0; }
-.ch-hero-panel {
-	min-width: 300px;
-	max-width: 480px;
+.ch-hero {
 	position: relative;
-	z-index: 2;
+	height: clamp(560px, 50vw, 760px);
+	overflow: hidden;
+	border-bottom-right-radius: clamp(110px, 14vw, 230px);
 }
+.ch-hero > .ch-slide {
+	position: absolute !important;
+	inset: 0;
+	width: 100% !important;
+	margin: 0 !important;
+	z-index: 1;
+	clip-path: inset(0 100% 0 0);
+	pointer-events: none;
+}
+.ch-hero > .ch-slide.is-prev { z-index: 2; clip-path: inset(0 0 0 0); }
+.ch-hero > .ch-slide.is-current {
+	z-index: 3;
+	clip-path: inset(0 0 0 0);
+	pointer-events: auto;
+	transition: clip-path 1.2s cubic-bezier(.77, 0, .18, 1);
+}
+body:not(.ch-js) .ch-hero > .ch-slide:first-child { z-index: 3; clip-path: none; pointer-events: auto; }
+.ch-hero > .ch-slide::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 160px;
+	background: linear-gradient(180deg, rgba(15, 17, 48, .55), rgba(15, 17, 48, 0));
+	z-index: 5;
+	pointer-events: none;
+}
+.ch-slide > .ch-slide-img {
+	position: absolute !important;
+	inset: 0;
+	width: 100% !important;
+	height: 100%;
+	margin: 0 !important;
+	transform: scale(1.1);
+}
+.ch-slide > .ch-slide-img .elementor-widget-container,
+.ch-slide > .ch-slide-img img {
+	width: 100% !important;
+	height: 100% !important;
+	max-width: none !important;
+	object-fit: cover;
+	display: block;
+}
+.ch-slide.is-current > .ch-slide-img { transform: scale(1); transition: transform 8s linear; }
+.ch-slide > .ch-slide-panel {
+	position: absolute !important;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: clamp(300px, 32%, 480px) !important;
+	z-index: 10;
+	transform: translateX(-101%);
+	transition: transform .5s cubic-bezier(.77, 0, .18, 1);
+}
+.ch-slide.is-panel > .ch-slide-panel,
+body:not(.ch-js) .ch-slide:first-child > .ch-slide-panel {
+	transform: translateX(0);
+	transition: transform .9s cubic-bezier(.77, 0, .18, 1);
+}
+.ch-slide-panel > .ch-slide-kicker,
+.ch-slide-panel > .ch-slide-cta {
+	opacity: 0;
+	transform: translateY(18px);
+	transition: opacity .2s ease, transform .2s ease;
+}
+.ch-slide-panel > .ch-slide-title { clip-path: inset(0 0 100% 0); transition: clip-path .2s ease; }
+.ch-slide.is-panel .ch-slide-kicker { opacity: 1; transform: none; transition: opacity .5s ease .55s, transform .6s ease .55s; }
+.ch-slide.is-panel .ch-slide-title { clip-path: inset(0 0 0 0); transition: clip-path .9s cubic-bezier(.77, 0, .18, 1) .7s; }
+.ch-slide.is-panel .ch-slide-cta { opacity: 1; transform: none; transition: opacity .5s ease 1.2s, transform .6s ease 1.2s; }
+body:not(.ch-js) .ch-slide:first-child .ch-slide-panel > * { opacity: 1; transform: none; clip-path: none; }
+.ch-slide-title .elementor-heading-title { text-wrap: balance; }
+.ch-slide-cta .elementor-button { white-space: nowrap; }
+
+/* Counter + arrows under the slider */
+.ch-hero-count .elementor-heading-title { font-variant-numeric: tabular-nums; }
+.ch-hero-bar {
+	position: relative;
+	flex: none !important;
+	width: 110px !important;
+	height: 2px;
+	background: var(--ch-line);
+	overflow: hidden;
+}
+.ch-hero-bar::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: var(--ch-progress, 14.2857%);
+	background: var(--ch-navy);
+	transition: width .6s ease;
+}
+.ch-hero-arrow { flex: none !important; }
+.ch-hero-arrow .elementor-button {
+	position: relative;
+	width: 58px;
+	height: 58px;
+	padding: 0;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+}
+.ch-hero-arrow .elementor-button-content-wrapper { justify-content: center; }
+.ch-hero-ring {
+	position: absolute;
+	left: -4px;
+	top: -4px;
+	width: 64px;
+	height: 64px;
+	transform: rotate(-90deg);
+	pointer-events: none;
+}
+.ch-hero-ring circle {
+	fill: none;
+	stroke: var(--ch-navy);
+	stroke-width: 2;
+	stroke-dasharray: 176;
+	stroke-dashoffset: 176;
+	animation: chring var(--ch-ring, 7000ms) linear forwards;
+}
+
+/* In the Elementor editor, show every slide one under another so each is editable. */
+.elementor-editor-active .ch-hero { height: auto; }
+.elementor-editor-active .ch-hero > .ch-slide {
+	position: relative !important;
+	height: clamp(560px, 50vw, 760px);
+	clip-path: none;
+	pointer-events: auto;
+}
+.elementor-editor-active .ch-slide > .ch-slide-img { transform: none; }
+.elementor-editor-active .ch-slide > .ch-slide-panel { transform: none; }
+.elementor-editor-active .ch-slide-panel > * { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+
 @media (max-width: 767px) {
-	.ch-hero-panel { min-width: 0; max-width: none; }
+	.ch-slide > .ch-slide-panel { width: min(88%, 340px) !important; }
+	.ch-hero-arrow .elementor-button { width: 50px; height: 50px; }
+	.ch-hero-ring { width: 56px; height: 56px; }
 }
 
 /* --------------------------------------------------------------------------
@@ -488,6 +624,7 @@ body:not(.ch-js) .ch-step-img img { filter: none; }
    Keyframes
    -------------------------------------------------------------------------- */
 @keyframes chspin { to { transform: rotate(360deg); } }
+@keyframes chring { from { stroke-dashoffset: 176; } to { stroke-dashoffset: 0; } }
 @keyframes chmarq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes chmarqR { from { transform: translateX(-50%); } to { transform: translateX(0); } }
 @keyframes chbob {
@@ -499,6 +636,8 @@ body:not(.ch-js) .ch-step-img img { filter: none; }
 	.ch-marq-track,
 	.ch-badge > .elementor-widget-text-path svg,
 	.ch-step-img img { animation: none !important; }
+	.ch-hero > .ch-slide, .ch-slide > .ch-slide-img, .ch-slide > .ch-slide-panel,
+	.ch-slide-panel > * { transition: none !important; }
 }
 
 /* Keep the desktop menu on one line, and let nested rows shrink so fixed-size buttons stay inside. */

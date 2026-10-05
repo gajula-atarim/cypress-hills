@@ -199,6 +199,8 @@ body:not(.ch-js) .ch-hero > .ch-slide:first-child { z-index: 3; clip-path: none;
 	width: clamp(300px, 32%, 480px) !important;
 	z-index: 10;
 	transform: translateX(-101%);
+	padding-left: clamp(24px, 4vw, 72px) !important;
+	padding-right: clamp(24px, 4vw, 72px) !important;
 	transition: transform .5s cubic-bezier(.77, 0, .18, 1);
 }
 .ch-slide.is-panel > .ch-slide-panel,
@@ -212,15 +214,17 @@ body:not(.ch-js) .ch-slide:first-child > .ch-slide-panel {
 	transform: translateY(18px);
 	transition: opacity .2s ease, transform .2s ease;
 }
-.ch-slide-panel > .ch-slide-title { clip-path: inset(0 0 100% 0); transition: clip-path .2s ease; }
+/* Negative insets leave room for the italic overhang once revealed. */
+.ch-slide-panel > .ch-slide-title { clip-path: inset(0 -30% 100% 0); transition: clip-path .2s ease; }
 .ch-slide.is-panel .ch-slide-kicker { opacity: 1; transform: none; transition: opacity .5s ease .55s, transform .6s ease .55s; }
-.ch-slide.is-panel .ch-slide-title { clip-path: inset(0 0 0 0); transition: clip-path .9s cubic-bezier(.77, 0, .18, 1) .7s; }
+.ch-slide.is-panel .ch-slide-title { clip-path: inset(-20% -30% -20% 0); transition: clip-path .9s cubic-bezier(.77, 0, .18, 1) .7s; }
 .ch-slide.is-panel .ch-slide-cta { opacity: 1; transform: none; transition: opacity .5s ease 1.2s, transform .6s ease 1.2s; }
 body:not(.ch-js) .ch-slide:first-child .ch-slide-panel > * { opacity: 1; transform: none; clip-path: none; }
 .ch-slide-title .elementor-heading-title { text-wrap: balance; }
 .ch-slide-cta .elementor-button { white-space: nowrap; }
 
 /* Counter + arrows under the slider */
+.ch-hero-count, .ch-hero-arrows { width: auto !important; flex: 0 0 auto !important; }
 .ch-hero-count .elementor-heading-title { font-variant-numeric: tabular-nums; }
 .ch-hero-bar {
 	position: relative;

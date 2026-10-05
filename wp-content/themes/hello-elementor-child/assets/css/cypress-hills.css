@@ -652,3 +652,8 @@ body:not(.ch-js) .ch-step-img img { filter: none; }
 .ch-header-logo { flex: 0 0 auto !important; width: auto !important; }
 .e-con.e-con-full > .e-con.e-con-full { min-width: 0; }
 .ch-pill-btn { flex: 0 0 auto !important; }
+
+/* Process: four equal columns from tablet up (as in the design), so the gaps never push a step onto a new row. */
+@media (min-width: 768px) {
+	.ch-process .ch-step { flex: 1 1 0 !important; width: auto !important; min-width: 0; }
+}

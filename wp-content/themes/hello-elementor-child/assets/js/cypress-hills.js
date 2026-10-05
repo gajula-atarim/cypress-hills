@@ -176,6 +176,14 @@
 		document.querySelectorAll('.ch-process').forEach(function (sec) {
 			var steps = sec.querySelectorAll('.ch-step');
 			if (!steps.length) { return; }
+			steps.forEach(function (s) {
+				var c = s.querySelector('.ch-step-circle');
+				if (c && !c.querySelector('.ch-step-ring')) {
+					c.insertAdjacentHTML('afterbegin', '<svg class="ch-step-ring" viewBox="0 0 100 100" aria-hidden="true">' +
+						'<circle class="ch-ring-track" cx="50" cy="50" r="48"></circle>' +
+						'<circle class="ch-ring-arc" cx="50" cy="50" r="48" pathLength="100"></circle></svg>');
+				}
+			});
 			function paint(g) {
 				steps.forEach(function (s, i) {
 					s.classList.toggle('is-on', g >= i);
@@ -189,7 +197,7 @@
 				(function tick() {
 					g = g >= steps.length ? -1 : g + 1;
 					paint(g);
-					setTimeout(tick, g === steps.length ? 2600 : g === -1 ? 700 : 2400);
+					setTimeout(tick, g === steps.length ? 1800 : g === -1 ? 700 : 2400);
 				})();
 			}, 0.3);
 		});

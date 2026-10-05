@@ -115,6 +115,11 @@ body:not(.home) #masthead { background: var(--ch-navy); }
 	font-weight: 800;
 }
 .ch-header-pill .hfe-nav-menu .menu-item > a.hfe-menu-item { border-radius: 999px; }
+.ch-header-pill .hfe-nav-menu__layout-horizontal .sub-arrow i,
+.ch-header-pill .hfe-nav-menu__layout-horizontal .sub-arrow svg { transition: transform .25s; }
+.ch-header-pill .hfe-nav-menu__layout-horizontal .menu-item-has-children:hover > .hfe-has-submenu-container .sub-arrow i,
+.ch-header-pill .hfe-nav-menu__layout-horizontal .menu-item-has-children:focus-within > .hfe-has-submenu-container .sub-arrow i,
+.ch-header-pill .hfe-nav-menu__layout-horizontal .menu-item-has-children:hover > .hfe-has-submenu-container .sub-arrow svg { transform: rotate(180deg); }
 .ch-header-pill .hfe-nav-menu__layout-horizontal .hfe-has-submenu-container { background: transparent; }
 .ch-header-pill .hfe-nav-menu__layout-horizontal .hfe-has-submenu-container > a.hfe-menu-item { gap: 6px; }
 .ch-header-pill .hfe-nav-menu-icon,
@@ -353,7 +358,6 @@ body:not(.ch-js) .ch-slide:first-child .ch-slide-panel > * { opacity: 1; transfo
 	will-change: transform;
 }
 .ch-marq-track--rev { animation: chmarqR 52s linear infinite; }
-.ch-marquee:hover .ch-marq-track { animation-play-state: paused; }
 .elementor-editor-active .ch-marq-track { animation: none; }
 .ch-chip { flex: none !important; width: auto !important; }
 .ch-chip .elementor-heading-title { white-space: nowrap; }
@@ -527,21 +531,31 @@ body:not(.ch-js) .ch-slide:first-child .ch-slide-panel > * { opacity: 1; transfo
 	box-shadow: 0 6px 16px rgba(15, 17, 48, .25);
 	transition: box-shadow .8s ease, transform .9s cubic-bezier(.45, 0, .2, 1);
 }
-.ch-step-circle::before,
-.ch-step-circle::after {
-	content: "";
+/* Progress ring (SVG added by the script): faint track + green arc that draws in, as in the design. */
+.ch-step-ring {
 	position: absolute;
-	inset: -14px;
-	border-radius: 50%;
+	left: -14px;
+	top: -14px;
+	width: calc(100% + 28px);
+	height: calc(100% + 28px);
+	transform: rotate(-90deg);
+	overflow: visible;
 	pointer-events: none;
+	z-index: 0;
 }
-.ch-step-circle::before { border: 1.6px solid rgba(255, 255, 255, .14); }
-.ch-step-circle::after {
-	border: 2.4px solid var(--ch-green);
+.ch-step-ring circle { fill: none; }
+.ch-step-ring .ch-ring-track { stroke: rgba(255, 255, 255, .14); stroke-width: 1.6; }
+.ch-step-ring .ch-ring-arc {
+	stroke: var(--ch-green);
+	stroke-width: 2.4;
+	stroke-linecap: round;
+	stroke-dasharray: 100;
+	stroke-dashoffset: 100;
 	opacity: 0;
-	transform: scale(.92);
-	transition: opacity .8s ease, transform .9s ease;
 }
+.ch-step.is-on .ch-step-ring .ch-ring-arc { opacity: 1; animation: chdraw 2400ms cubic-bezier(.45, 0, .2, 1) both; }
+.ch-step-circle > .elementor-widget { position: relative; z-index: 1; }
+.ch-step-circle > .ch-step-num { position: absolute !important; z-index: 2; }
 .ch-step-img { width: 78% !important; }
 .ch-step-img img {
 	width: 100%;
@@ -575,12 +589,14 @@ body:not(.ch-js) .ch-slide:first-child .ch-slide-panel > * { opacity: 1; transfo
 .ch-js .ch-process .ch-step:not(.is-on) .ch-step-num { background-color: #FFFFFF !important; }
 .ch-process .ch-step.is-on .ch-step-img img,
 body:not(.ch-js) .ch-step-img img { filter: none; }
-.ch-process .ch-step.is-on .ch-step-circle::after { opacity: 1; transform: scale(1); }
 .ch-process .ch-step.is-current .ch-step-circle {
 	transform: translateY(-12px);
 	box-shadow: 0 18px 40px rgba(15, 17, 48, .45);
 }
 .ch-process .ch-step.is-current .ch-step-img img { animation-duration: 1.4s; }
+.ch-process .ch-step:nth-child(2) .ch-step-img img { animation-delay: -.6s; }
+.ch-process .ch-step:nth-child(3) .ch-step-img img { animation-delay: -1.2s; }
+.ch-process .ch-step:nth-child(4) .ch-step-img img { animation-delay: -1.8s; }
 
 /* --------------------------------------------------------------------------
    Awards, contact form, footer
@@ -628,6 +644,7 @@ body:not(.ch-js) .ch-step-img img { filter: none; }
    Keyframes
    -------------------------------------------------------------------------- */
 @keyframes chspin { to { transform: rotate(360deg); } }
+@keyframes chdraw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
 @keyframes chring { from { stroke-dashoffset: 176; } to { stroke-dashoffset: 0; } }
 @keyframes chmarq { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes chmarqR { from { transform: translateX(-50%); } to { transform: translateX(0); } }

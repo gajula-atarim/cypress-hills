@@ -39,9 +39,9 @@ def header():
                       flex_align_items="center", flex_justify_content="flex-end",
                       flex_gap=gap(6), padding=box(0), _flex_size="grow")
 
-    logo = widget("site-logo", site_logo_fallback="yes", custom_image=img(M.LOGO),
-                  site_logo_size_size="medium_large", align="left", width=px(157),
-                  width_mobile=px(128), space=px(100, "%"), link_to="default")
+    logo = widget("image", image=img(M.LOGO), image_size="medium_large", align="start",
+                  link_to="custom", link={"url": "/", "is_external": "", "nofollow": ""},
+                  css_classes="ch-header-logo", _flex_size="none")
 
     pill = container([logo, right], seed="hdr-pill", content_width="full", flex_direction="row",
                      flex_wrap="nowrap", flex_align_items="center",
@@ -74,7 +74,7 @@ def footer():
                    **typo(size=12, weight=800, ls=1.9, transform="uppercase", lh=1.3)),
             link_list(items),
         ], content_width="full", flex_direction="column", flex_gap=gap(14), padding=box(0),
-            width=px(17, "%"), width_tablet=px(30, "%"), width_mobile=px(100, "%"))
+            width=px(15, "%"), width_tablet=px(30, "%"), width_mobile=px(100, "%"))
 
     svc = "/#services"
     brand = container([
@@ -84,7 +84,7 @@ def footer():
                                      "Woodbridge, Muskoka, Collingwood, Toronto and surrounding areas</p>",
                text_color="#9A9CB8", **typo(size=14, lh=1.6)),
     ], content_width="full", flex_direction="column", flex_gap=gap(16), padding=box(0),
-        width=px(24, "%"), width_tablet=px(100, "%"), width_mobile=px(100, "%"))
+        width=px(22, "%"), width_tablet=px(100, "%"), width_mobile=px(100, "%"))
 
     cols = container([
         brand,
@@ -137,6 +137,11 @@ def form():
         field("mf-email", "email", "Enter Email", False),
         field("mf-text", "subject", "Enter your subject", False),
         widget("mf-button", mf_btn_text="Send message", mf_btn_align="justify",
+               mf_btn_text_color=INK, mf_btn_hover_color=INK,
+               mf_btn_bg_color_background="classic", mf_btn_bg_color_color=GREEN,
+               mf_btn_bg_hover_color_background="classic", mf_btn_bg_hover_color_color="#4AA63D",
+               mf_btn_border_radius=box(999), mf_btn_text_padding=box(18, 18, 18, 18),
+               **typo("mf_btn_typography", size=14, weight=800, ls=1.1, transform="uppercase", lh=1.2),
                _margin=box(6, 0, 0, 0)),
     ], seed="form", content_width="full", flex_direction="column", flex_gap=gap(14), padding=box(0))])
 

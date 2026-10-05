@@ -26,7 +26,7 @@ def section(children, bg, seed, pad=None, **extra):
     return container(children, seed=seed, **s)
 
 
-def row(children, seed=None, gap_px=32, wrap="wrap", justify="space-between", align="flex-end",
+def row(children, seed=None, gap_px=32, wrap="nowrap", justify="space-between", align="flex-end",
         stack_on="mobile", **extra):
     s = dict(content_width="full", flex_direction="row", flex_wrap=wrap, flex_gap=gap(gap_px),
              flex_justify_content=justify, flex_align_items=align, padding=box(0))
@@ -104,7 +104,7 @@ def hero():
                **typo(size=14, weight=700, ls=1.1, transform="uppercase", lh=1.2)),
     ], seed="hero-panel", gap_px=26, width=32, width_t=45, width_m=88,
         flex_justify_content="center", flex_align_items="flex-start",
-        padding=box(110, 72, 48, 72), padding_tablet=box(110, 40, 48, 40),
+        padding=box(110, 56, 48, 56), padding_tablet=box(110, 36, 48, 36),
         padding_mobile=box(110, 24, 40, 24),
         background_background="classic", background_color=NAVY,
         css_classes="ch-hero-panel", animation="fadeInLeft", animation_delay=400)
@@ -128,7 +128,7 @@ def hero():
                      background_overlay_color_stop=px(0, "%"),
                      background_overlay_color_b="rgba(15,17,48,0)",
                      background_overlay_color_b_stop=px(22, "%"),
-                     background_overlay_gradient_type="linear",
+                     background_overlay_gradient_type="linear", background_overlay_opacity=px(1),
                      background_overlay_gradient_angle=px(180, "deg"),
                      border_radius=box(0, 0, 230, 0), border_radius_tablet=box(0, 0, 140, 0),
                      border_radius_mobile=box(0, 0, 110, 0),
@@ -396,7 +396,7 @@ def work():
                                background_overlay_color_stop=px(0, "%"),
                                background_overlay_color_b="rgba(15,17,48,0)",
                                background_overlay_color_b_stop=px(100, "%"),
-                               background_overlay_gradient_type="linear",
+                               background_overlay_gradient_type="linear", background_overlay_opacity=px(1),
                                background_overlay_gradient_angle=px(90, "deg"),
                                border_radius=box(0, 0, 200, 0),
                                border_radius_tablet=box(0, 0, 140, 0),
@@ -480,7 +480,7 @@ def contact(form_id):
             widget("heading", title=label, header_size="div", title_color=GREEN_L,
                    **typo(size=12, weight=800, ls=1.9, transform="uppercase", lh=1.3)),
             value_widget,
-        ], gap_px=6, width=100 if full else 48, width_m=100)
+        ], gap_px=6, width=100 if full else 45, width_m=100)
 
     left = col([
         kicker("Work with Us", GREEN_L),
@@ -524,7 +524,7 @@ def contact(form_id):
                    background_overlay_color_stop=px(0, "%"),
                    background_overlay_color_b="rgba(15,17,48,0.6)",
                    background_overlay_color_b_stop=px(100, "%"),
-                   background_overlay_gradient_type="linear",
+                   background_overlay_gradient_type="linear", background_overlay_opacity=px(1),
                    background_overlay_gradient_angle=px(90, "deg"), overflow="hidden")
 
 

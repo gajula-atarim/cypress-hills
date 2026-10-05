@@ -500,3 +500,12 @@ body:not(.ch-js) .ch-step-img img { filter: none; }
 	.ch-badge > .elementor-widget-text-path svg,
 	.ch-step-img img { animation: none !important; }
 }
+
+/* Keep the desktop menu on one line, and let nested rows shrink so fixed-size buttons stay inside. */
+@media (min-width: 1025px) {
+	.ch-header-pill .hfe-nav-menu { flex-wrap: nowrap !important; }
+	.ch-header-pill .hfe-nav-menu a.hfe-menu-item { white-space: nowrap; }
+}
+.ch-header-logo { flex: 0 0 auto !important; width: auto !important; }
+.e-con.e-con-full > .e-con.e-con-full { min-width: 0; }
+.ch-pill-btn { flex: 0 0 auto !important; }

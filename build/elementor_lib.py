@@ -61,6 +61,11 @@ def container(children=None, seed=None, **settings):
 
 
 def widget(wtype, seed=None, **settings):
+    # Widgets keep their CSS classes under "_css_classes" (containers use "css_classes").
+    if "css_classes" in settings:
+        cls = settings.pop("css_classes")
+        if cls:
+            settings["_css_classes"] = cls
     return {"id": eid(seed), "elType": "widget", "widgetType": wtype, "isInner": False,
             "settings": settings, "elements": []}
 

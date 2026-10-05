@@ -170,7 +170,7 @@ def about():
         image(M.POOL, cls="ch-collage-a ch-fill"),
         image(M.STONE, cls="ch-collage-b ch-fill"),
         badge,
-    ], seed="about-collage", content_width="full", padding=box(0), width=50, width_t=100,
+    ], seed="about-collage", content_width="full", padding=box(0), width=px(50, "%"), width_tablet=px(100, "%"),
         css_classes="ch-collage")
 
     return section([row([left, collage], seed="about-row", gap_px=110, align="center",
@@ -296,7 +296,7 @@ def services():
                    css_classes="ch-svc-label", _background_background="classic",
                    _background_color=GREEN, _padding=box(10, 16, 10, 16), _border_radius=box(999),
                    **typo(size=13, weight=800, ls=1.6, transform="uppercase", lh=1.2))],
-        seed="svc-media", content_width="full", padding=box(0), width=50, width_t=100,
+        seed="svc-media", content_width="full", padding=box(0), width=px(50, "%"), width_tablet=px(100, "%"),
         min_height=px(560), min_height_tablet=px(480), min_height_mobile=px(420),
         background_background="classic", background_color=INK,
         border_radius=box(0, 0, 180, 0), border_radius_mobile=box(0, 0, 100, 0),
@@ -325,11 +325,11 @@ def services():
             css_classes="ch-svc-item"))
 
     lst = container(items, seed="svc-list", content_width="full", flex_direction="column",
-                    flex_gap=gap(0), padding=box(0), width=50, width_t=100,
+                    flex_gap=gap(0), padding=box(0), width=px(50, "%"), width_tablet=px(100, "%"),
                     border_border="solid", border_width=box(1, 0, 0, 0), border_color=LINE)
 
     grid = row([media_box, lst], seed="svc-grid", gap_px=64, align="stretch", wrap="nowrap",
-               stack_on="tablet", flex_wrap_tablet="wrap")
+               stack_on="tablet")
     return section([head, grid], CREAM, "services", css_classes="ch-services",
                    flex_gap=gap(56), padding=box(0, 72, 150, 72),
                    padding_tablet=box(0, 40, 110, 40), padding_mobile=box(0, 24, 96, 24))
@@ -515,7 +515,7 @@ def contact(form_id):
         background_color=WHITE, border_radius=box(0, 0, 72, 0), css_classes="ch-form-card")
 
     r = row([left, card], seed="contact-row", gap_px=96, align="flex-start", stack_on="tablet",
-            wrap="nowrap", flex_wrap_tablet="wrap")
+            wrap="nowrap")
     return section([r], INK, "contact", _element_id="book",
                    background_background="classic", background_image=img(M.NIGHT),
                    background_size="cover", background_position="center center",

@@ -115,13 +115,15 @@ body:not(.home) #masthead { background: var(--ch-navy); }
 	font-weight: 800;
 }
 .ch-header-pill .hfe-nav-menu .menu-item > a.hfe-menu-item { border-radius: 999px; }
-.ch-header-pill .hfe-nav-menu__layout-horizontal .hfe-nav-menu { flex-wrap: nowrap; }
 .ch-header-pill .hfe-nav-menu__layout-horizontal .hfe-has-submenu-container { background: transparent; }
 .ch-header-pill .hfe-nav-menu__layout-horizontal .hfe-has-submenu-container > a.hfe-menu-item { gap: 6px; }
 .ch-header-pill .hfe-nav-menu-icon,
 .ch-header-pill .hfe-nav-menu__toggle { color: #FFFFFF; }
 /* Let the menu shrink so the Contact Us button stays in the pill; only Home is highlighted. */
-.ch-header-pill .elementor-widget-navigation-menu { flex: 0 1 auto !important; width: auto !important; min-width: 0; }
+.ch-header-pill .elementor-widget-navigation-menu { flex: 1 1 auto !important; width: auto !important; min-width: 0; max-width: 100%; }
+.ch-header-pill .elementor-widget-navigation-menu .hfe-nav-menu__layout-horizontal,
+.ch-header-pill .elementor-widget-navigation-menu .hfe-nav-menu { min-width: 0; }
+.ch-header-pill .elementor-widget-button { flex: 0 0 auto !important; width: auto !important; }
 .ch-header-pill .hfe-nav-menu .menu-item > a.hfe-menu-item,
 .ch-header-pill .hfe-nav-menu .menu-item > .hfe-has-submenu-container > a.hfe-menu-item { background-color: transparent !important; }
 .ch-header-pill .hfe-nav-menu .menu-item > a.hfe-menu-item:hover,

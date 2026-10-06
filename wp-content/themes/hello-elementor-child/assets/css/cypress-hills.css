@@ -1233,3 +1233,9 @@ body { overflow-x: clip; }
 	.ch-chip-img img { width: 32px !important; height: 32px !important; }
 	.ch-chip .elementor-heading-title { font-size: 14px !important; line-height: 1.2 !important; }
 }
+/* How a project runs on phones: step circles ~20% smaller (170px instead of 210px). */
+@media (max-width: 767px) {
+	.ch-step-circle { width: 170px !important; }
+	.ch-step-ring { left: -11px; top: -11px; width: calc(100% + 22px); height: calc(100% + 22px); }
+	.ch-step-num { width: 40px !important; height: 40px; bottom: -20px; }
+}

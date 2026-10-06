@@ -1318,3 +1318,9 @@ body { overflow-x: clip; }
 }
 /* Banner eyebrow ("In Business Since 1994 | 35 Years …"): room between lines when it wraps. */
 .ch-slide-panel > .ch-slide-kicker .elementor-heading-title { line-height: 1.6 !important; }
+/* Desktop: banner + the counter/arrows row below it fill exactly one screen (no gap before the next section).
+   --ch-hero-bar is that row's height (~108px). */
+@media (min-width: 1025px) {
+	.ch-hero { --ch-hero-bar: 108px; height: max(520px, calc(100vh - var(--ch-hero-bar))) !important; }
+	@supports (height: 100svh) { .ch-hero { height: max(520px, calc(100svh - var(--ch-hero-bar))) !important; } }
+}

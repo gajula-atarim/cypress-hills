@@ -1177,7 +1177,8 @@ body { overflow-x: clip; }
 }
 /* ☰ button: the green circle (.hfe-nav-menu-icon) sat at the top of its 48px toggle box, so it looked
    higher than the logo. Centre it in the box and give it a fixed round size. */
-.ch-header-pill .hfe-nav-menu__toggle { display: flex !important; align-items: center !important; justify-content: center !important; margin: 0 !important; }
+.ch-header-pill .hfe-nav-menu__toggle { display: flex !important; align-items: center !important; justify-content: center !important; margin: 0 0 0 auto !important; }
+.ch-header-pill .elementor-widget-navigation-menu { margin-left: auto !important; }
 .ch-header-pill .hfe-nav-menu__toggle .hfe-nav-menu-icon {
 	width: 42px; height: 42px;
 	padding: 0 !important;

@@ -1077,17 +1077,16 @@ body:not(.ch-js) .ch-step-img img { filter: none; }
 .ch-interests .mf-checkbox-option input:checked + span { background: var(--ch-navy); border-color: var(--ch-navy); color: #FFFFFF; }
 .ch-interests .mf-checkbox-option input:focus-visible + span { outline: 2px solid var(--ch-green); outline-offset: 2px; }
 .ch-form-card--page .metform-btn { width: auto !important; display: inline-flex !important; align-items: center; gap: 14px; padding: 8px 8px 8px 28px !important; }
-/* Arrow chip drawn by CSS so it renders the same whatever icon markup MetForm outputs. */
+/* Arrow chip drawn as a background image so it renders the same whatever icon markup MetForm outputs. */
 .ch-form-card--page .metform-btn i,
 .ch-form-card--page .metform-btn svg { display: none !important; }
-.ch-form-card--page .metform-btn::after {
-	content: "";
-	flex: 0 0 42px;
-	width: 42px; height: 42px;
-	border-radius: 50%;
-	background: var(--ch-ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / 16px no-repeat;
-	transition: transform .2s;
+.ch-form-card--page .metform-btn,
+.ch-form-card--page .metform-btn:hover {
+	min-height: 58px;
+	padding: 8px 66px 8px 28px !important;
+	background: var(--ch-green) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 42'%3E%3Ccircle cx='21' cy='21' r='21' fill='%230F1130'/%3E%3Cpath d='M14 21h14M23 15l6 6-6 6' fill='none' stroke='%23fff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 8px center / 42px 42px !important;
 }
-.ch-form-card--page .metform-btn:hover::after { transform: translateX(3px); }
-.ch-interests .mf-input-label { display: block !important; float: none !important; width: auto !important; }
+.ch-form-card--page .metform-btn:hover { background-color: #4AA63D !important; }
+.ch-interests .mf-input-label { display: block !important; float: none !important; width: auto !important; line-height: 1.5 !important; margin: 0 !important; padding-bottom: 12px; }
 .ch-interests .mf-input-wrapper { display: block !important; }
+.ch-interests .mf-checkbox { margin: 0 !important; position: static !important; }

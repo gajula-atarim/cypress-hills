@@ -1123,6 +1123,8 @@ body:not(.ch-js) .ch-step-img img { filter: none; }
 	.ch-hero-arrows { gap: 8px !important; }
 	.ch-hero-arrow .elementor-button { width: 46px; height: 46px; }
 	.ch-hero-ring { width: 52px; height: 52px; left: -3px; top: -3px; }
+	/* Longest slide button ("Creative outdoor services") must stay inside the navy panel. */
+	.ch-slide-cta .elementor-button { font-size: 12px !important; letter-spacing: .06em !important; padding: 13px 16px !important; }
 }
 /* Safety net: nothing may widen the page sideways (clip, unlike hidden, keeps position: sticky working). */
 html, body { max-width: 100%; }

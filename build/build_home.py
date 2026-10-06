@@ -100,13 +100,13 @@ def image(m, cls="", size="full", seed=None, **extra):
 # 1. Hero — background slideshow + navy text panel
 # ---------------------------------------------------------------------------
 HERO_SLIDES = [
-    (M.AERIAL, "In Business Since 1994 | 35 Years of Industry Experience",
+    (M.MIKE_2, "In Business Since 1994 | 35 Years of Industry Experience",
      "Transforming Landscapes, One Project at a Time", "Creative Outdoor Services", "/services/"),
-    (M.POOL, "Pools", "The pool and the yard, built as one.", "Explore pools", "/pools/"),
-    (M.STONE, "Armour stone walls", "Stone walls set by our own crew and machines.", "See stonework", "/armor-stone-walls/"),
-    (M.GREEN, "Backyard putting greens", "Your own short game, steps from the house.", "See putting greens", "/backyard-putting-greens/"),
-    (M.COURSE, "Golf course shaping", "Greens and bunkers shaped for real courses.", "Golf & turf", "/golf-course-shaping/"),
-    (M.KITCHEN, "Outdoor living", "Kitchens, cabanas and fire for long evenings.", "See outdoor living", "/services/"),
+    (M.MIKE_17, "Pools", "The pool and the yard, built as one.", "Explore pools", "/pools/"),
+    (M.MIKE_19, "Armour stone walls", "Stone walls set by our own crew and machines.", "See stonework", "/armor-stone-walls/"),
+    (M.MIKE_GOLF, "Backyard putting greens", "Your own short game, steps from the house.", "See putting greens", "/backyard-putting-greens/"),
+    (M.MIKE_16, "Golf course shaping", "Greens and bunkers shaped for real courses.", "Golf & turf", "/golf-course-shaping/"),
+    (M.MIKE_3, "Outdoor living", "Kitchens, cabanas and fire for long evenings.", "See outdoor living", "/services/"),
     (M.NIGHT, "Landscape lighting", "A yard that works after dark.", "See lighting", "/services/"),
 ]
 

@@ -273,8 +273,7 @@ def what_we_do():
 def custom_design():
     head = row([
         col([kicker("From vision to reality"),
-             display("Custom Landscape Design Tailored to Your Unique Vision",
-                     lh=1, ls=-0.02)], gap_px=20, width=50, width_t=100),
+             display("Custom Landscape Design Tailored to Your Unique Vision")], gap_px=20, width=50, width_t=100),
         col([para("At Cypress Hills Landscaping Inc., we understand that your outdoor space is an "
                   "extension of your home and personal style. That’s why we offer custom landscape "
                   "design to bring your vision to life. Our experienced designers will work closely "
@@ -449,7 +448,7 @@ def process():
     head = row([
         col([kicker("How a project runs", GREEN_L),
              display("From an idea<br>to your <span class='ch-green'>keys.</span>",
-                     WHITE)]),
+                     color=WHITE)]),
         para("One project lead walks with you from the first site visit to the day we hand it over.",
              color="#C9CBE0", lh=1.6, cls="ch-mw-40"),
     ], seed="proc-head")

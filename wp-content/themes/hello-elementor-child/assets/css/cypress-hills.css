@@ -1136,3 +1136,15 @@ body { overflow-x: clip; }
 @media (max-width: 1024px) {
 	#masthead, .ehf-header #masthead, header.site-header { overflow-x: clip; }
 }
+/* Sketch / finished-yard labels: together they need ~410px, so on phones shrink them and cap each at
+   half the slider (minus the handle) so a long label wraps instead of running into the other one. */
+@media (max-width: 767px) {
+	.ch-compare > .ch-cmp-label { top: 12px; max-width: calc(50% - 22px); }
+	.ch-compare > .ch-cmp-label--l { left: 12px; }
+	.ch-compare > .ch-cmp-label--r { right: 12px; }
+	.ch-compare > .ch-cmp-label > .elementor-widget-container { padding: 7px 11px !important; }
+	.ch-compare > .ch-cmp-label:not(:has(> .elementor-widget-container)) { padding: 7px 11px !important; }
+	.ch-compare > .ch-cmp-label .elementor-heading-title { font-size: 10px !important; letter-spacing: .08em !important; line-height: 1.25 !important; white-space: normal; }
+	.ch-compare > .ch-cmp-label--r .elementor-heading-title { text-align: right; }
+	.ch-cmp-handle span { width: 52px; height: 52px; left: -26px; margin-top: -26px; }
+}

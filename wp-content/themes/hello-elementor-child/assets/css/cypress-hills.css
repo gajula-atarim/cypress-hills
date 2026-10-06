@@ -1129,18 +1129,10 @@ body:not(.ch-js) .ch-step-img img { filter: none; }
 /* Safety net: nothing may widen the page sideways (clip, unlike hidden, keeps position: sticky working). */
 html, body { max-width: 100%; }
 body { overflow-x: clip; }
-/* In the ☰ menu (≤ 1024px) sub-menus sit inside the card. As absolutely placed 240px panels they hang
-   ~90px past the right edge even while hidden, which widens the page and makes phones zoom out. */
+/* Header on phones/tablets: the hidden 240px sub-menu panels hang ~90px past the right edge, which widens
+   the page and makes phones zoom out. Clipping the header sideways removes that without touching the menu;
+   clip (not hidden) keeps the open ☰ card free to extend downwards. body's clip alone doesn't stop the
+   mobile zoom-out, because it is propagated to the viewport. */
 @media (max-width: 1024px) {
-	.ch-header-pill .sub-menu {
-		position: static !important;
-		left: auto !important;
-		right: auto !important;
-		min-width: 0 !important;
-		width: auto !important;
-		box-shadow: none !important;
-		border-radius: 0 !important;
-		padding: 0 !important;
-		transform: none !important;
-	}
+	#masthead, .ehf-header #masthead, header.site-header { overflow-x: clip; }
 }

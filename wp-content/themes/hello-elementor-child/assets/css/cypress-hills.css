@@ -1271,5 +1271,7 @@ body { overflow-x: clip; }
 /* Tablet header: Logo | ……… Contact Us | ☰  (the button sits before the menu toggle, both on the right). */
 @media (min-width: 768px) and (max-width: 1024px) {
 	.ch-header-pill .elementor-widget-button { order: -1; margin-left: auto !important; }
-	.ch-header-pill .elementor-widget-navigation-menu { margin-left: 0 !important; }
+	/* The menu widget otherwise stretches ~450px with the ☰ at its far end; shrink it to the button. */
+	.ch-header-pill .elementor-widget-navigation-menu { margin-left: 0 !important; flex: 0 0 48px !important; width: 48px !important; min-width: 48px !important; }
+	.ch-header-pill > .e-con { justify-content: flex-end !important; }
 }

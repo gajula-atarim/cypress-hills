@@ -86,7 +86,7 @@ $menu = wp_get_nav_menu_object( 'Primary Menu' );
 foreach ( (array) wp_get_nav_menu_items( $menu->term_id ) as $it ) {
 	wp_delete_post( $it->ID, true );
 }
-$add = function ( $page_id, $parent = 0, $label = '' ) use ( $menu ) {
+$add = function ( $page_id, $parent = 0, $label = '', $classes = '' ) use ( $menu ) {
 	return wp_update_nav_menu_item( $menu->term_id, 0, array(
 		'menu-item-object-id' => $page_id,
 		'menu-item-object'    => 'page',
@@ -94,6 +94,7 @@ $add = function ( $page_id, $parent = 0, $label = '' ) use ( $menu ) {
 		'menu-item-status'    => 'publish',
 		'menu-item-parent-id' => $parent,
 		'menu-item-title'     => $label,
+		'menu-item-classes'   => $classes,
 	) );
 };
 $add( $home, 0, 'Home' );
@@ -106,6 +107,8 @@ $p = $add( $ids['pools'] );
 $add( $ids['fiberglass-pool-installation'], $p );
 $add( $ids['swimming-pool-installation-caledon'], $p, 'Swimming Pool Installation Caledon ON' );
 $add( $ids['projects'] );
+// Phone-only green "Contact Us" button at the bottom of the ☰ menu (hidden ≥ 768px by the theme CSS).
+$add( $ids['contact'], 0, 'Contact Us', 'ch-menu-cta' );
 $out['menu'] = count( wp_get_nav_menu_items( $menu->term_id ) );
 
 // Pretty permalinks so /services/ etc. resolve.

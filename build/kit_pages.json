@@ -1,0 +1,751 @@
+[
+ {
+  "slug": "pools",
+  "title": "Pools",
+  "nav": "pools",
+  "hero": {
+   "img": "67b2e1f0-4a59-4908-ab1e-375c2268aebc",
+   "crumbs": [
+    [
+     "Home",
+     "/"
+    ]
+   ],
+   "current": "Pools",
+   "kicker": "Pools",
+   "h1": "Swimming Pool <span class='ch-green'>Installation</span>",
+   "lead": ""
+  },
+  "intro": {
+   "kicker": "Design to installation",
+   "h2": "Your entire swimming pool installation, <span class='ch-green'>handled.</span>",
+   "img1": "67b2e1f0-4a59-4908-ab1e-375c2268aebc",
+   "img2": "1e28f731-a945-416c-92b6-5a6e95975e8a",
+   "ball": "POOLS • DESIGN TO INSTALLATION • SINCE 1994 • ",
+   "ps": [
+    {
+     "html": "Cypress Hills Landscaping Inc. takes care of your entire swimming pool installation.",
+     "lead": true
+    }
+   ]
+  },
+  "elevate": {
+   "img": "1e28f731-a945-416c-92b6-5a6e95975e8a",
+   "kicker": "Quick, smooth, long-lasting",
+   "h2": "Fiberglass <span class='ch-green'>Pools</span>",
+   "ps": [
+    "Fiberglass pools are known for their quick installation process, smooth surface, and resistance to algae and bacteria. They offer a high-quality, long-lasting option for your backyard oasis.",
+    "Let us turn your pool dreams into reality and create years of enjoyment with family and friends."
+   ]
+  },
+  "tour": {
+   "kicker": "How it works",
+   "h2": "We Handle <span class='ch-green'>Everything</span>",
+   "p": "From the initial stages of the project, such as the design, to the installation, we will handle everything, from applying for permits and preparing the site to installing your preferred pool.",
+   "opts": [
+    {
+     "t": "Design",
+     "d": ""
+    },
+    {
+     "t": "Permits",
+     "d": ""
+    },
+    {
+     "t": "Site preparation",
+     "d": ""
+    },
+    {
+     "t": "Installation",
+     "d": ""
+    }
+   ],
+   "interval": 2800,
+   "img": "67b2e1f0-4a59-4908-ab1e-375c2268aebc",
+   "right": [
+    {
+     "type": "label",
+     "text": "Pool options"
+    },
+    {
+     "type": "h3",
+     "html": "Steel vinyl or <span class='ch-green'>fiberglass</span>"
+    },
+    {
+     "type": "p",
+     "html": "Choose from our selection of <a class='ch-inline-link' href='/services/'>steel vinyl inground pools</a>, available in custom sizes to fit your vision and backyard needs. Or opt for a <a class='ch-inline-link' href='/projects/'>fiberglass pool</a> with tile options or a fully tiled fiberglass pool for ultimate durability and low maintenance."
+    },
+    {
+     "type": "link",
+     "text": "Fiberglass Pool Installation →",
+     "href": "/fiberglass-pool-installation/"
+    }
+   ]
+  },
+  "cta": {
+   "img": "67b2e1f0-4a59-4908-ab1e-375c2268aebc",
+   "kicker": "Get started",
+   "h2": "Let's walk your <span class='ch-green'>yard.</span>",
+   "p": "Create a serene and beautiful oasis right in your backyard. Get in touch with our experienced professionals today so we can begin creating your perfect outdoor retreat."
+  }
+ },
+ {
+  "slug": "fiberglass-pool-installation",
+  "title": "Fiberglass Pool Installation",
+  "nav": "pools",
+  "hero": {
+   "img": "23a5229f-f69d-41ed-95c4-83191817eb5f",
+   "crumbs": [
+    [
+     "Home",
+     "/"
+    ],
+    [
+     "Pools",
+     "/pools/"
+    ]
+   ],
+   "current": "Fiberglass Pool Installation",
+   "kicker": "Fiberglass Pool Installation",
+   "h1": "<span class='ch-green'>Fiberglass Pool Installation</span> in Toronto, ON",
+   "lead": ""
+  },
+  "intro": {
+   "kicker": "Since 1994",
+   "h2": "A backyard that invites you to <span class='ch-green'>relax.</span>",
+   "img1": "23a5229f-f69d-41ed-95c4-83191817eb5f",
+   "img2": "dcd86a37-e03c-48cb-af7f-9ecadc50c33c",
+   "ball": "FIBERGLASS POOLS • SINCE 1994 • BUILT TO LAST • ",
+   "ps": [
+    {
+     "html": "Picture a backyard that invites you to relax the moment you step outside. A fiberglass pool delivers exactly that, combining lasting beauty with the convenience busy homeowners deserve.",
+     "lead": true
+    },
+    {
+     "html": "Cypress Hills Landscaping Inc. has built outdoor retreats across the Greater Toronto Area since 1994, and fiberglass pool installation in Toronto, ON, is one of the smartest investments you can make in your property.",
+     "lead": false
+    }
+   ]
+  },
+  "elevate": {
+   "img": "dcd86a37-e03c-48cb-af7f-9ecadc50c33c",
+   "kicker": "Engineered for strength",
+   "h2": "Why Choose a <span class='ch-green'>Fiberglass Pool?</span>",
+   "ps": [
+    "Fiberglass pools are engineered for strength, so you enjoy a smooth, durable surface that resists cracks and stains for decades.",
+    "The non-porous shell discourages algae growth, which means far less scrubbing and fewer chemicals year after year."
+   ]
+  },
+  "tour": {
+   "kicker": "Benefits",
+   "h2": "Key Benefits You Can <span class='ch-green'>Count On</span>",
+   "p": "Some of the key benefits you can count on include:",
+   "opts": [
+    {
+     "t": "Long-Lasting Durability",
+     "d": "That Stands Up to Harsh Canadian Winters"
+    },
+    {
+     "t": "Low Maintenance",
+     "d": "Thanks to a Smooth, Sealed Surface"
+    },
+    {
+     "t": "Fast Installation",
+     "d": "Often Completed in a Fraction of the Time of Concrete Pools"
+    },
+    {
+     "t": "Energy Savings",
+     "d": "from Better Heat Retention"
+    }
+   ],
+   "interval": 2800,
+   "img": "23a5229f-f69d-41ed-95c4-83191817eb5f",
+   "right": [
+    {
+     "type": "label",
+     "text": "Pool landscaping"
+    },
+    {
+     "type": "h3",
+     "html": "Beautiful Pool Landscaping That <span class='ch-green'>Completes the Picture</span>"
+    },
+    {
+     "type": "p",
+     "html": "A pool is only part of the experience. Thoughtful pool landscaping transforms the surrounding space into a true backyard escape, with stonework, plantings, lighting, and seating areas designed around how you live. The result is a cohesive setting that feels inviting from spring through fall."
+    },
+    {
+     "type": "lead",
+     "html": "With 35 years of experience and a skilled in-house team, every project reflects careful planning and quality craftsmanship. Homeowners throughout Toronto, Caledon, Vaughan, Woodbridge, and surrounding areas trust this expertise to bring their vision to life."
+    },
+    {
+     "type": "link",
+     "text": "All pool options →",
+     "href": "/pools/"
+    }
+   ]
+  },
+  "cta": {
+   "img": "23a5229f-f69d-41ed-95c4-83191817eb5f",
+   "kicker": "Get started",
+   "h2": "Start Your Project <span class='ch-green'>Today</span>",
+   "p": "Ready to enjoy a stunning, low-maintenance pool built to last? Cypress Hills Landscaping is here to help you plan every detail, from the pool shell to the finishing touches. Contact us today to discuss fiberglass pool installation and request a consultation."
+  }
+ },
+ {
+  "slug": "swimming-pool-installation-caledon",
+  "title": "Caledon, ON",
+  "nav": "pools",
+  "hero": {
+   "img": "9b015868-fec8-4725-be40-efc5ab5512e6",
+   "crumbs": [
+    [
+     "Home",
+     "/"
+    ],
+    [
+     "Pools",
+     "/pools/"
+    ]
+   ],
+   "current": "Caledon, ON",
+   "kicker": "Swimming Pool Installation",
+   "h1": "<span class='ch-green'>Swimming Pool Installation</span> in Caledon, ON",
+   "lead": ""
+  },
+  "intro": {
+   "kicker": "Since 1994",
+   "h2": "Your outdoor living space, brought to life through master <span class='ch-green'>craftsmanship.</span>",
+   "img1": "9b015868-fec8-4725-be40-efc5ab5512e6",
+   "img2": "67b2e1f0-4a59-4908-ab1e-375c2268aebc",
+   "ball": "CALEDON, ON • POOLS SINCE 1994 • MASTER CRAFTSMANSHIP • ",
+   "ps": [
+    {
+     "html": "Cypress Hills Landscaping Inc. brings your outdoor living space to life through master craftsmanship. Since 1994, our team has served residential and commercial clients across Toronto and surrounding areas. We build custom landscapes that significantly increase your overall property value.",
+     "lead": true
+    },
+    {
+     "html": "Our specialists manage every single phase of your swimming pool installation in Caledon, ON, with complete precision. You experience a smooth, worry-free process tailored directly to your personal lifestyle and budget. Reliable construction practices guarantee that your new aquatic paradise stays pristine for many years.",
+     "lead": false
+    }
+   ]
+  },
+  "elevate": {
+   "img": "67b2e1f0-4a59-4908-ab1e-375c2268aebc",
+   "kicker": "Pool landscaping",
+   "h2": "A Trusted Name in <span class='ch-green'>Pool Landscaping</span>",
+   "ps": [
+    "A well-designed resort environment requires thoughtful planning and artful masonry. We specialize in high-end pool landscaping in Toronto, ON, and the surrounding areas to turn ordinary backyards into luxurious outdoor retreats. Our custom stone patios, lush plant selections, and subtle lighting fixtures create an inviting atmosphere.",
+    "Canadian winter weather demands durable building materials that resist cracking and shifting over time. Our pool landscaping team ensures complete safety and striking visual appeal. Every custom design integrates smooth walkways and smart drainage systems to protect your structural investments."
+   ]
+  },
+  "tour": {
+   "kicker": "Experience and quality",
+   "h2": "Unmatched Experience <span class='ch-green'>and Quality</span>",
+   "p": "Decades of industry experience allow us to complete complex landscape construction projects on time and within budget. Count on our dedicated crew to execute your swimming pool installation job efficiently.",
+   "opts": [
+    {
+     "t": "On time",
+     "d": ""
+    },
+    {
+     "t": "Within budget",
+     "d": ""
+    },
+    {
+     "t": "Honest communication",
+     "d": ""
+    },
+    {
+     "t": "Dependable service",
+     "d": ""
+    }
+   ],
+   "interval": 2800,
+   "img": "9b015868-fec8-4725-be40-efc5ab5512e6",
+   "right": [
+    {
+     "type": "label",
+     "text": "Long-term relationships"
+    },
+    {
+     "type": "h3",
+     "html": "Honest communication and <span class='ch-green'>dependable service.</span>"
+    },
+    {
+     "type": "p",
+     "html": "We take great pride in building long-term customer relationships through honest communication and dependable service. Beautiful outdoor features improve curb appeal while providing your family with endless summer relaxation."
+    },
+    {
+     "type": "link",
+     "text": "All pool options →",
+     "href": "/pools/"
+    }
+   ]
+  },
+  "cta": {
+   "img": "9b015868-fec8-4725-be40-efc5ab5512e6",
+   "kicker": "Get started",
+   "h2": "Connect with <span class='ch-green'>Us</span>",
+   "p": "Your outdoor transformation begins with a simple phone call. Contact Cypress Hills Landscaping Inc. today to schedule your initial design consultation with our team."
+  }
+ },
+ {
+  "slug": "backyard-putting-greens",
+  "title": "Putting Greens",
+  "nav": "services",
+  "hero": {
+   "img": "8f31a0ce-dd1b-43c0-a698-6acdfd047caa",
+   "crumbs": [
+    [
+     "Home",
+     "/"
+    ],
+    [
+     "Services",
+     "/services/"
+    ]
+   ],
+   "current": "Putting Greens",
+   "kicker": "Backyard Putting Greens",
+   "h1": "Perfect Your Putt at Home with Custom <span class='ch-green'>Backyard Putting Greens</span> in Toronto, ON and Surrounding Areas",
+   "lead": ""
+  },
+  "intro": {
+   "kicker": "Your own green",
+   "h2": "Step onto a professional grade putting green without ever leaving your <span class='ch-green'>property.</span>",
+   "img1": "8f31a0ce-dd1b-43c0-a698-6acdfd047caa",
+   "img2": "79017ad2-7cdf-45a0-9659-e4b04f8f0cd2",
+   "ball": "TOUR-QUALITY • CUSTOM DESIGNED • LOW MAINTENANCE • ",
+   "ps": [
+    {
+     "html": "Cypress Hills Landscaping Inc. specializes in designing and installing custom backyard putting greens in Toronto, ON.",
+     "lead": true
+    },
+    {
+     "html": "Imagine having the perfect space to practice your short game, entertain guests, or simply unwind after a long day. A personal backyard putting green integrates seamlessly into your overall landscape, adding both value and a unique element of fun to your home.",
+     "lead": false
+    }
+   ]
+  },
+  "elevate": {
+   "img": "a7606c2d-5fc9-4d4e-9486-757d5101e8ac",
+   "kicker": "Lifestyle",
+   "h2": "Elevate Your Outdoor <span class='ch-green'>Living Space</span>",
+   "ps": [
+    "A backyard putting green is more than just a practice area; it’s a lifestyle enhancement. It provides a beautiful, low-maintenance focal point for your yard.",
+    "As experts in outdoor landscaping, we ensure your new green complements your existing garden, patio, and other features. You gain a stunning, evergreen space that looks immaculate in every season with minimal upkeep, giving you more time to enjoy your investment."
+   ]
+  },
+  "tour": {
+   "kicker": "Built to play",
+   "h2": "Tour-Quality Greens, <span class='ch-green'>Personalized for You</span>",
+   "p": "Experience the true roll and realistic feel of a professional course right in your own backyard. Your putting green will be custom designed to fit your space and skill level, with options for different contours, breaks, and hole placements.",
+   "opts": [
+    {
+     "t": "Contours",
+     "d": ""
+    },
+    {
+     "t": "Breaks",
+     "d": ""
+    },
+    {
+     "t": "Hole placements",
+     "d": ""
+    }
+   ],
+   "interval": 2000,
+   "img": "79017ad2-7cdf-45a0-9659-e4b04f8f0cd2",
+   "right": [
+    {
+     "type": "label",
+     "text": "Top-tier synthetic turf"
+    },
+    {
+     "type": "lead",
+     "html": "Using top-tier synthetic turf, the surface is designed for durability and performance, able to withstand weather and frequent use."
+    },
+    {
+     "type": "statement",
+     "html": "This is your opportunity to transform your outdoor space into a golfer's <span class='ch-green'>paradise.</span>"
+    }
+   ]
+  },
+  "cta": {
+   "img": "79017ad2-7cdf-45a0-9659-e4b04f8f0cd2",
+   "kicker": "Get started",
+   "h2": "Start Your Landscape <span class='ch-green'>Transformation</span>",
+   "p": "Now is the time to bring the golf course to your home. A custom backyard putting green is a key feature in a complete outdoor landscaping project. Contact us to create an exceptional outdoor environment that reflects your passion and enhances your home."
+  }
+ },
+ {
+  "slug": "golf-course-shaping",
+  "title": "Golf Course Shaping",
+  "nav": "services",
+  "hero": {
+   "img": "a4e25fb7-3d81-4ec0-b002-b4fd803cce0d",
+   "crumbs": [
+    [
+     "Home",
+     "/"
+    ],
+    [
+     "Services",
+     "/services/"
+    ]
+   ],
+   "current": "Golf Course Shaping",
+   "kicker": "Golf Course Shaping",
+   "h1": "Superior <span class='ch-green'>Golf Course Shaping</span> in Toronto, ON and Surrounding Areas",
+   "lead": ""
+  },
+  "intro": {
+   "kicker": "Over 35 years of experience",
+   "h2": "Fairways, greens, and <span class='ch-green'>bunkers.</span>",
+   "img1": "a4e25fb7-3d81-4ec0-b002-b4fd803cce0d",
+   "img2": "ece444b3-20c7-4cd0-9e95-d2d216875970",
+   "ball": "35 YEARS • FAIRWAYS • GREENS • BUNKERS • ",
+   "ps": [
+    {
+     "html": "Cypress Hills Landscaping Inc. brings over 35 years of industry experience to every project, delivering premier golf course shaping throughout Toronto, ON, and the surrounding areas.",
+     "lead": true
+    },
+    {
+     "html": "A world-class golf course starts from the ground up, requiring a full understanding of design, playability, and aesthetics. You can trust our team to meticulously sculpt fairways, greens, and bunkers that are both challenging and visually appealing.",
+     "lead": false
+    }
+   ]
+  },
+  "elevate": {
+   "img": "ece444b3-20c7-4cd0-9e95-d2d216875970",
+   "kicker": "Playability",
+   "h2": "Elevate the Player <span class='ch-green'>Experience</span>",
+   "ps": [
+    "Creating an unforgettable golf experience is about more than just maintenance. It involves strategic contouring and shaping that blend seamlessly with the natural environment.",
+    "This exceptional approach to outdoor landscaping ensures your course not only looks exceptional but also offers superior drainage and playability in all conditions. From subtle undulations to dramatic earthworks, the focus is always on enhancing the course's character and appeal for members and guests."
+   ]
+  },
+  "tour": {
+   "kicker": "Artistic vision, technical precision",
+   "h2": "Precision Shaping for <span class='ch-green'>Lasting Beauty</span>",
+   "p": "Achieving a truly remarkable course requires a combination of artistic vision and technical precision. The process involves detailed collaboration to bring your specific vision to life, ensuring every feature aligns with the desired level of difficulty as well as the aesthetic.",
+   "opts": [
+    {
+     "t": "Fairways",
+     "d": ""
+    },
+    {
+     "t": "Greens",
+     "d": ""
+    },
+    {
+     "t": "Bunkers",
+     "d": ""
+    }
+   ],
+   "interval": 2000,
+   "img": "a4e25fb7-3d81-4ec0-b002-b4fd803cce0d",
+   "right": [
+    {
+     "type": "label",
+     "text": "Comprehensive outdoor landscaping"
+    },
+    {
+     "type": "lead",
+     "html": "Specializing in comprehensive outdoor landscaping, we transform your property into a landmark destination."
+    },
+    {
+     "type": "statement",
+     "html": "By applying decades of expertise in golf course shaping, we create beautiful, sustainable, and memorable courses that stand the test of <span class='ch-green'>time.</span>"
+    }
+   ]
+  },
+  "cta": {
+   "img": "a4e25fb7-3d81-4ec0-b002-b4fd803cce0d",
+   "kicker": "Get started",
+   "h2": "Build Your Championship <span class='ch-green'>Course Today</span>",
+   "p": "When you are ready to transform your vision into a reality; contact us to discuss how our exceptional golf course shaping and outdoor landscaping services can create a premier golfing destination for your clients and guests."
+  }
+ },
+ {
+  "slug": "armor-stone-walls",
+  "title": "Armor Stone Walls",
+  "nav": "services",
+  "hero": {
+   "img": "b7f06178-3de9-47c4-b5c8-61ff00d91ab1",
+   "crumbs": [
+    [
+     "Home",
+     "/"
+    ],
+    [
+     "Services",
+     "/services/"
+    ]
+   ],
+   "current": "Armor Stone Walls",
+   "kicker": "Armor Stone Walls",
+   "h1": "Transform Your Outdoor Space with <span class='ch-green'>Armor Stone Walls</span> in Toronto, ON",
+   "lead": ""
+  },
+  "intro": {
+   "kicker": "Landscape design, stonework & woodwork",
+   "h2": "Stunning armor stone walls that redefine your outdoor <span class='ch-green'>experience.</span>",
+   "img1": "b7f06178-3de9-47c4-b5c8-61ff00d91ab1",
+   "img2": "9a73a302-1532-486c-a6e8-0067b959b93d",
+   "ball": "ARMOR STONE • BUILT TO LAST • SINCE 1994 • ",
+   "ps": [
+    {
+     "html": "At Cypress Hills Landscaping Inc., we pride ourselves on delivering stunning armor stone walls in Toronto, ON that redefine your outdoor experience.",
+     "lead": true
+    },
+    {
+     "html": "Our expertise in landscape design, stonework, and woodwork creates inviting spaces ideal for both relaxation and entertaining family and friends.",
+     "lead": false
+    }
+   ]
+  },
+  "elevate": {
+   "img": "9a73a302-1532-486c-a6e8-0067b959b93d",
+   "kicker": "Durability & elegance",
+   "h2": "Why Choose Armor <span class='ch-green'>Stone Walls?</span>",
+   "ps": [
+    "Armor stone walls are not just functional; they add a unique aesthetic appeal to your landscape. These robust structures can withstand the elements, providing both durability and elegance that enhance your property’s overall charm.",
+    "They create a natural barrier, ensuring your outdoor space feels cozy and defined while offering privacy and protection from the surrounding environment, making your home a serene retreat."
+   ]
+  },
+  "tour": {
+   "kicker": "Built to last",
+   "h2": "The Benefits of Stone <span class='ch-green'>Work Landscaping</span>",
+   "p": "Investing in stone work landscaping elevates your property’s value while enhancing its beauty.",
+   "opts": [
+    {
+     "t": "Longevity",
+     "d": ""
+    },
+    {
+     "t": "Low maintenance",
+     "d": ""
+    },
+    {
+     "t": "Any design style",
+     "d": ""
+    }
+   ],
+   "interval": 2000,
+   "img": "b7f06178-3de9-47c4-b5c8-61ff00d91ab1",
+   "right": [
+    {
+     "type": "label",
+     "text": "Healthier plants"
+    },
+    {
+     "type": "lead",
+     "html": "Stone walls offer exceptional longevity, require minimal maintenance, and can be tailored to fit any design style."
+    },
+    {
+     "type": "statement",
+     "html": "Additionally, their insulative properties help manage soil temperature, fostering a healthier environment for your <span class='ch-green'>plants.</span>"
+    }
+   ]
+  },
+  "cta": {
+   "img": "b7f06178-3de9-47c4-b5c8-61ff00d91ab1",
+   "kicker": "Get started",
+   "h2": "Let’s Get <span class='ch-green'>Started</span>",
+   "p": "Are you ready to transform your outdoor area with our expert services? Contact us today to discuss your upcoming project and discover how we can turn your vision into reality."
+  }
+ },
+ {
+  "slug": "artificial-grass-installation",
+  "title": "Artificial Grass Installation",
+  "nav": "services",
+  "hero": {
+   "img": "d1c0ca16-ea3a-4da7-b24c-3e26c6ef7a63",
+   "crumbs": [
+    [
+     "Home",
+     "/"
+    ],
+    [
+     "Services",
+     "/services/"
+    ]
+   ],
+   "current": "Artificial Grass Installation",
+   "kicker": "Artificial Grass Installation",
+   "h1": "Enhance Your Curb Appeal with an <span class='ch-green'>Artificial Grass Installation</span> in Toronto, ON",
+   "lead": ""
+  },
+  "intro": {
+   "kicker": "Eco-friendly synthetic grass",
+   "h2": "A lush, vibrant lawn <span class='ch-green'>all year-round.</span>",
+   "img1": "d1c0ca16-ea3a-4da7-b24c-3e26c6ef7a63",
+   "img2": "1eb81543-abd2-4b8e-a8b2-372d731c5862",
+   "ball": "ARTIFICIAL GRASS • GREEN ALL YEAR • LOW MAINTENANCE • ",
+   "ps": [
+    {
+     "html": "Transform your outdoor space with artificial turf to achieve a lush, vibrant lawn all year-round, regardless of the weather. At Cypress Hills Landscaping Inc., we offer unparalleled artificial grass installation in Toronto, ON.",
+     "lead": true
+    },
+    {
+     "html": "Our top-notch synthetic grass solutions offer an eco-friendly alternative that enhances the beauty of your yard while minimizing maintenance efforts.",
+     "lead": false
+    }
+   ]
+  },
+  "elevate": {
+   "img": "1eb81543-abd2-4b8e-a8b2-372d731c5862",
+   "kicker": "Durability, aesthetics, function",
+   "h2": "Elevating Your <span class='ch-green'>Lawn Space</span>",
+   "ps": [
+    "Our experienced team takes pride in providing top-notch artificial grass installation services that focus on durability, aesthetic appeal, and functionality.",
+    "We use only the best materials, ensuring your artificial turf stands the test of time so that you can enjoy the benefits without the upkeep of natural grass."
+   ]
+  },
+  "tour": {
+   "kicker": "Applications",
+   "h2": "Versatile Applications of <span class='ch-green'>Artificial Grass</span>",
+   "p": "Artificial grass opens up a world of possibilities for outdoor projects.",
+   "opts": [
+    {
+     "t": "Backyard Putting Greens",
+     "d": "Elevate your home golf experience with custom backyard putting greens. Perfect for practice or leisure, our artificial grass installation solutions provide a realistic putting surface for your golfing experience."
+    },
+    {
+     "t": "Play Areas",
+     "d": "Create a safe, soft outdoor play area for your children with artificial turf. This synthetic grass solution is low-maintenance and free from harmful chemicals in pesticides and fertilizers, giving you peace of mind."
+    },
+    {
+     "t": "Pet Areas",
+     "d": "Artificial grass is ideal for pet-friendly spaces, providing a clean, easy-to-maintain area for your furry friends."
+    }
+   ],
+   "interval": 3600,
+   "img": "d1c0ca16-ea3a-4da7-b24c-3e26c6ef7a63",
+   "right": [
+    {
+     "type": "label",
+     "text": "Your vision"
+    },
+    {
+     "type": "lead",
+     "html": "No matter what vision you have for your outdoor space, we can help bring it to life with our artificial grass installation services."
+    },
+    {
+     "type": "link",
+     "text": "Explore Backyard Putting Greens →",
+     "href": "/backyard-putting-greens/"
+    }
+   ]
+  },
+  "cta": {
+   "img": "d1c0ca16-ea3a-4da7-b24c-3e26c6ef7a63",
+   "kicker": "Get started",
+   "h2": "Contact Us <span class='ch-green'>Today</span>",
+   "p": "For exemplary artificial grass installation solutions, please do not hesitate to reach out to us today. Our team would be more than happy to guide you through the process and answer any questions you may have about our services and installations."
+  }
+ },
+ {
+  "slug": "synthetic-turf-installation",
+  "title": "Synthetic Turf Installation",
+  "nav": "services",
+  "hero": {
+   "img": "edbd01f9-b228-4a27-a809-fc960d3775ef",
+   "crumbs": [
+    [
+     "Home",
+     "/"
+    ],
+    [
+     "Services",
+     "/services/"
+    ]
+   ],
+   "current": "Synthetic Turf Installation",
+   "kicker": "Synthetic Turf Installation",
+   "h1": "<span class='ch-green'>Synthetic Turf Installation</span> in Toronto, ON",
+   "lead": ""
+  },
+  "intro": {
+   "kicker": "Since 1994",
+   "h2": "A lawn that stays lush and green every single <span class='ch-green'>day.</span>",
+   "img1": "edbd01f9-b228-4a27-a809-fc960d3775ef",
+   "img2": "3d31ce2b-8dba-470f-9eda-df410c8f5af6",
+   "ball": "SYNTHETIC TURF • SINCE 1994 • NO MOWING • ",
+   "ps": [
+    {
+     "html": "Imagine a lawn that stays lush and green every single day, without the watering, mowing, or muddy patches. Synthetic turf installation in Toronto, ON, gives homeowners exactly that, blending the look of natural grass with the convenience modern life demands.",
+     "lead": true
+    },
+    {
+     "html": "Cypress Hills Landscaping Inc. has shaped beautiful outdoor spaces across the region since 1994, bringing 35 years of expertise to every project.",
+     "lead": false
+    }
+   ]
+  },
+  "elevate": {
+   "img": "3d31ce2b-8dba-470f-9eda-df410c8f5af6",
+   "kicker": "All four seasons",
+   "h2": "Why Choose <span class='ch-green'>Synthetic Turf?</span>",
+   "ps": [
+    "Artificial grass solves the everyday frustrations of traditional lawns.",
+    "The surface looks fresh through all four seasons and stands up to heavy foot traffic, pets, and unpredictable Canadian weather."
+   ]
+  },
+  "tour": {
+   "kicker": "Benefits",
+   "h2": "Reasons to Consider <span class='ch-green'>Synthetic Turf</span>",
+   "p": "Just some of the different reasons to consider a synthetic turf installation include:",
+   "opts": [
+    {
+     "t": "Low-Maintenance",
+     "d": "with No Mowing, Fertilizing, or Weeding"
+    },
+    {
+     "t": "Year-Round Greenery",
+     "d": "That Stays Vibrant in Any Season"
+    },
+    {
+     "t": "Lasting Durability",
+     "d": "Built to Handle Play, Pets, & Gatherings"
+    },
+    {
+     "t": "Significant Water Savings",
+     "d": "That Lower Utility Bills"
+    }
+   ],
+   "interval": 2800,
+   "img": "edbd01f9-b228-4a27-a809-fc960d3775ef",
+   "right": [
+    {
+     "type": "label",
+     "text": "Landscape stonework"
+    },
+    {
+     "type": "h3",
+     "html": "Stonework That Frames <span class='ch-green'>Your Space</span>"
+    },
+    {
+     "type": "p",
+     "html": "A finished landscape is more than grass alone. Expert landscape stonework ties everything together, adding pathways, borders, and patios that complement your new turf. Combining these elements creates a cohesive, polished property that feels inviting at first glance. Skilled craftsmanship and careful planning shape each detail to match how you actually use your yard."
+    },
+    {
+     "type": "lead",
+     "html": "Homeowners throughout Toronto, Caledon, Vaughan, Woodbridge, Kleinburg, and surrounding areas rely on this experience to transform tired lawns into low-maintenance retreats."
+    },
+    {
+     "type": "link",
+     "text": "Explore Armor Stone Walls →",
+     "href": "/armor-stone-walls/"
+    }
+   ]
+  },
+  "cta": {
+   "img": "edbd01f9-b228-4a27-a809-fc960d3775ef",
+   "kicker": "Get started",
+   "h2": "Start Your Synthetic <span class='ch-green'>Turf Project</span>",
+   "p": "Ready for a flawless lawn that looks great without the upkeep? The team at Cypress Hills Landscaping is here to plan every step, from the turf surface to the surrounding stonework. Contact us today to discuss your synthetic turf project and request a consultation."
+  }
+ }
+]

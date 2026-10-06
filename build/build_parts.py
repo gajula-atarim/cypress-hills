@@ -33,7 +33,7 @@ def header():
                  **typo("menu_typography", size=14, weight=600, lh=1.2),
                  **typo("dropdown_typography", size=14, weight=700, lh=1.35))
 
-    cta = widget("button", text="Contact Us", link={"url": "/#book", "is_external": "", "nofollow": ""},
+    cta = widget("button", text="Contact Us", link={"url": "/contact/", "is_external": "", "nofollow": ""},
                  button_text_color=INK, background_color=GREEN, hover_color=INK,
                  button_background_hover_color="#7FD16F", border_radius=box(999),
                  text_padding=box(12, 20, 12, 20), hide_mobile="hidden-mobile",
@@ -106,25 +106,26 @@ def footer():
     ], content_width="full", flex_direction="column", flex_gap=gap(20), padding=box(0),
         css_classes="ch-footer-brand")
 
-    svc = "/#services"
     cols = container([
         brand,
-        col_("Menu", [("Home", "/"), ("Services", svc), ("Pools", svc), ("Projects", "/#work"),
-                      ("Contact Us", "/#book")]),
-        col_("Services", [("Backyard Putting Greens", svc), ("Golf Course Shaping", svc),
-                          ("Armor Stone Walls", svc), ("Artificial Grass Installation", svc),
-                          ("Synthetic Turf Installation", svc)]),
-        col_("Pools", [("Fiberglass Pool Installation", svc),
-                       ("Swimming Pool Installation Caledon ON", svc)]),
+        col_("Menu", [("Home", "/"), ("Services", "/services/"), ("Pools", "/pools/"),
+                      ("Projects", "/projects/"), ("Contact Us", "/contact/")]),
+        col_("Services", [("Backyard Putting Greens", "/backyard-putting-greens/"),
+                          ("Golf Course Shaping", "/golf-course-shaping/"),
+                          ("Armor Stone Walls", "/armor-stone-walls/"),
+                          ("Artificial Grass Installation", "/artificial-grass-installation/"),
+                          ("Synthetic Turf Installation", "/synthetic-turf-installation/")]),
+        col_("Pools", [("Fiberglass Pool Installation", "/fiberglass-pool-installation/"),
+                       ("Swimming Pool Installation Caledon ON", "/swimming-pool-installation-caledon/")]),
         col_("Contact", [("(905) 866-4111", "tel:+19058664111"),
-                         ("Monday-Friday, 7 a.m.-5 p.m.", "/#book")]),
+                         ("Monday-Friday, 7 a.m.-5 p.m.", "/contact/")]),
     ], seed="ftr-cols", content_width="full", padding=box(0), css_classes="ch-footer-grid")
 
     bottom = container([
         widget("copyright", shortcode="© [hfe_current_year] Cypress Hills Landscaping & Snow Removal Inc.",
                title_color="#9A9CB8", **typo("caption_typography", size=13, lh=20, lh_unit="px")),
         widget("heading", title="Book a site visit →", header_size="div", title_color="#9A9CB8",
-               title_hover_color=WHITE, link={"url": "/#book", "is_external": "", "nofollow": ""},
+               title_hover_color=WHITE, link={"url": "/contact/", "is_external": "", "nofollow": ""},
                **typo(size=13, weight=400, lh=20, lh_unit="px")),
     ], seed="ftr-bottom", content_width="full", flex_direction="row", flex_wrap="wrap",
         flex_justify_content="space-between", flex_align_items="center", flex_gap=gap(24, 12),

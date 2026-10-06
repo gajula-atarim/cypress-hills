@@ -117,6 +117,28 @@
 		});
 	}
 
+	/* Rotating highlights: any container with "ch-cycle ch-cycle-<ms>" lights up one child at a time. */
+	function initCycles() {
+		document.querySelectorAll('.ch-cycle').forEach(function (box) {
+			var m = /(?:^|\s)ch-cycle-(\d+)/.exec(box.className);
+			var ms = m ? parseInt(m[1], 10) : 2000;
+			var items = Array.prototype.filter.call(box.children, function (el) { return el.classList.contains('elementor-element'); });
+			if (!items.length) { return; }
+			box.style.setProperty('--ch-cycle', ms + 'ms');
+			var cur = 0;
+			function set(i) {
+				items.forEach(function (it, k) { it.classList.toggle('is-active', k === i); });
+			}
+			set(0);
+			if (inEditor || reduceMotion) { return; }
+			setInterval(function () {
+				cur = (cur + 1) % items.length;
+				set(-1);
+				requestAnimationFrame(function () { set(cur); });
+			}, ms);
+		});
+	}
+
 	/* Marquee: duplicate each track's chips once so translateX(-50%) loops seamlessly. */
 	function initMarquee() {
 		if (inEditor) { return; }
@@ -240,6 +262,7 @@
 	function init() {
 		initHero();
 		initWork();
+		initCycles();
 		initMarquee();
 		initCompare();
 		initServices();

@@ -73,7 +73,8 @@ def display(text, size=H2, color=NAVY, tag="h2", lh=1.12, ls=-0.005, weight=700,
 def para(html, color=TEXT, size=16, lh=26, cls="ch-mw-52", seed=None, **extra):
     """Body copy: Roboto 400 16px/26px."""
     return widget("text-editor", seed=seed, editor=f"<p>{html}</p>", text_color=color,
-                  css_classes=cls, **typo(size=size, weight=400, lh=lh, lh_unit="px"), **extra)
+                  css_classes=cls, **typo(size=size, weight=400, lh=lh,
+                                          lh_unit="em" if lh < 5 else "px"), **extra)
 
 
 def pill_button(text, url, seed=None):
@@ -98,13 +99,13 @@ def image(m, cls="", size="full", seed=None, **extra):
 # ---------------------------------------------------------------------------
 HERO_SLIDES = [
     (M.AERIAL, "In Business Since 1994 | 35 Years of Industry Experience",
-     "Transforming Landscapes, One Project at a Time", "Creative Outdoor Services", "#services"),
-    (M.POOL, "Pools", "The pool and the yard, built as one.", "Explore pools", "#services"),
-    (M.STONE, "Armour stone walls", "Stone walls set by our own crew and machines.", "See stonework", "#services"),
-    (M.GREEN, "Backyard putting greens", "Your own short game, steps from the house.", "See putting greens", "#services"),
-    (M.COURSE, "Golf course shaping", "Greens and bunkers shaped for real courses.", "Golf & turf", "#services"),
-    (M.KITCHEN, "Outdoor living", "Kitchens, cabanas and fire for long evenings.", "See outdoor living", "#services"),
-    (M.NIGHT, "Landscape lighting", "A yard that works after dark.", "See lighting", "#services"),
+     "Transforming Landscapes, One Project at a Time", "Creative Outdoor Services", "/services/"),
+    (M.POOL, "Pools", "The pool and the yard, built as one.", "Explore pools", "/pools/"),
+    (M.STONE, "Armour stone walls", "Stone walls set by our own crew and machines.", "See stonework", "/armor-stone-walls/"),
+    (M.GREEN, "Backyard putting greens", "Your own short game, steps from the house.", "See putting greens", "/backyard-putting-greens/"),
+    (M.COURSE, "Golf course shaping", "Greens and bunkers shaped for real courses.", "Golf & turf", "/golf-course-shaping/"),
+    (M.KITCHEN, "Outdoor living", "Kitchens, cabanas and fire for long evenings.", "See outdoor living", "/services/"),
+    (M.NIGHT, "Landscape lighting", "A yard that works after dark.", "See lighting", "/services/"),
 ]
 
 
@@ -450,7 +451,7 @@ def process():
              display("From an idea<br>to your <span class='ch-green'>keys.</span>",
                      color=WHITE)]),
         para("One project lead walks with you from the first site visit to the day we hand it over.",
-             color="#C9CBE0", lh=1.6, cls="ch-mw-40"),
+             color="#C9CBE0", cls="ch-mw-40"),
     ], seed="proc-head")
 
     steps = []

@@ -39,6 +39,21 @@ POOL_STEPS = _m(118, "fiberglass-pool-steps.jpg", "Fiberglass pool steps with st
 BUNKER = _m(119, "bunker-shaping.jpg", "Excavator shaping a golf course bunker")
 TURF_PATIO = _m(120, "synthetic-turf-patio.jpg", "Synthetic turf lawn beside a stone patio")
 
+# Client photos (already in the media library), used on the Home page.
+P_POOL_CABANA = _m(9, "mike-1.jpeg", "Pool with stone deck and cabana")
+P_STONE_HOUSE = _m(10, "mike-2.jpeg", "Stone house with terraced steps and planting")
+P_PUTTING = _m(13, "mike-golf.jpeg", "Backyard putting green")
+P_KITCHEN = _m(17, "mike3.jpeg", "Stone outdoor kitchen with built-in grill")
+P_CABANA = _m(28, "mike15.jpeg", "Cabana and patio beside the pool")
+P_POOL_TURF = _m(30, "mike17-rotated.jpeg", "Pool with turf and stone deck")
+P_ARMOUR = _m(31, "mike18.jpeg", "Armour stone terraces being set")
+P_STEPS = _m(32, "mike19-rotated.jpeg", "Armour stone steps and wall")
+P_STEPS_BUILD = _m(37, "mike24-rotated.jpeg", "Crew building stone steps")
+P_LOUNGE = _m(40, "mike27.jpeg", "Pool lounge with turf and loungers")
+P_TIMBER = _m(41, "mike28.jpeg", "Timber garden building")
+P_GREEN_BUNKER = _m(48, "mike36.jpeg", "Shaped green with bunker")
+P_GREEN_MOUNTAINS = _m(49, "mike37.jpeg", "Green and bunker with mountains behind")
+
 # Brand-kit image ids (atarim S3 "generations/<id>.jpg") -> media library attachments.
 KIT = {
     "6b71663b-b520-44a7-94bb-a5c470c68ce1": POOL,

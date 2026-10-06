@@ -207,8 +207,8 @@ def about():
         css_classes="ch-badge")
 
     collage = container([
-        image(M.POOL, cls="ch-collage-a ch-fill"),
-        image(M.STONE, cls="ch-collage-b ch-fill"),
+        image(M.P_POOL_CABANA, cls="ch-collage-a ch-fill"),
+        image(M.P_STEPS, cls="ch-collage-b ch-fill"),
         badge,
     ], seed="about-collage", content_width="full", padding=box(0), width=px(50, "%"), width_tablet=px(100, "%"),
         css_classes="ch-collage")
@@ -222,9 +222,9 @@ def about():
 # 3. What We Do — services chips marquee
 # ---------------------------------------------------------------------------
 def what_we_do():
-    pics = {"Landscape design": M.AERIAL, "Pools & water features": M.FALLS, "Spas": M.POOL,
-            "Custom cabanas": M.KITCHEN, "Stonework": M.STONE, "Woodwork": M.CREW,
-            "Outdoor kitchens": M.KITCHEN, "Pergolas": M.GREEN, "Fireplaces": M.NIGHT,
+    pics = {"Landscape design": M.P_STONE_HOUSE, "Pools & water features": M.P_POOL_TURF, "Spas": M.P_POOL_CABANA,
+            "Custom cabanas": M.P_CABANA, "Stonework": M.P_STEPS, "Woodwork": M.P_TIMBER,
+            "Outdoor kitchens": M.P_KITCHEN, "Pergolas": M.P_LOUNGE, "Fireplaces": M.NIGHT,
             "Outdoor lighting": M.NIGHT}
     names = list(pics)
 
@@ -313,12 +313,12 @@ def custom_design():
 # 5. Services — rotating image + numbered list
 # ---------------------------------------------------------------------------
 SERVICES = [
-    ("Pools", "Fiberglass pools, spas and water features, landscaped by the same crew.", M.POOL),
-    ("Armour stone walls", "Retaining walls, steps and terraces set with our own machines.", M.STONE),
-    ("Outdoor living", "Kitchens, cabanas, pergolas and fireplaces built around how you entertain.", M.KITCHEN),
+    ("Pools", "Fiberglass pools, spas and water features, landscaped by the same crew.", M.P_POOL_TURF),
+    ("Armour stone walls", "Retaining walls, steps and terraces set with our own machines.", M.P_ARMOUR),
+    ("Outdoor living", "Kitchens, cabanas, pergolas and fireplaces built around how you entertain.", M.P_LOUNGE),
     ("Landscape lighting", "Path, step, tree and pool lighting planned with the layout.", M.NIGHT),
-    ("Putting greens", "Contoured backyard greens with fringe, cups and bunkers.", M.GREEN),
-    ("Golf course shaping", "Greens, tees and bunker complexes for golf courses.", M.COURSE),
+    ("Putting greens", "Contoured backyard greens with fringe, cups and bunkers.", M.P_PUTTING),
+    ("Golf course shaping", "Greens, tees and bunker complexes for golf courses.", M.P_GREEN_BUNKER),
 ]
 
 
@@ -379,16 +379,16 @@ def services():
 PROJECTS = [
     ("Pools", "King City", "Pool, cabana & terrace",
      "A fiberglass pool set into a sloped lot with armour stone terracing and lighting.",
-     ["Fiberglass pool", "Armour stone", "Cabana"], M.POOL),
+     ["Fiberglass pool", "Armour stone", "Cabana"], M.P_CABANA),
     ("Stonework", "Caledon", "Hillside retaining walls",
      "Three tiers of armour stone turning a steep grade into usable lawn.",
-     ["Armour stone", "Grading", "Planting"], M.STONE),
+     ["Armour stone", "Grading", "Planting"], M.P_STEPS_BUILD),
     ("Golf & turf", "Kleinburg", "Backyard short game",
      "A contoured putting green with fringe and bunker.",
-     ["Putting green", "Shaping", "Turf"], M.GREEN),
+     ["Putting green", "Shaping", "Turf"], M.P_GREEN_MOUNTAINS),
     ("Full backyard", "Vaughan", "The whole estate",
      "Pool, terraces, lawn and green planned and built as one property.",
-     ["Pool", "Stone", "Green", "Lighting"], M.AERIAL),
+     ["Pool", "Stone", "Green", "Lighting"], M.P_STONE_HOUSE),
 ]
 
 
@@ -544,7 +544,7 @@ def contact(form_id):
     r = row([left, card], seed="contact-row", gap_px=96, align="flex-start", stack_on="tablet",
             wrap="nowrap")
     return section([r], INK, "contact", _element_id="book",
-                   background_background="classic", background_image=img(M.NIGHT),
+                   background_background="classic", background_image=img(M.P_CABANA),
                    background_size="cover", background_position="center center",
                    background_overlay_background="gradient",
                    background_overlay_color="rgba(15,17,48,0.94)",

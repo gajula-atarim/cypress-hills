@@ -97,6 +97,7 @@ $add = function ( $page_id, $parent = 0, $label = '' ) use ( $menu ) {
 	) );
 };
 $add( $home, 0, 'Home' );
+$add( $ids['about'] );
 $s = $add( $ids['services'] );
 foreach ( array( 'backyard-putting-greens', 'golf-course-shaping', 'armor-stone-walls', 'artificial-grass-installation', 'synthetic-turf-installation' ) as $slug ) {
 	$add( $ids[ $slug ], $s );

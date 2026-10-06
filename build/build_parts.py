@@ -108,7 +108,7 @@ def footer():
 
     cols = container([
         brand,
-        col_("Menu", [("Home", "/"), ("Services", "/services/"), ("Pools", "/pools/"),
+        col_("Menu", [("Home", "/"), ("About", "/about/"), ("Services", "/services/"), ("Pools", "/pools/"),
                       ("Projects", "/projects/"), ("Contact Us", "/contact/")]),
         col_("Services", [("Backyard Putting Greens", "/backyard-putting-greens/"),
                           ("Golf Course Shaping", "/golf-course-shaping/"),

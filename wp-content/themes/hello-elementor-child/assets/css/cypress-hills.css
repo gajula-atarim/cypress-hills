@@ -1224,3 +1224,12 @@ body { overflow-x: clip; }
 	.ch-header-pill nav.hfe-dropdown .sub-menu a.hfe-sub-menu-item { padding: 10px 14px 10px 28px !important; }
 	.ch-header-pill nav.hfe-dropdown .sub-menu a.hfe-sub-menu-item::after { display: none; }
 }
+/* What We Do marquee on phones: smaller pills (~46px tall instead of ~68px). */
+@media (max-width: 767px) {
+	.ch-marquee .ch-marq-track { gap: 10px !important; }
+	.ch-marquee .ch-chip { gap: 10px !important; padding: 6px 18px 6px 6px !important; }
+	.ch-chip-img,
+	.ch-chip-img .elementor-widget-container { width: 32px !important; height: 32px; }
+	.ch-chip-img img { width: 32px !important; height: 32px !important; }
+	.ch-chip .elementor-heading-title { font-size: 14px !important; line-height: 1.2 !important; }
+}

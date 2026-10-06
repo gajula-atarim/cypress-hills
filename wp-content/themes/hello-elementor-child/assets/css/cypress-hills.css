@@ -1316,3 +1316,19 @@ body { overflow-x: clip; }
 	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta { padding: 12px 14px 16px !important; box-sizing: border-box; width: 100% !important; }
 	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta > a.hfe-menu-item { width: 100% !important; box-sizing: border-box; border: 0 !important; margin: 0 !important; }
 }
+/* Banner photo framing (classes set on a slide's image widget):
+   .ch-fit     — portrait photo: shown whole (no crop) on tablet/desktop over a blurred, dimmed copy of itself
+                 (the copy is the widget's own background image).
+   .ch-pos-top — landscape photo whose subject sits high in the frame: crop from near the top. */
+.ch-slide > .ch-slide-img.ch-pos-top img { object-position: 50% 28% !important; }
+.ch-slide > .ch-slide-img.ch-fit { background-size: cover !important; background-position: center !important; }
+@media (min-width: 768px) {
+	.ch-slide > .ch-slide-img.ch-fit > .elementor-widget-container {
+		-webkit-backdrop-filter: blur(22px) brightness(.7);
+		backdrop-filter: blur(22px) brightness(.7);
+	}
+	.ch-slide > .ch-slide-img.ch-fit img { object-fit: contain !important; object-position: 68% center !important; }
+}
+@media (max-width: 767px) {
+	.ch-slide > .ch-slide-img.ch-fit { background-image: none !important; }
+}

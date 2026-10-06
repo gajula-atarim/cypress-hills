@@ -1304,3 +1304,17 @@ body { overflow-x: clip; }
 		text-align: left;
 	}
 }
+/* How a project runs on tablets (4 in a row): every description is the same width and centred under its
+   circle, with balanced line breaks and a shared minimum height so the four blocks line up. */
+@media (min-width: 768px) and (max-width: 1024px) {
+	.ch-process .ch-step { align-items: center !important; }
+	.ch-process .ch-step-title { width: 100% !important; }
+	.ch-process .ch-step-desc {
+		width: 100% !important;
+		max-width: 170px !important;
+		margin-left: auto !important;
+		margin-right: auto !important;
+		min-height: 4.65em;
+	}
+	.ch-process .ch-step-desc p { font-size: 14px !important; line-height: 1.55 !important; text-align: center; text-wrap: balance; }
+}

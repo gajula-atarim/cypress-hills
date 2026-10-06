@@ -1053,7 +1053,8 @@ body:not(.ch-js) .ch-step-img img { filter: none; }
 .ch-form-card--page .mf-input,
 .ch-form-card--page textarea.mf-input { border-radius: 8px; padding: 15px 16px; }
 .ch-form-card--page textarea.mf-input { min-height: 120px; resize: vertical; }
-.ch-field-grid { display: grid !important; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 16px !important; }
+.ch-field-grid { display: grid !important; grid-template-columns: 1fr; gap: 16px !important; }
+@media (min-width: 640px) { .ch-field-grid { grid-template-columns: 1fr 1fr; } }
 .ch-field-grid > .elementor-element { width: auto !important; }
 .ch-interests .mf-input-label { font-size: 12px; line-height: 12px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: 10px; }
 .ch-interests .mf-checkbox { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -1076,13 +1077,17 @@ body:not(.ch-js) .ch-step-img img { filter: none; }
 .ch-interests .mf-checkbox-option input:checked + span { background: var(--ch-navy); border-color: var(--ch-navy); color: #FFFFFF; }
 .ch-interests .mf-checkbox-option input:focus-visible + span { outline: 2px solid var(--ch-green); outline-offset: 2px; }
 .ch-form-card--page .metform-btn { width: auto !important; display: inline-flex !important; align-items: center; gap: 14px; padding: 8px 8px 8px 28px !important; }
+/* Arrow chip drawn by CSS so it renders the same whatever icon markup MetForm outputs. */
 .ch-form-card--page .metform-btn i,
-.ch-form-card--page .metform-btn svg {
-	order: 2;
+.ch-form-card--page .metform-btn svg { display: none !important; }
+.ch-form-card--page .metform-btn::after {
+	content: "";
+	flex: 0 0 42px;
 	width: 42px; height: 42px;
 	border-radius: 50%;
-	background: var(--ch-ink); color: #FFFFFF; fill: #FFFFFF;
-	display: inline-flex; align-items: center; justify-content: center;
-	padding: 13px;
-	box-sizing: border-box;
+	background: var(--ch-ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12h14M13 6l6 6-6 6'/%3E%3C/svg%3E") center / 16px no-repeat;
+	transition: transform .2s;
 }
+.ch-form-card--page .metform-btn:hover::after { transform: translateX(3px); }
+.ch-interests .mf-input-label { display: block !important; float: none !important; width: auto !important; }
+.ch-interests .mf-input-wrapper { display: block !important; }

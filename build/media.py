@@ -39,14 +39,6 @@ POOL_STEPS = _m(118, "fiberglass-pool-steps.jpg", "Fiberglass pool steps with st
 BUNKER = _m(119, "bunker-shaping.jpg", "Excavator shaping a golf course bunker")
 TURF_PATIO = _m(120, "synthetic-turf-patio.jpg", "Synthetic turf lawn beside a stone patio")
 
-# Client photos for the Home banner (already in the media library).
-MIKE_2 = _m(10, "mike-2.jpeg", "Landscaped estate")
-MIKE_17 = _m(30, "mike17-rotated.jpeg", "Pool and landscaped yard")
-MIKE_19 = _m(32, "mike19-rotated.jpeg", "Stone walls")
-MIKE_GOLF = _m(13, "mike-golf.jpeg", "Backyard putting green")
-MIKE_16 = _m(29, "mike16-scaled.jpeg", "Golf greens and bunkers")
-MIKE_3 = _m(17, "mike3.jpeg", "Outdoor kitchen and cabana")
-
 # Brand-kit image ids (atarim S3 "generations/<id>.jpg") -> media library attachments.
 KIT = {
     "6b71663b-b520-44a7-94bb-a5c470c68ce1": POOL,

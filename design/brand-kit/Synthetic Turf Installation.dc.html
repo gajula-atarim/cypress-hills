@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#F4F2EC;color:#0F1130;font-family:'Roboto',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#262A78;text-underline-offset:3px}
+a:hover{color:#2F7A28}
+input,textarea{font-family:inherit}
+@keyframes chspin{to{transform:rotate(360deg)}}
+@keyframes chdraw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+@keyframes chbob{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-6px) rotate(-1.5deg)}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+</helmet>
+
+<header data-screen-label="Hero" style="background:#F4F2EC;position:relative">
+  <dc-import name="SiteNav" active="services" hint-size="100%,98px"></dc-import>
+  <div style="position:relative;height:auto;min-height:clamp(480px,min(42vw,calc(100vh - 110px)),720px);overflow:hidden;border-bottom-right-radius:clamp(110px,14vw,230px);background:#0F1130">
+    <div style="position:absolute;inset:0;transform:scale({{ heroScale }});transition:transform 2.6s cubic-bezier(.2,.7,.2,1)"><image-slot id="sti-hero" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/edbd01f9-b228-4a27-a809-fc960d3775ef.jpg" placeholder="Hero photo"></image-slot></div>
+    <div style="position:absolute;left:0;right:0;top:0;height:160px;background:linear-gradient(180deg,rgba(15,17,48,.55),rgba(15,17,48,0));pointer-events:none"></div>
+    <div style="position:relative;min-height:inherit;width:clamp(320px,38%,560px);box-sizing:border-box;background:#262A78;color:#FFFFFF;z-index:10;transform:translateX({{ panelX }});transition:transform 1s cubic-bezier(.77,0,.18,1) .25s;display:flex;flex-direction:column;justify-content:center;gap:24px;padding:clamp(120px,11vw,150px) clamp(24px,4vw,64px) 56px;min-height:inherit">
+      <div style="display:flex;gap:10px;font-size:14px;font-weight:600;color:#C9CBE0"><a href="Cypress%20Hills%20Home%20v2.dc.html" style="color:#C9CBE0;text-decoration:none" style-hover="color:#FFFFFF">Home</a><span>/</span><a href="Services.dc.html" style="color:#C9CBE0;text-decoration:none" style-hover="color:#FFFFFF">Services</a><span>/</span><span style="color:#FFFFFF">Synthetic Turf Installation</span></div>
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Synthetic Turf Installation</div>
+      <h1 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;font-size:clamp(32px,3.6vw,54px);line-height:1.1;letter-spacing:-.01em;text-wrap:balance"><span style="color:#55B847">Synthetic Turf Installation</span> in Toronto, ON</h1>
+      
+    </div>
+  </div>
+</header>
+
+<section data-screen-label="Intro" style="background:#FFFFFF">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;flex-wrap:wrap;gap:56px clamp(40px,6vw,110px);align-items:center">
+    <div style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Since 1994</div>
+      <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#262A78;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">A lawn that stays lush and green every single <span style="color:#55B847">day.</span></h2>
+      <p style="margin:0;color:#0F1130;max-width:54ch;font-size:17px;line-height:27px;text-wrap:pretty">Imagine a lawn that stays lush and green every single day, without the watering, mowing, or muddy patches. Synthetic turf installation in Toronto, ON, gives homeowners exactly that, blending the look of natural grass with the convenience modern life demands.</p>
+      <p style="margin:0;color:#45475A;max-width:54ch;font-size:16px;line-height:26px;text-wrap:pretty">Cypress Hills Landscaping Inc. has shaped beautiful outdoor spaces across the region since 1994, bringing 35 years of expertise to every project.</p>
+    </div>
+    <div style="flex:1 1 460px;min-width:0;position:relative;aspect-ratio:1/0.95;max-width:660px">
+      <div style="position:absolute;left:0;top:0;width:74%;height:80%;overflow:hidden;border-bottom-right-radius:clamp(90px,10vw,150px)"><image-slot id="sti-col-1" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/edbd01f9-b228-4a27-a809-fc960d3775ef.jpg" placeholder="Synthetic turf lawn"></image-slot></div>
+      <div style="position:absolute;right:0;bottom:0;width:52%;height:52%;overflow:hidden;border-top-left-radius:clamp(70px,8vw,120px);outline:10px solid #FFFFFF"><image-slot id="sti-col-2" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/3d31ce2b-8dba-470f-9eda-df410c8f5af6.jpg" placeholder="Turf detail"></image-slot></div>
+      <div style="position:absolute;right:6%;top:8%;width:clamp(110px,11vw,150px);aspect-ratio:1">{{ ball }}</div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Elevate" style="background:#262A78;color:#FFFFFF">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;flex-wrap:wrap-reverse;gap:56px clamp(40px,6vw,110px);align-items:center">
+    <div style="flex:1 1 460px;min-width:0;aspect-ratio:5/4;overflow:hidden;border-radius:0 0 clamp(100px,11vw,180px) 0"><image-slot id="sti-elevate" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/3d31ce2b-8dba-470f-9eda-df410c8f5af6.jpg" placeholder="Putting green photo"></image-slot></div>
+    <div style="flex:1 1 400px;min-width:0;display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>All four seasons</div>
+      <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#FFFFFF;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Why Choose <span style="color:#55B847">Synthetic Turf?</span></h2>
+      <p style="margin:0;color:#E4E5F2;max-width:54ch;font-size:16px;line-height:26px;text-wrap:pretty">Artificial grass solves the everyday frustrations of traditional lawns.</p>
+      <p style="margin:0;color:#C9CBE0;max-width:54ch;font-size:16px;line-height:26px;text-wrap:pretty">The surface looks fresh through all four seasons and stands up to heavy foot traffic, pets, and unpredictable Canadian weather.</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Tour quality" style="background:#F4F2EC">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;flex-direction:column;gap:56px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px clamp(40px,6vw,110px);align-items:end">
+      <div style="display:flex;flex-direction:column;gap:20px"><div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Benefits</div><h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#262A78;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Reasons to Consider <span style="color:#55B847">Synthetic Turf</span></h2></div>
+      <p style="margin:0;color:#45475A;max-width:54ch;font-size:16px;line-height:26px;text-wrap:pretty">Just some of the different reasons to consider a synthetic turf installation include:</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:0;border-top:1px solid #C8C4B8;border-bottom:1px solid #C8C4B8;border-left:1px solid #C8C4B8">
+      <sc-for list="{{ opts }}" as="o" hint-placeholder-count="3">
+        <div style="position:relative;overflow:hidden;border-right:1px solid #C8C4B8;box-sizing:border-box;background:{{ o.bg }};color:{{ o.fg }};border-bottom-right-radius:{{ o.rad }};padding:clamp(24px,2.6vw,36px) clamp(24px,2.6vw,40px);display:flex;align-items:flex-start;justify-content:space-between;gap:18px;transition:all .6s cubic-bezier(.2,.7,.2,1)"><span style="position:absolute;left:0;bottom:0;height:3px;width:{{ o.pw }};background:#55B847;transition:width {{ o.pt }}"></span>
+          <div style="display:flex;flex-direction:column;gap:10px;min-width:0"><div style="font-family:'Source Serif 4',serif;font-size:clamp(22px,2vw,30px);line-height:1.1;font-weight:700;text-wrap:balance">{{ o.t }}</div><div style="font-size:16px;line-height:24px;opacity:.85;text-wrap:pretty">{{ o.d }}</div></div>
+          <div style="font-family:'Source Serif 4',serif;font-size:clamp(36px,3.4vw,52px);line-height:.8;font-weight:700;color:{{ o.nC }};transition:color .6s;text-wrap:balance">{{ o.n }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:40px clamp(40px,6vw,96px);align-items:center;padding-top:24px">
+      <div style="flex:1 1 460px;min-width:0;aspect-ratio:16/10;overflow:hidden;border-radius:0 0 0 clamp(100px,11vw,180px)"><image-slot id="sti-course" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/edbd01f9-b228-4a27-a809-fc960d3775ef.jpg" placeholder="Putting green photo"></image-slot></div>
+      <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:22px">
+        <div style="font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28">Landscape stonework</div>
+        <h3 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#262A78;font-size:clamp(22px,2vw,30px);line-height:1.18;text-wrap:balance">Stonework That Frames <span style="color:#55B847">Your Space</span></h3>
+        <p style="margin:0;color:#45475A;max-width:56ch;font-size:16px;line-height:26px;text-wrap:pretty">A finished landscape is more than grass alone. Expert landscape stonework ties everything together, adding pathways, borders, and patios that complement your new turf. Combining these elements creates a cohesive, polished property that feels inviting at first glance. Skilled craftsmanship and careful planning shape each detail to match how you actually use your yard.</p>
+        <p style="margin:0;color:#0F1130;font-weight:500;max-width:56ch;font-size:16px;line-height:26px;text-wrap:pretty">Homeowners throughout Toronto, Caledon, Vaughan, Woodbridge, Kleinburg, and surrounding areas rely on this experience to transform tired lawns into low-maintenance retreats.</p>
+        <a href="Armor%20Stone%20Walls.dc.html" style="align-self:flex-start;color:#262A78;text-decoration:none;font-size:14px;line-height:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-bottom:2px solid #55B847;padding-bottom:6px" style-hover="color:#2F7A28">Explore Armor Stone Walls →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="CTA" style="position:relative;overflow:hidden;background:#0F1130;color:#FFFFFF">
+  <div style="position:absolute;inset:0"><image-slot id="sti-cta" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/edbd01f9-b228-4a27-a809-fc960d3775ef.jpg" placeholder="Background photo"></image-slot></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,17,48,.94) 0%,rgba(15,17,48,.8) 55%,rgba(15,17,48,.5) 100%);pointer-events:none"></div>
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);position:relative;padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;pointer-events:none">
+    <div style="display:flex;flex-direction:column;gap:24px;max-width:720px;pointer-events:auto">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Get started</div>
+      <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Start Your Synthetic <span style="color:#55B847">Turf Project</span></h2>
+      <p style="margin:0;color:#E4E5F2;max-width:52ch;font-size:16px;line-height:26px;text-wrap:pretty">Ready for a flawless lawn that looks great without the upkeep? The team at Cypress Hills Landscaping is here to plan every step, from the turf surface to the surrounding stonework. Contact us today to discuss your synthetic turf project and request a consultation.</p>
+    </div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;pointer-events:auto">
+      <a href="Contact.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;gap:14px;color:#0F1130;background:#55B847;text-decoration:none;font-size:14px;line-height:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 8px 8px 26px;border-radius:999px" style-hover="background:#7FD16F;color:#0F1130">Book a site visit<span style="width:42px;height:42px;border-radius:50%;background:#0F1130;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:18px">→</span></a>
+      <a href="tel:+19058664111" style="font-family:'Source Serif 4',serif;color:#FFFFFF;text-decoration:none;font-size:22px;font-weight:700;padding:14px 26px;border:2px solid rgba(255,255,255,.5);border-radius:999px" style-hover="border-color:#55B847;color:#FFFFFF">(905) 866-4111</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,380px" style="display:block;width:100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { ready: false, tick: 0 };
+  componentDidMount() { this.r = setTimeout(() => this.setState({ ready: true }), 80); this.iv = setInterval(() => this.setState(s => ({ tick: s.tick + 1 })), 2800); }
+  componentWillUnmount() { clearTimeout(this.r); clearInterval(this.iv); this.unmount && this.unmount(); }
+  heroVals() { const r = this.state.ready; return { panelX: r ? '0%' : '-101%', heroScale: r ? 1 : 1.08 }; }
+
+  renderVals() {
+    const a = this.state.tick % 4;
+    return {
+      ...this.heroVals(),
+      opts: [['Low-Maintenance', 'with No Mowing, Fertilizing, or Weeding'], ['Year-Round Greenery', 'That Stays Vibrant in Any Season'], ['Lasting Durability', 'Built to Handle Play, Pets, & Gatherings'], ['Significant Water Savings', 'That Lower Utility Bills']].map(([t, d], i) => { const on = i === a; return { t, d, n: '0' + (i + 1), bg: on ? '#262A78' : 'transparent', fg: on ? '#FFFFFF' : '#262A78', nC: on ? '#55B847' : '#C8C4B8', rad: on ? '40px' : '0px', ty: '0px', pw: on ? '100%' : '0%', pt: on ? '2.8s linear' : '0s' }; }),
+      ball: this.ballEl || (this.ballEl = React.createElement('div', { style: { position: 'relative', width: '100%', height: '100%', borderRadius: '50%', background: '#55B847', boxShadow: '0 16px 40px rgba(15,17,48,.25)' } },
+        React.createElement('svg', { viewBox: '0 0 200 200', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', animation: 'chspin 18s linear infinite' } },
+          React.createElement('defs', null, React.createElement('path', { id: 'chBallU', d: 'M100 100 m-74 0 a74 74 0 1 1 148 0 a74 74 0 1 1 -148 0' })),
+          React.createElement('text', { fill: '#0F1130', style: { fontFamily: 'Roboto,sans-serif', fontSize: 15, fontWeight: 800, letterSpacing: '3px' } }, React.createElement('textPath', { href: '#chBallU' }, 'SYNTHETIC TURF • SINCE 1994 • NO MOWING • '))),
+        React.createElement('div', { style: { position: 'absolute', inset: '30%', borderRadius: '50%', background: '#FFFFFF', boxShadow: 'inset -6px -6px 0 rgba(15,17,48,.08)' } })))
+    };
+  }
+}
+</script>
+</body>
+</html>

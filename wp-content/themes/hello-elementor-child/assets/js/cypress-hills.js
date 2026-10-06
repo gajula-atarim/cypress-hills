@@ -83,6 +83,40 @@
 		});
 	}
 
+	/* Recent work: the active panel expands; auto-advance every 6s with a progress bar; hover/focus picks. */
+	function initWork() {
+		if (inEditor) { return; }
+		var mq = window.matchMedia('(max-width: 819px)');
+		document.querySelectorAll('.ch-work-acc').forEach(function (acc) {
+			var cards = Array.prototype.filter.call(acc.children, function (el) { return el.classList.contains('ch-work-card'); });
+			if (!cards.length) { return; }
+			var cur = 0, timer = 0;
+			cards.forEach(function (c) {
+				if (!c.querySelector('.ch-work-bar')) { c.insertAdjacentHTML('beforeend', '<span class="ch-work-bar" aria-hidden="true"></span>'); }
+			});
+			function go(i) {
+				clearTimeout(timer);
+				cur = i;
+				cards.forEach(function (c, k) {
+					c.classList.toggle('is-active', mq.matches || k === i);
+					c.classList.remove('is-running');
+				});
+				if (mq.matches || reduceMotion) { return; }
+				requestAnimationFrame(function () {
+					requestAnimationFrame(function () { cards[i].classList.add('is-running'); });
+				});
+				timer = setTimeout(function () { go((cur + 1) % cards.length); }, 6000);
+			}
+			cards.forEach(function (c, k) {
+				function pick() { if (!mq.matches && k !== cur) { go(k); } }
+				c.addEventListener('mouseenter', pick);
+				c.addEventListener('focusin', pick);
+			});
+			if (mq.addEventListener) { mq.addEventListener('change', function () { go(cur); }); }
+			go(0);
+		});
+	}
+
 	/* Marquee: duplicate each track's chips once so translateX(-50%) loops seamlessly. */
 	function initMarquee() {
 		if (inEditor) { return; }
@@ -205,6 +239,7 @@
 
 	function init() {
 		initHero();
+		initWork();
 		initMarquee();
 		initCompare();
 		initServices();

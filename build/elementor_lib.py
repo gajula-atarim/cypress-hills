@@ -38,7 +38,7 @@ def fluid(lo, vw, hi):
     return f"clamp({lo}px, {vw}vw, {hi}px)"
 
 
-def typo(prefix="typography", family="Archivo", size=None, size_t=None, size_m=None, weight=None,
+def typo(prefix="typography", family="Roboto", size=None, size_t=None, size_m=None, weight=None,
          style=None, lh=None, lh_unit="em", ls=None, ls_unit="px", transform=None):
     s = {f"{prefix}_typography": "custom", f"{prefix}_font_family": family}
     if isinstance(size, str):

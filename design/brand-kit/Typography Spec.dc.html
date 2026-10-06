@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&family=Source+Serif+4:wght@700&display=swap" rel="stylesheet">
+<template id="__bundler_thumbnail" data-bg-color="#262A78"><svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"><rect width="120" height="120" fill="#262A78"/><text x="60" y="78" text-anchor="middle" font-family="Georgia,serif" font-weight="700" font-size="52" fill="#FFFFFF">Aa</text><rect x="38" y="88" width="44" height="6" fill="#55B847"/></svg></template>
+<style>body{margin:0;background:#F4F2EC;font-family:'Roboto',sans-serif;color:#0F1130}a{color:#2F7A28}a:hover{color:#262A78}</style>
+</helmet>
+<div style="max-width:1200px;margin:0 auto;padding:clamp(40px,6vw,80px) clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:40px">
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Developer handoff</div>
+    <h1 style="font-family:'Source Serif 4',serif;margin:0;font-size:clamp(32px,3.6vw,54px);line-height:1.1;font-weight:700;letter-spacing:-.01em;color:#262A78">Typography spec</h1>
+    <p style="margin:0;font-size:16px;line-height:26px;color:#45475A;max-width:70ch">Two families from Google Fonts. Sizes written as clamp() scale fluidly between the mobile (min) and desktop (max) values; the middle value is the viewport-based preferred size.</p>
+  </div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:16px">
+    <div style="background:#FFFFFF;border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:10px">
+      <div style="font-size:12px;line-height:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2F7A28">Headings</div>
+      <div style="font-family:'Source Serif 4',serif;font-size:36px;line-height:1.1;font-weight:700;color:#262A78">Source Serif 4</div>
+      <div style="font-size:14px;line-height:22px;color:#45475A">"Source Serif 4", serif · weight 700 · normal</div>
+    </div>
+    <div style="background:#FFFFFF;border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:10px">
+      <div style="font-size:12px;line-height:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#2F7A28">UI &amp; body</div>
+      <div style="font-size:36px;line-height:1.1;font-weight:700;color:#262A78">Roboto</div>
+      <div style="font-size:14px;line-height:22px;color:#45475A">Roboto, sans-serif · weights 400, 600, 700 · normal</div>
+    </div>
+  </div>
+
+  <div style="background:#FFFFFF;border-radius:8px;overflow:hidden">
+    <div style="overflow-x:auto">
+      <table style="width:100%;min-width:980px;border-collapse:collapse;font-size:14px;line-height:20px">
+        <thead>
+          <tr style="background:#262A78;color:#FFFFFF;text-align:left">
+            <th style="padding:14px 18px;font-weight:700">Style</th>
+            <th style="padding:14px 18px;font-weight:700">Family</th>
+            <th style="padding:14px 18px;font-weight:700">Weight</th>
+            <th style="padding:14px 18px;font-weight:700">Size (mobile → desktop)</th>
+            <th style="padding:14px 18px;font-weight:700">Line height</th>
+            <th style="padding:14px 18px;font-weight:700">Letter spacing</th>
+            <th style="padding:14px 18px;font-weight:700">Case / colour</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="border-bottom:1px solid #ECE9E1"><td style="padding:16px 18px"><div style="font-family:'Source Serif 4',serif;font-size:30px;line-height:1.1;font-weight:700;color:#262A78">Hero title (H1)</div></td><td style="padding:16px 18px">Source Serif 4</td><td style="padding:16px 18px">700</td><td style="padding:16px 18px"><code>clamp(32px, 3.6vw, 54px)</code></td><td style="padding:16px 18px">1.1</td><td style="padding:16px 18px">-0.01em</td><td style="padding:16px 18px">Sentence · #FFFFFF / accent #55B847</td></tr>
+          <tr style="border-bottom:1px solid #ECE9E1"><td style="padding:16px 18px"><div style="font-family:'Source Serif 4',serif;font-size:26px;line-height:1.12;font-weight:700;color:#262A78">Section title (H2)</div></td><td style="padding:16px 18px">Source Serif 4</td><td style="padding:16px 18px">700</td><td style="padding:16px 18px"><code>clamp(28px, 3vw, 44px)</code></td><td style="padding:16px 18px">1.12</td><td style="padding:16px 18px">-0.005em</td><td style="padding:16px 18px">Sentence · #262A78 (on dark #FFFFFF) / accent #55B847</td></tr>
+          <tr style="border-bottom:1px solid #ECE9E1"><td style="padding:16px 18px"><div style="font-family:'Source Serif 4',serif;font-size:22px;line-height:1.18;font-weight:700;color:#262A78">Sub-heading (H3)</div></td><td style="padding:16px 18px">Source Serif 4</td><td style="padding:16px 18px">700</td><td style="padding:16px 18px"><code>clamp(22px, 2vw, 30px)</code></td><td style="padding:16px 18px">1.18</td><td style="padding:16px 18px">0</td><td style="padding:16px 18px">Sentence · #262A78</td></tr>
+          <tr style="border-bottom:1px solid #ECE9E1"><td style="padding:16px 18px"><div style="font-family:'Source Serif 4',serif;font-size:20px;line-height:1.3;font-weight:700;color:#262A78">Statement / pull line</div></td><td style="padding:16px 18px">Source Serif 4</td><td style="padding:16px 18px">700</td><td style="padding:16px 18px"><code>clamp(20px, 1.8vw, 26px)</code></td><td style="padding:16px 18px">1.3</td><td style="padding:16px 18px">0</td><td style="padding:16px 18px">Sentence · #262A78</td></tr>
+          <tr style="border-bottom:1px solid #ECE9E1"><td style="padding:16px 18px"><div style="font-family:'Source Serif 4',serif;font-size:28px;line-height:1.1;font-weight:700;color:#262A78">Phone number</div></td><td style="padding:16px 18px">Source Serif 4</td><td style="padding:16px 18px">700</td><td style="padding:16px 18px"><code>clamp(28px, 2.6vw, 38px)</code></td><td style="padding:16px 18px">1.1</td><td style="padding:16px 18px">0</td><td style="padding:16px 18px">#FFFFFF on navy</td></tr>
+          <tr style="border-bottom:1px solid #ECE9E1"><td style="padding:16px 18px"><div style="font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28">Eyebrow / kicker</div></td><td style="padding:16px 18px">Roboto</td><td style="padding:16px 18px">700</td><td style="padding:16px 18px">12px</td><td style="padding:16px 18px">12px</td><td style="padding:16px 18px">0.16em</td><td style="padding:16px 18px">UPPERCASE · #2F7A28 (on dark #8FD67F) · 44×7px green bar, 14px gap</td></tr>
+          <tr style="border-bottom:1px solid #ECE9E1"><td style="padding:16px 18px"><div style="font-size:17px;line-height:27px;color:#45475A">Lead paragraph</div></td><td style="padding:16px 18px">Roboto</td><td style="padding:16px 18px">400</td><td style="padding:16px 18px">17px</td><td style="padding:16px 18px">27px</td><td style="padding:16px 18px">0</td><td style="padding:16px 18px">#45475A (on dark #D9DBF0)</td></tr>
+          <tr style="border-bottom:1px solid #ECE9E1"><td style="padding:16px 18px"><div style="font-size:16px;line-height:26px;color:#45475A">Description / body</div></td><td style="padding:16px 18px">Roboto</td><td style="padding:16px 18px">400</td><td style="padding:16px 18px">16px</td><td style="padding:16px 18px">26px</td><td style="padding:16px 18px">0</td><td style="padding:16px 18px">#45475A (on dark #D9DBF0)</td></tr>
+          <tr style="border-bottom:1px solid #ECE9E1"><td style="padding:16px 18px"><div style="font-size:14px;line-height:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#262A78">Button</div></td><td style="padding:16px 18px">Roboto</td><td style="padding:16px 18px">700</td><td style="padding:16px 18px">14px</td><td style="padding:16px 18px">14px</td><td style="padding:16px 18px">0.08em</td><td style="padding:16px 18px">UPPERCASE · #0F1130 on #55B847 · pill, 42px arrow circle</td></tr>
+          <tr style="border-bottom:1px solid #ECE9E1"><td style="padding:16px 18px"><div style="font-size:14px;line-height:1.35;font-weight:700;color:#262A78">Nav / dropdown link</div></td><td style="padding:16px 18px">Roboto</td><td style="padding:16px 18px">700</td><td style="padding:16px 18px">14px</td><td style="padding:16px 18px">1.35</td><td style="padding:16px 18px">0</td><td style="padding:16px 18px">#262A78 · active #2F7A28 on #E8F5E4</td></tr>
+          <tr style="border-bottom:1px solid #ECE9E1"><td style="padding:16px 18px"><div style="font-size:13px;line-height:18px;font-weight:600;color:#45475A">Form label</div></td><td style="padding:16px 18px">Roboto</td><td style="padding:16px 18px">600</td><td style="padding:16px 18px">13px</td><td style="padding:16px 18px">18px</td><td style="padding:16px 18px">0</td><td style="padding:16px 18px">#45475A</td></tr>
+          <tr style="border-bottom:1px solid #ECE9E1"><td style="padding:16px 18px"><div style="font-size:16px;line-height:22px;color:#0F1130">Form input</div></td><td style="padding:16px 18px">Roboto</td><td style="padding:16px 18px">400</td><td style="padding:16px 18px">16px</td><td style="padding:16px 18px">normal</td><td style="padding:16px 18px">0</td><td style="padding:16px 18px">#0F1130 · padding 15px 16px · radius 8px</td></tr>
+          <tr style="border-bottom:1px solid #ECE9E1"><td style="padding:16px 18px"><div style="font-size:14px;line-height:20px;font-weight:600;color:#262A78">Chip / tag</div></td><td style="padding:16px 18px">Roboto</td><td style="padding:16px 18px">600</td><td style="padding:16px 18px">14px</td><td style="padding:16px 18px">normal</td><td style="padding:16px 18px">0</td><td style="padding:16px 18px">#262A78 on #F4F2EC · pill</td></tr>
+          <tr style="border-bottom:1px solid #ECE9E1"><td style="padding:16px 18px"><div style="font-size:15px;line-height:22px;color:#0F1130">Footer link</div></td><td style="padding:16px 18px">Roboto</td><td style="padding:16px 18px">400</td><td style="padding:16px 18px">15px</td><td style="padding:16px 18px">22px</td><td style="padding:16px 18px">0</td><td style="padding:16px 18px">#F4F2EC · hover #55B847 · column title = eyebrow style, #55B847</td></tr>
+          <tr><td style="padding:16px 18px"><div style="font-size:13px;line-height:20px;color:#45475A">Small / legal</div></td><td style="padding:16px 18px">Roboto</td><td style="padding:16px 18px">400</td><td style="padding:16px 18px">13px</td><td style="padding:16px 18px">20px</td><td style="padding:16px 18px">0</td><td style="padding:16px 18px">#9A9CB8 on #0F1130</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <h2 style="font-family:'Source Serif 4',serif;margin:0;font-size:clamp(28px,3vw,44px);line-height:1.12;font-weight:700;letter-spacing:-.005em;color:#262A78">CSS starter</h2>
+    <pre style="margin:0;background:#0F1130;color:#E4E5F2;border-radius:8px;padding:28px;overflow-x:auto;font-size:13px;line-height:21px;font-family:ui-monospace,Menlo,monospace">@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;600;700&amp;family=Source+Serif+4:wght@700&amp;display=swap');
+
+:root {
+  --font-heading: "Source Serif 4", serif;
+  --font-body: Roboto, sans-serif;
+  --navy: #262A78;  --ink: #0F1130;  --green: #55B847;
+  --green-dark: #2F7A28;  --text: #45475A;  --cream: #F4F2EC;
+}
+body      { font: 400 16px/26px var(--font-body); color: var(--text); }
+h1        { font: 700 clamp(32px, 3.6vw, 54px)/1.1 var(--font-heading); letter-spacing: -0.01em; }
+h2        { font: 700 clamp(28px, 3vw, 44px)/1.12 var(--font-heading); letter-spacing: -0.005em; color: var(--navy); }
+h3        { font: 700 clamp(22px, 2vw, 30px)/1.18 var(--font-heading); color: var(--navy); }
+.lead     { font-size: 17px; line-height: 27px; }
+.eyebrow  { font: 700 12px/12px var(--font-body); letter-spacing: .16em; text-transform: uppercase; color: var(--green-dark); }
+.btn      { font: 700 14px/14px var(--font-body); letter-spacing: .08em; text-transform: uppercase; }</pre>
+  </div>
+</div>
+</x-dc>
+</body>
+</html>

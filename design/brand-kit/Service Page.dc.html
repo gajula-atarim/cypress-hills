@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#F4F2EC;color:#0F1130;font-family:'Roboto',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#262A78;text-underline-offset:3px}
+a:hover{color:#2F7A28}
+input,textarea{font-family:inherit}
+@keyframes chspin{to{transform:rotate(360deg)}}
+@keyframes chdraw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+@keyframes chbob{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-6px) rotate(-1.5deg)}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+</helmet>
+
+<header data-screen-label="Hero" style="background:#F4F2EC;position:relative">
+  <dc-import name="SiteNav" active="{{ key }}" hint-size="100%,98px"></dc-import>
+  <div style="position:relative;height:auto;min-height:clamp(480px,min(42vw,calc(100vh - 110px)),720px);overflow:hidden;border-bottom-right-radius:clamp(110px,14vw,230px);background:#0F1130">
+    <div style="position:absolute;inset:0;transform:scale({{ heroScale }});transition:transform 2.6s cubic-bezier(.2,.7,.2,1)"><image-slot id="{{ s.heroId }}" shape="rect" src="{{ s.hero }}" placeholder="Hero photo"></image-slot></div>
+    <div style="position:absolute;left:0;right:0;top:0;height:160px;background:linear-gradient(180deg,rgba(15,17,48,.55),rgba(15,17,48,0));pointer-events:none"></div>
+    <div style="position:relative;min-height:inherit;width:clamp(320px,38%,560px);box-sizing:border-box;background:#262A78;color:#FFFFFF;z-index:10;transform:translateX({{ panelX }});transition:transform 1s cubic-bezier(.77,0,.18,1) .25s;display:flex;flex-direction:column;justify-content:center;gap:24px;padding:clamp(120px,11vw,150px) clamp(24px,4vw,64px) 56px;min-height:inherit">
+      <div style="display:flex;gap:10px;font-size:14px;font-weight:600;color:#C9CBE0"><a href="Cypress%20Hills%20Home%20v2.dc.html" style="color:#C9CBE0;text-decoration:none" style-hover="color:#FFFFFF">Home</a><span>/</span><span style="color:#FFFFFF">{{ s.name }}</span></div>
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Creative Outdoor Services</div>
+      <h1 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;font-size:clamp(32px,3.6vw,54px);line-height:1.1;letter-spacing:-.01em;text-wrap:balance">{{ s.name }}</h1>
+      <p style="margin:0;color:#E4E5F2;max-width:40ch;font-size:16px;line-height:26px;text-wrap:pretty">{{ s.lede }}</p>
+    </div>
+  </div>
+</header>
+
+<section data-screen-label="Intro" style="background:#F4F2EC">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:56px clamp(40px,6vw,110px);align-items:start">
+    <div style="display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Overview</div>
+      <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#262A78;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">{{ s.statement }}</h2>
+      <p style="margin:0;color:#45475A;max-width:52ch;font-size:16px;line-height:26px;text-wrap:pretty">{{ s.body }}</p>
+      <a href="Contact.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;gap:14px;color:#FFFFFF;background:#262A78;text-decoration:none;font-size:14px;line-height:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 8px 8px 26px;border-radius:999px" style-hover="background:#1C1F5C;color:#FFFFFF">Book a site visit<span style="width:42px;height:42px;border-radius:50%;background:#55B847;color:#0F1130;display:flex;align-items:center;justify-content:center;font-size:18px">→</span></a>
+    </div>
+    <div style="display:flex;flex-direction:column;border-top:1px solid #C8C4B8">
+      <div style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28;padding:18px 0 4px">What's included</div>
+      <sc-for list="{{ offers }}" as="o" hint-placeholder-count="5">
+        <div style="display:grid;grid-template-columns:48px minmax(0,1fr) 46px;gap:16px;align-items:center;padding:22px 0;border-bottom:1px solid #C8C4B8">
+          <span style="font-size:14px;font-weight:800;color:{{ o.numC }};font-variant-numeric:tabular-nums;transition:color .4s">{{ o.n }}</span>
+          <span style="display:flex;flex-direction:column;gap:6px;transform:translateX({{ o.tx }});transition:transform .5s cubic-bezier(.2,.7,.2,1)">
+            <span style="font-family:'Source Serif 4',serif;font-size:clamp(22px,2.2vw,32px);line-height:1.05;font-weight:700;color:{{ o.tC }};transition:color .4s">{{ o.t }}</span>
+            <span style="font-size:15px;line-height:1.5;color:#45475A;opacity:{{ o.dOp }};transition:opacity .4s">{{ o.d }}</span>
+          </span>
+          <span style="width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;background:{{ o.aBg }};color:#0F1130;border:1px solid {{ o.aB }};transition:all .4s">✓</span>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Features" style="background:#FFFFFF">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;flex-direction:column;gap:clamp(72px,9vw,130px)">
+    <sc-for list="{{ s.features }}" as="f" hint-placeholder-count="2">
+      <div style="display:flex;flex-direction:{{ f.dir }};flex-wrap:wrap;gap:48px clamp(40px,6vw,96px);align-items:center">
+        <div style="flex:1 1 460px;min-width:0;aspect-ratio:5/4;overflow:hidden;border-radius:{{ f.rad }}"><image-slot id="{{ f.id }}" shape="rect" src="{{ f.src }}" placeholder="Feature photo"></image-slot></div>
+        <div style="flex:1 1 360px;min-width:0;display:flex;flex-direction:column;gap:22px">
+          <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>{{ f.k }}</div>
+          <h3 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;letter-spacing:-.02em;color:#262A78;font-size:clamp(22px,2vw,30px);line-height:1.18;text-wrap:balance">{{ f.t }}</h3>
+          <p style="margin:0;color:#45475A;max-width:48ch;font-size:16px;line-height:26px;text-wrap:pretty">{{ f.d }}</p>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="Projects" style="background:#262A78;color:#FFFFFF">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;flex-direction:column;gap:56px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:20px"><div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Recent work</div><h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#FFFFFF;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">{{ s.name }} <span style="color:#55B847">projects.</span></h2></div>
+      <a href="Projects.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;gap:14px;color:#0F1130;background:#55B847;text-decoration:none;font-size:14px;line-height:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 8px 8px 26px;border-radius:999px" style-hover="background:#7FD16F;color:#0F1130">All projects<span style="width:42px;height:42px;border-radius:50%;background:#0F1130;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:18px">→</span></a>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px">
+      <sc-for list="{{ s.projects }}" as="p" hint-placeholder-count="3">
+        <a href="Projects.dc.html" style="position:relative;display:block;aspect-ratio:4/5;overflow:hidden;border-bottom-right-radius:clamp(80px,8vw,130px);text-decoration:none;color:#FFFFFF;transition:transform .4s ease" style-hover="transform:translateY(-8px);color:#FFFFFF">
+          <div style="position:absolute;inset:0"><image-slot id="{{ p.id }}" shape="rect" src="{{ p.src }}" placeholder="Project photo"></image-slot></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,48,0) 45%,rgba(15,17,48,.9) 100%);pointer-events:none"></div>
+          <div style="position:absolute;left:28px;right:28px;bottom:28px;display:flex;flex-direction:column;gap:8px;pointer-events:none">
+            <span style="font-size:12px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F">{{ p.town }}</span>
+            <span style="font-family:'Source Serif 4',serif;font-size:clamp(26px,2.4vw,36px);line-height:1;font-weight:700;">{{ p.t }}</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Other services" style="background:#F4F2EC">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(80px,9vw,128px);padding-bottom:clamp(80px,9vw,128px);display:flex;flex-direction:column;gap:36px">
+    <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Also from Cypress Hills</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));gap:24px">
+      <sc-for list="{{ others }}" as="o" hint-placeholder-count="2">
+        <a href="{{ o.href }}" style="position:relative;display:block;height:clamp(280px,26vw,380px);overflow:hidden;border-bottom-right-radius:clamp(80px,9vw,150px);text-decoration:none;color:#FFFFFF;background:#0F1130" style-hover="color:#FFFFFF">
+          <div style="position:absolute;inset:0"><image-slot id="{{ o.id }}" shape="rect" src="{{ o.src }}" placeholder="Service photo"></image-slot></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,17,48,.85),rgba(15,17,48,.15));pointer-events:none"></div>
+          <div style="position:absolute;left:clamp(24px,3vw,44px);right:clamp(24px,3vw,44px);bottom:clamp(24px,3vw,44px);display:flex;justify-content:space-between;align-items:flex-end;gap:16px;pointer-events:none">
+            <span style="font-family:'Source Serif 4',serif;font-size:clamp(27px,2.8vw,47px);line-height:.95;font-weight:700;letter-spacing:-.02em">{{ o.name }}</span>
+            <span style="flex:none;width:56px;height:56px;border-radius:50%;background:#55B847;color:#0F1130;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800">↗</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="CTA" style="position:relative;overflow:hidden;background:#0F1130;color:#FFFFFF">
+  <div style="position:absolute;inset:0"><image-slot id="svc-cta" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/e2ed4fb5-6ace-4fbf-beed-eeaee18f7f69.jpg" placeholder="Background photo"></image-slot></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,17,48,.94) 0%,rgba(15,17,48,.8) 55%,rgba(15,17,48,.5) 100%);pointer-events:none"></div>
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);position:relative;padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;pointer-events:none">
+    <div style="display:flex;flex-direction:column;gap:24px;max-width:720px;pointer-events:auto">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Work with Us</div>
+      <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Let's walk<br>your <span style="color:#55B847">yard.</span></h2>
+      <p style="margin:0;color:#E4E5F2;max-width:44ch;font-size:16px;line-height:26px;text-wrap:pretty">Create a serene and beautiful oasis right in your backyard. Get in touch with our experienced professionals today so we can begin creating your perfect outdoor retreat.</p>
+    </div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;pointer-events:auto">
+      <a href="Contact.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;gap:14px;color:#0F1130;background:#55B847;text-decoration:none;font-size:14px;line-height:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 8px 8px 26px;border-radius:999px" style-hover="background:#7FD16F;color:#0F1130">Book a site visit<span style="width:42px;height:42px;border-radius:50%;background:#0F1130;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:18px">→</span></a>
+      <a href="tel:+19058664111" style="font-family:'Source Serif 4',serif;color:#FFFFFF;text-decoration:none;font-size:22px;font-weight:700;padding:14px 26px;border:2px solid rgba(255,255,255,.5);border-radius:999px" style-hover="border-color:#55B847;color:#FFFFFF">(905) 866-4111</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,380px" style="display:block;width:100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;service&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;pools&quot;,&quot;landscaping&quot;,&quot;golf&quot;],&quot;default&quot;:&quot;pools&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { ready: false, act: 0 };
+  componentDidMount() { this.r = setTimeout(() => this.setState({ ready: true }), 80); this.mount && this.mount(); }
+  componentWillUnmount() { clearTimeout(this.r); this.unmount && this.unmount(); }
+  heroVals() { const r = this.state.ready; return { panelX: r ? '0%' : '-101%', heroScale: r ? 1 : 1.08 }; }
+  mount() { this.iv = setInterval(() => this.setState(s => ({ act: s.act + 1 })), 3000); }
+  unmount() { clearInterval(this.iv); }
+  renderVals() {
+    const S3 = 'https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/';
+    const I = { pool: '6b71663b-b520-44a7-94bb-a5c470c68ce1', stone: '3ba47ee2-7f56-4aaf-9d34-bd3844bda08e', green: '8f31a0ce-dd1b-43c0-a698-6acdfd047caa', kitchen: 'b77c3889-6717-4556-8bb0-b9d812545c75', aerial: 'a7606c2d-5fc9-4d4e-9486-757d5101e8ac', crew: 'e39ef06c-0b14-4e6f-88cc-7956c6082637', night: 'e2ed4fb5-6ace-4fbf-beed-eeaee18f7f69', course: '79017ad2-7cdf-45a0-9659-e4b04f8f0cd2', falls: 'e60daa01-e579-4885-b3b2-9a3ea46940b9' };
+    const u = k => S3 + I[k] + '.jpg';
+    const num = a => a.map((o, i) => ({ ...o, n: String(i + 1).padStart(2, '0') }));
+    const feat = (key, a) => a.map((f, i) => ({ ...f, id: `svc-${key}-f${i}`, src: u(f.img), dir: i % 2 ? 'row-reverse' : 'row' }));
+    const proj = (key, a) => a.map((p, i) => ({ ...p, id: `svc-${key}-p${i}`, src: u(p.img) }));
+    const D = {
+      pools: { name: 'Pools', hero: u('pool'), lede: 'Fiberglass pools, spas and water features, installed and landscaped by the same crew.',
+        statement: 'The pool and the yard, planned as one.', body: 'A pool sets the grade, drainage and layout for everything around it. We design the pool, stonework, decking and lighting together, so nothing gets patched in after.',
+        offers: num([{ t: 'Fiberglass pools', d: 'Supply and installation, from excavation to backfill.' }, { t: 'Spas & hot tubs', d: 'Built in or set beside the pool.' }, { t: 'Water features', d: 'Stone waterfalls, spillways and fountains.' }, { t: 'Pool landscaping', d: 'Armour stone, coping, decks and planting.' }, { t: 'Lighting', d: 'Pool, path and tree lighting for evenings.' }]),
+        features: feat('pools', [{ img: 'falls', k: 'Water features', t: 'Stone that looks like it was always there', d: 'We set natural armour stone around the water so the pool feels part of the land, not dropped into it.' }, { img: 'night', k: 'After dark', t: 'Built for evenings', d: 'Lighting is planned with the layout, so wiring runs before the stone and sod go in.' }]),
+        projects: proj('pools', [{ img: 'pool', t: 'Pool & terrace', town: 'King City' }, { img: 'falls', t: 'Waterfall pool', town: 'Kleinburg' }, { img: 'night', t: 'Pool & spa', town: 'Caledon' }]) },
+      landscaping: { name: 'Landscaping', hero: u('stone'), lede: 'Landscape design, armour stone, outdoor living and lighting for homes across the GTA.',
+        statement: 'Your yard is an extension of your home.', body: 'We start with how you want to use the space, then design the grading, stone, structures and planting to suit it. Our crew builds every part of it.',
+        offers: num([{ t: 'Landscape design', d: 'Site plans drawn around how you live.' }, { t: 'Armour stone walls', d: 'Retaining walls, steps and terraces.' }, { t: 'Cabanas & pergolas', d: 'Custom woodwork and shade structures.' }, { t: 'Outdoor kitchens', d: 'Stone-clad islands, grills and bars.' }, { t: 'Fireplaces', d: 'Wood and gas, built in stone.' }, { t: 'Outdoor lighting', d: 'Paths, steps, trees and structures.' }]),
+        features: feat('land', [{ img: 'crew', k: 'Armour stone', t: 'Set with our own machines', d: 'Heavy stone needs the right equipment and the right hands. Our crews place every piece themselves.' }, { img: 'kitchen', k: 'Outdoor living', t: 'Rooms without walls', d: 'Kitchens, cabanas and fireplaces arranged so the yard works for a family dinner or a full party.' }]),
+        projects: proj('land', [{ img: 'stone', t: 'Hillside walls', town: 'Caledon' }, { img: 'kitchen', t: 'Cabana & kitchen', town: 'Nobleton' }, { img: 'aerial', t: 'Full estate', town: 'Vaughan' }]) },
+      golf: { name: 'Golf & Turf', hero: u('green'), lede: 'Backyard putting greens, golf course shaping and synthetic turf.',
+        statement: 'Golf-course craft, in your backyard.', body: 'Our team shapes greens and bunkers on golf courses. We bring the same grading and build quality to backyard greens and turf installations.',
+        offers: num([{ t: 'Backyard putting greens', d: 'Contoured greens with fringe, cups and bunkers.' }, { t: 'Golf course shaping', d: 'Greens, tees and bunker complexes for courses.' }, { t: 'Artificial grass', d: 'Low-maintenance lawns for yards and rooftops.' }, { t: 'Synthetic turf', d: 'Play areas, pet runs and sports surfaces.' }]),
+        features: feat('golf', [{ img: 'course', k: 'Course shaping', t: 'We build real golf courses', d: 'Shaping greens and bunkers for courses is where our grading skill comes from.' }, { img: 'green', k: 'Backyard greens', t: 'Practice where you live', d: 'A green shaped to your yard, with breaks and speed that play like the real thing.' }]),
+        projects: proj('golf', [{ img: 'green', t: 'Backyard green', town: 'Kleinburg' }, { img: 'course', t: 'Course shaping', town: 'Collingwood' }, { img: 'aerial', t: 'Estate green', town: 'King City' }]) }
+    };
+    let key = this.props.service && D[this.props.service] ? this.props.service : 'pools';
+    try { const q = new URLSearchParams(window.location.search).get('s'); if (D[q]) key = q; } catch (e) {}
+    const s = { ...D[key], heroId: 'svc-' + key + '-hero' };
+    s.features = s.features.map((f, i) => ({ ...f, rad: i % 2 ? '0 0 0 clamp(100px,11vw,180px)' : '0 0 clamp(100px,11vw,180px) 0' }));
+    const a = this.state.act % s.offers.length;
+    const offers = s.offers.map((o, i) => { const on = i === a; return { ...o, numC: on ? '#2F7A28' : '#A8A498', tC: on ? '#262A78' : '#0F1130', tx: on ? '10px' : '0px', dOp: on ? 1 : .55, aBg: on ? '#55B847' : 'transparent', aB: on ? '#55B847' : '#C8C4B8' }; });
+    const others = Object.keys(D).filter(k => k !== key).map(k => ({ name: D[k].name, href: 'Service%20Page.dc.html?s=' + k, src: D[k].hero, id: 'svc-' + key + '-other-' + k }));
+    return { ...this.heroVals(), s, key, offers, others };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<nav style="position:absolute;top:0;left:0;right:0;z-index:40;pointer-events:none">
+  <div style="max-width:1440px;margin:0 auto;padding:18px clamp(16px,3vw,48px)">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(15,17,48,.5);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 8px 8px {{ navPadL }};pointer-events:auto">
+      <a href="Cypress%20Hills%20Home%20v2.dc.html" style="display:block;flex:none"><img src="assets/logo-new.png" alt="Cypress Hills" style="height:{{ logoH }};width:auto;display:block"></a>
+      <div style="display:flex;align-items:center;gap:2px;flex-wrap:nowrap;justify-content:flex-end;min-width:0">
+        <sc-if value="{{ full }}" hint-placeholder-val="{{ true }}"><sc-for list="{{ links }}" as="l" hint-placeholder-count="4">
+          <div onMouseEnter="{{ l.enter }}" onMouseLeave="{{ l.leave }}" style="position:relative">
+            <a href="{{ l.href }}" onFocus="{{ l.enter }}" style="display:flex;align-items:center;gap:6px;color:#FFFFFF;text-decoration:none;font-family:'Roboto',sans-serif;font-size:14px;font-weight:600;padding:{{ linkPad }};border-radius:999px;white-space:nowrap;background:{{ l.bg }}" style-hover="background:rgba(255,255,255,.16);color:#FFFFFF">{{ l.label }}<span style="display:{{ l.caretD }};font-size:10px;transform:rotate({{ l.caretR }});transition:transform .25s">▼</span></a>
+            <sc-if value="{{ l.open }}" hint-placeholder-val="{{ false }}">
+              <div style="position:absolute;top:100%;left:{{ l.dl }};right:{{ l.dr }};padding-top:12px;width:max-content;max-width:260px">
+                <div style="background:#FFFFFF;border-radius:0 0 40px 0;box-shadow:0 24px 50px rgba(15,17,48,.28);padding:10px;display:flex;flex-direction:column">
+                  <sc-for list="{{ l.items }}" as="it" hint-placeholder-count="3">
+                    <a href="{{ it.href }}" style="display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 16px;border-radius:8px;color:{{ it.c }};background:{{ it.bg }};text-decoration:none;font-family:'Roboto',sans-serif;font-size:14px;font-weight:700;line-height:1.35" style-hover="background:#F4F2EC;color:#2F7A28">{{ it.label }}<span style="color:{{ it.ac }};font-weight:800">→</span></a>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for></sc-if>
+        <sc-if value="{{ mobile }}" hint-placeholder-val="{{ false }}"><button onClick="{{ toggleMob }}" aria-label="{{ mobLabel }}" aria-expanded="{{ mobOpen }}" style="width:48px;height:48px;border-radius:50%;border:none;background:#55B847;cursor:pointer;position:relative;flex:none">
+          <span style="position:absolute;left:14px;right:14px;height:2px;border-radius:2px;background:#0F1130;top:{{ b1T }};transform:rotate({{ b1R }});transition:transform .3s, top .3s"></span>
+          <span style="position:absolute;left:14px;right:14px;height:2px;border-radius:2px;background:#0F1130;top:23px;opacity:{{ b2O }};transition:opacity .2s"></span>
+          <span style="position:absolute;left:14px;right:14px;height:2px;border-radius:2px;background:#0F1130;top:{{ b3T }};transform:rotate({{ b3R }});transition:transform .3s, top .3s"></span>
+        </button></sc-if>
+        <sc-if value="{{ full }}" hint-placeholder-val="{{ true }}"><a href="Contact.dc.html" style="background:#55B847;color:#0F1130;text-decoration:none;font-family:'Roboto',sans-serif;font-size:14px;font-weight:800;padding:12px 20px;border-radius:999px;white-space:nowrap;margin-left:6px" style-hover="background:#7FD16F;color:#0F1130">Contact Us</a></sc-if>
+      </div>
+    </div>
+    <sc-if value="{{ mobOpen }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:10px;background:#FFFFFF;border-radius:24px 24px 48px 24px;box-shadow:0 24px 50px rgba(15,17,48,.28);padding:14px;display:flex;flex-direction:column;pointer-events:auto">
+        <sc-for list="{{ mobLinks }}" as="m" hint-placeholder-count="6">
+          <a href="{{ m.href }}" style="display:block;padding:{{ m.pad }};border-radius:8px;color:{{ m.c }};text-decoration:none;font-family:'Roboto',sans-serif;font-size:{{ m.fs }};font-weight:{{ m.fw }}" style-hover="background:#F4F2EC;color:#2F7A28">{{ m.label }}</a>
+        </sc-for>
+        <div style="display:flex;flex-direction:column;gap:10px;border-top:1px solid #ECE9E1;margin-top:10px;padding:16px 6px 6px">
+          <a href="Contact.dc.html" style="display:flex;align-items:center;justify-content:center;gap:12px;background:#55B847;color:#0F1130;text-decoration:none;font-family:'Roboto',sans-serif;font-size:14px;line-height:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:18px;border-radius:999px" style-hover="background:#7FD16F;color:#0F1130">Contact Us →</a>
+          <a href="tel:+19058664111" style="display:block;text-align:center;color:#262A78;text-decoration:none;font-family:'Roboto',sans-serif;font-size:15px;font-weight:700;padding:8px" style-hover="color:#2F7A28">(905) 866-4111</a>
+        </div>
+      </div>
+    </sc-if>
+  </div>
+</nav>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:&quot;1200px&quot;,&quot;height&quot;:&quot;420px&quot;},&quot;active&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;&quot;,&quot;home&quot;,&quot;services&quot;,&quot;pools&quot;,&quot;landscaping&quot;,&quot;golf&quot;,&quot;projects&quot;,&quot;about&quot;],&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  state = { open: null, mob: false, vw: typeof window !== 'undefined' ? window.innerWidth : 1400 };
+  componentDidMount() { this.onRz = () => this.setState({ vw: window.innerWidth }); window.addEventListener('resize', this.onRz); }
+  componentWillUnmount() { clearTimeout(this.t); window.removeEventListener('resize', this.onRz); }
+  renderVals() {
+    const a = this.props.active ?? '';
+    const SP = 'Service%20Page.dc.html?s=';
+    const L = [
+      { key: 'home', label: 'Home', href: 'Cypress%20Hills%20Home%20v2.dc.html' },
+      { key: 'services', label: 'Services', href: 'Services.dc.html', match: ['landscaping', 'golf', 'services'], items: [
+        { label: 'Backyard Putting Greens', href: 'Backyard%20Putting%20Greens.dc.html' },
+        { label: 'Golf Course Shaping', href: 'Golf%20Course%20Shaping.dc.html' },
+        { label: 'Armor Stone Walls', href: 'Armor%20Stone%20Walls.dc.html' },
+        { label: 'Artificial Grass Installation', href: 'Artificial%20Grass%20Installation.dc.html' },
+        { label: 'Synthetic Turf Installation', href: 'Synthetic%20Turf%20Installation.dc.html' }] },
+      { key: 'pools', label: 'Pools', href: 'Pools.dc.html', match: ['pools'], items: [
+        { label: 'Fiberglass Pool Installation', href: 'Fiberglass%20Pool%20Installation.dc.html' },
+        { label: 'Swimming Pool Installation Caledon ON', href: 'Swimming%20Pool%20Installation%20Caledon.dc.html' }] },
+      { key: 'projects', label: 'Projects', href: 'Projects.dc.html' }
+    ];
+    let cur = ''; try { cur = decodeURIComponent(window.location.pathname.split('/').pop()); } catch (e) {}
+    const here = href => decodeURIComponent(href.split('?')[0]) === cur;
+    const vw = this.state.vw, mobile = vw < 900, compact = vw < 1080;
+    const mobLinks = [];
+    L.forEach(l => { mobLinks.push({ label: l.label, href: l.href, pad: '12px 14px', c: '#262A78', fs: '17px', fw: 800 }); (l.items || []).forEach(it => mobLinks.push({ ...it, pad: '8px 14px 8px 28px', c: here(it.href) ? '#2F7A28' : '#45475A', fs: '14px', fw: 600 })); });
+    return { full: !mobile, mobile, mobOpen: mobile && this.state.mob, mobLinks, mobLabel: this.state.mob ? 'Close menu' : 'Open menu', b1T: this.state.mob ? '23px' : '16px', b1R: this.state.mob ? '45deg' : '0deg', b2O: this.state.mob ? 0 : 1, b3T: this.state.mob ? '23px' : '30px', b3R: this.state.mob ? '-45deg' : '0deg', toggleMob: () => this.setState(s => ({ mob: !s.mob })), logoH: mobile ? '36px' : compact ? '38px' : '46px', navPadL: mobile ? '18px' : '24px', linkPad: compact ? '10px 11px' : '10px 15px', links: L.map(l => { const has = !!l.items, open = has && this.state.open === l.key, on = l.key === a || (l.match || []).includes(a);
+      return { ...l, items: (l.items || []).map(it => { const sel = here(it.href); return { ...it, c: sel ? '#2F7A28' : '#262A78', bg: sel ? '#E8F5E4' : 'transparent', ac: sel ? '#2F7A28' : '#55B847' }; }), open, dl: l.key === 'pools' ? 'auto' : '0', dr: l.key === 'pools' ? '0' : 'auto', caretD: has ? 'inline' : 'none', caretR: open ? '180deg' : '0deg', bg: on || open ? 'rgba(255,255,255,.18)' : 'transparent',
+        enter: () => { clearTimeout(this.t); if (has) this.setState({ open: l.key }); else if (this.state.open) this.setState({ open: null }); },
+        leave: () => { clearTimeout(this.t); this.t = setTimeout(() => this.setState({ open: null }), 160); } }; }) };
+  }
+}
+</script>
+</body>
+</html>

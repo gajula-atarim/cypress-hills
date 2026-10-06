@@ -15,11 +15,10 @@ add_action( 'wp_enqueue_scripts', function () {
 
 	wp_enqueue_style( 'parent-style', get_template_directory_uri() . '/style.css' );
 
-	// Archivo is a variable font with a width axis; the design uses font-stretch 112–118%,
-	// so it is loaded from the CSS2 API (Elementor's own Google Fonts loader omits the axis).
+	// Brand fonts (brand kit Typography Spec): Source Serif 4 for headings, Roboto for UI/body.
 	wp_enqueue_style(
 		'ch-fonts',
-		'https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap',
+		'https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap',
 		array(),
 		null
 	);

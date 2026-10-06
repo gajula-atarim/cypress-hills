@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#F4F2EC;color:#0F1130;font-family:'Roboto',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#55B847;text-underline-offset:3px}
+a:hover{color:#8FD67F}
+input,textarea{font-family:inherit}
+@keyframes chspin{to{transform:rotate(360deg)}}
+@keyframes chmarqR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes chdraw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+@keyframes chbob{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-6px) rotate(-1.5deg)}}
+@keyframes chring{from{stroke-dashoffset:176}to{stroke-dashoffset:0}}
+@keyframes chbar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes chmarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+</helmet>
+
+<header data-screen-label="Hero" style="background:#F4F2EC;position:relative">
+  <dc-import name="SiteNav" active="home" hint-size="100%,98px"></dc-import>
+  <div style="position:relative;height:clamp(480px,min(42vw,calc(100vh - 170px)),720px);overflow:hidden;border-bottom-right-radius:clamp(110px,14vw,230px);background:#0F1130">
+    <sc-for list="{{ slides }}" as="sl" hint-placeholder-count="1">
+      <div style="position:absolute;inset:0;z-index:{{ sl.z }};clip-path:{{ sl.clip }};transition:{{ sl.tClip }};pointer-events:{{ sl.pe }}">
+        <div style="position:absolute;inset:0;transform:scale({{ sl.scale }});transition:{{ sl.tScale }}"><image-slot id="{{ sl.id }}" shape="rect" src="{{ sl.src }}" placeholder="Full-width project photo"></image-slot></div>
+      </div>
+    </sc-for>
+    <div style="position:absolute;left:0;right:0;top:0;height:160px;background:linear-gradient(180deg,rgba(15,17,48,.55),rgba(15,17,48,0));z-index:5;pointer-events:none"></div>
+    <div style="position:absolute;top:0;bottom:0;left:0;width:clamp(300px,32%,480px);background:#262A78;color:#FFFFFF;z-index:10;transform:translateX({{ panelX }});transition:{{ panelT }};display:grid;align-items:center">
+      <sc-for list="{{ slides }}" as="sl" hint-placeholder-count="1">
+        <div style="grid-area:1/1;padding:150px clamp(24px,4vw,72px) 56px;display:flex;flex-direction:column;align-items:flex-start;gap:26px;pointer-events:{{ sl.tpe }}">
+          <div style="font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F;opacity:{{ sl.op }};transform:translateY({{ sl.ty }});transition:{{ sl.t1 }}">{{ sl.kicker }}</div>
+          <div style="clip-path:{{ sl.textClip }};transition:{{ sl.t2 }}">
+            <h1 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;font-size:clamp(32px,3.6vw,54px);line-height:1.1;letter-spacing:-.01em;text-wrap:balance">{{ sl.title }}</h1>
+          </div>
+          <a href="{{ sl.href }}" style="color:#FFFFFF;text-decoration:none;font-size:14px;line-height:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:15px 26px;border:2px solid #FFFFFF;border-radius:999px;opacity:{{ sl.op }};transform:translateY({{ sl.ty }});transition:{{ sl.t3 }}" style-hover="background:#55B847;border-color:#55B847;color:#0F1130">{{ sl.cta }}</a>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+  <div style="padding:22px clamp(24px,4.5vw,72px) 28px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <div style="display:flex;align-items:center;gap:14px;font-size:15px;font-weight:800;font-variant-numeric:tabular-nums">
+      <span style="color:#0F1130">{{ curNum }}</span>
+      <div style="width:110px;height:2px;background:#C8C4B8;overflow:hidden">{{ bar }}</div>
+      <span style="color:#A8A498">{{ totalNum }}</span>
+    </div>
+    <div style="display:flex;gap:12px">
+      <button onClick="{{ prev }}" aria-label="Previous" style="width:58px;height:58px;border-radius:50%;border:1px solid #DAD6CC;background:#FFFFFF;color:#2F7A28;font-size:24px;font-weight:700;cursor:pointer" style-hover="border-color:#262A78">‹</button>
+      <button onClick="{{ next }}" aria-label="Next" style="position:relative;width:58px;height:58px;border-radius:50%;border:1px solid #DAD6CC;background:#FFFFFF;color:#2F7A28;font-size:24px;font-weight:700;cursor:pointer" style-hover="border-color:#262A78">›{{ ring }}</button>
+    </div>
+  </div>
+</header>
+
+<section ref="{{ stmtRef }}" data-screen-label="About" style="background:#FFFFFF;overflow:hidden">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;flex-wrap:wrap;gap:64px clamp(40px,6vw,110px);align-items:center">
+    <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:26px">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>In Business Since 1994</div>
+      <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#262A78;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Landscaping in Toronto and <span style="color:#55B847">Surrounding Areas</span></h2>
+      <div style="font-size:clamp(20px,1.6vw,24px);font-weight:700;color:#0F1130;line-height:1.3">Transform Your Outdoor Space with Landscape Design</div>
+      <p style="margin:0;color:#45475A;max-width:52ch;font-size:16px;line-height:26px;text-wrap:pretty">Cypress Hills Landscaping Inc. has been your trusted source for residential and commercial landscape design in Toronto and the surrounding area since 1994. We've been serving our customers with custom landscaping solutions that ensure your property stays beautiful for years to come.</p>
+      <a href="#book" style="align-self:flex-start;display:inline-flex;align-items:center;gap:14px;color:#FFFFFF;background:#262A78;text-decoration:none;font-size:14px;line-height:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 8px 8px 26px;border-radius:999px" style-hover="background:#1C1F5C;color:#FFFFFF">Make your landscaping dreams a reality<span style="width:42px;height:42px;border-radius:50%;background:#55B847;color:#0F1130;display:flex;align-items:center;justify-content:center;font-size:18px">→</span></a>
+    </div>
+    <div style="flex:1 1 440px;min-width:0;position:relative;aspect-ratio:1/0.95;max-width:640px">
+      <div style="position:absolute;left:0;top:0;width:72%;height:78%;overflow:hidden;border-bottom-right-radius:clamp(90px,10vw,150px)"><image-slot id="v2home-col-1" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/6b71663b-b520-44a7-94bb-a5c470c68ce1.jpg" placeholder="Project photo"></image-slot></div>
+      <div style="position:absolute;right:0;bottom:0;width:52%;height:54%;overflow:hidden;border-top-left-radius:clamp(70px,8vw,120px);outline:10px solid #FFFFFF"><image-slot id="v2home-col-2" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/3ba47ee2-7f56-4aaf-9d34-bd3844bda08e.jpg" placeholder="Detail photo"></image-slot></div>
+      <div style="position:absolute;right:4%;top:6%;width:clamp(120px,13vw,170px);aspect-ratio:1">{{ badge }}</div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="What We Do" style="background:#262A78;color:#FFFFFF;overflow:hidden">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,140px);padding-bottom:56px;display:flex;justify-content:space-between;align-items:flex-end;gap:32px;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Creative Outdoor Services</div>
+      <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">What We Do</h2>
+    </div>
+    <p style="margin:0;color:#D9DBF0;max-width:52ch;font-size:16px;line-height:26px;text-wrap:pretty">Our services include landscape design, pools &amp; water features, spas, custom cabanas, outdoor kitchens, pergolas, stonework, woodwork, fireplaces, and outdoor lighting. We specialize in outdoor spaces that are perfect for relaxing or entertaining with family and friends.</p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px;padding-bottom:clamp(96px,10vw,140px)">{{ svcMarquee }}</div>
+</section>
+
+<section data-screen-label="Custom design" style="background:#F4F2EC">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;flex-direction:column;gap:48px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:28px 96px;align-items:end">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>From vision to reality</div>
+        <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#262A78;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Custom Landscape Design Tailored to Your Unique Vision</h2>
+      </div>
+      <p style="margin:0;color:#45475A;font-size:16px;line-height:26px;text-wrap:pretty">At Cypress Hills Landscaping Inc., we understand that your outdoor space is an extension of your home and personal style. That's why we offer custom landscape design to bring your vision to life. Our experienced designers will work closely with you to create a stunning outdoor oasis that perfectly reflects your preferences and complements your property's features. We'll transform your backyard into a tranquil retreat that you'll love spending time in.</p>
+    </div>
+    <div ref="{{ cmpRef }}" onPointerDown="{{ cmpDown }}" style="position:relative;aspect-ratio:16/9;max-height:78vh;width:100%;overflow:hidden;border-bottom-right-radius:clamp(110px,13vw,220px);background:#E2DFD6;cursor:ew-resize;touch-action:pan-y;user-select:none">
+      <div style="position:absolute;inset:0;pointer-events:none"><image-slot id="v2home-vision-sketch" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/d29796c7-7bdc-420d-98be-42877f39f314.jpg" placeholder="Design sketch"></image-slot></div>
+      <div data-k="after" style="position:absolute;inset:0;clip-path:inset(0 0 0 50%);pointer-events:none"><image-slot id="v2home-vision-photo" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/8c87c463-0e87-4f1f-8397-fec0efcba075.jpg" placeholder="Finished photo"></image-slot></div>
+      <div style="position:absolute;left:24px;top:24px;background:#FFFFFF;color:#262A78;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:10px 16px;border-radius:999px;pointer-events:none">The sketch</div>
+      <div style="position:absolute;right:24px;top:24px;background:#55B847;color:#0F1130;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;padding:10px 16px;border-radius:999px;pointer-events:none">The finished yard</div>
+      <div data-k="handle" style="position:absolute;top:0;bottom:0;left:50%;width:0;pointer-events:none">
+        <div style="position:absolute;top:0;bottom:0;left:-1.5px;width:3px;background:#FFFFFF;box-shadow:0 0 12px rgba(15,17,48,.35)"></div>
+        <div style="position:absolute;top:50%;left:-34px;margin-top:-34px;width:68px;height:68px;border-radius:50%;background:#FFFFFF;box-shadow:0 10px 30px rgba(15,17,48,.3);display:flex;align-items:center;justify-content:center;color:#262A78;font-size:20px;font-weight:800">‹ ›</div>
+      </div>
+    </div>
+    <div style="font-size:14px;color:#6B6E85;text-align:center">Drag to compare the design sketch with the finished yard</div>
+  </div>
+</section>
+
+<section data-screen-label="Services" style="background:#F4F2EC">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;flex-direction:column;gap:56px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>What we build</div>
+        <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#262A78;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Six crafts.<br>One crew.</h2>
+      </div>
+      <p style="margin:0;color:#45475A;max-width:38ch;font-size:16px;line-height:26px;text-wrap:pretty">Every one is designed and built in-house by our own crew.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ svcCols }};gap:40px clamp(32px,4vw,64px);align-items:stretch">
+      <div style="position:relative;width:100%;height:100%;min-height:{{ svcImgMin }};overflow:hidden;border-bottom-right-radius:clamp(100px,11vw,180px);background:#0F1130">
+        <sc-for list="{{ svcList }}" as="s" hint-placeholder-count="1">
+          <div style="position:absolute;inset:0;opacity:{{ s.op }};transform:scale({{ s.sc }});transition:opacity .6s ease, transform 1.2s cubic-bezier(.2,.7,.2,1)"><image-slot id="{{ s.id }}" shape="rect" src="{{ s.src }}" placeholder="{{ s.name }}"></image-slot></div>
+        </sc-for>
+        <div style="position:absolute;left:24px;bottom:24px;background:#55B847;color:#0F1130;font-size:13px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding:10px 16px;border-radius:999px;pointer-events:none">{{ svcActiveName }}</div>
+      </div>
+      <div style="min-width:0;display:flex;flex-direction:column;border-top:1px solid #C8C4B8">
+        <sc-for list="{{ svcList }}" as="s" hint-placeholder-count="6">
+          <a href="{{ s.href }}" style="display:grid;grid-template-columns:52px minmax(0,1fr) 56px;gap:16px;align-items:center;padding:28px 0;border-bottom:1px solid #C8C4B8;text-decoration:none;color:#0F1130" style-hover="color:#0F1130">
+            <span style="font-size:14px;font-weight:800;color:{{ s.numC }};font-variant-numeric:tabular-nums;transition:color .3s">{{ s.n }}</span>
+            <span style="display:flex;flex-direction:column;gap:8px;transform:translateX({{ s.tx }});transition:transform .4s cubic-bezier(.2,.7,.2,1)">
+              <span style="font-family:'Source Serif 4',serif;font-size:clamp(26px,2.3vw,37px);line-height:1;font-weight:700;letter-spacing:-.015em;color:{{ s.nameC }};transition:color .3s">{{ s.name }}</span>
+              <span style="font-size:15px;line-height:1.5;color:#45475A;max-height:{{ s.descH }};opacity:{{ s.descOp }};overflow:hidden;transition:max-height .4s ease, opacity .4s ease">{{ s.desc }}</span>
+            </span>
+            <span style="width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;background:{{ s.arrBg }};color:{{ s.arrC }};border:1px solid {{ s.arrB }};transition:all .3s">↗</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" data-screen-label="Work" style="background:#FFFFFF">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:40px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Recent work</div>
+      <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#262A78;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;white-space:nowrap">Built across <span style="color:#55B847">Ontario.</span></h2>
+    </div>
+    <a href="Projects.dc.html" style="display:inline-flex;align-items:center;gap:14px;color:#FFFFFF;background:#262A78;text-decoration:none;font-size:14px;line-height:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 8px 8px 26px;border-radius:999px" style-hover="background:#1C1F5C;color:#FFFFFF">All projects<span style="width:42px;height:42px;border-radius:50%;background:#55B847;color:#0F1130;display:flex;align-items:center;justify-content:center;font-size:18px">→</span></a>
+  </div>
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-bottom:clamp(96px,10vw,150px);display:flex;flex-direction:{{ wkDir }};gap:16px;height:{{ wkH }}">
+    <sc-for list="{{ stack }}" as="p" hint-placeholder-count="4">
+      <a href="Projects.dc.html" onMouseEnter="{{ p.pick }}" onFocus="{{ p.pick }}" style="position:relative;display:block;flex:{{ p.flex }};min-width:0;min-height:{{ p.minH }};overflow:hidden;border-radius:{{ p.rad }};background:#0F1130;text-decoration:none;color:#FFFFFF;transition:flex .8s cubic-bezier(.65,0,.25,1), border-radius .8s ease">
+        <div style="position:absolute;inset:0;transform:scale({{ p.sc }});transition:transform 1.2s ease"><image-slot id="{{ p.id }}" shape="rect" src="{{ p.src }}" placeholder="Project photo"></image-slot></div>
+        <div style="position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,17,48,.9) 0%,rgba(15,17,48,.35) 45%,rgba(15,17,48,.1) 100%);pointer-events:none"></div>
+        <div style="position:absolute;left:0;right:0;top:0;padding:24px;display:flex;align-items:center;gap:12px;font-size:14px;font-weight:700;pointer-events:none"><span style="width:40px;height:40px;border-radius:50%;background:{{ p.nBg }};color:{{ p.nC }};display:flex;align-items:center;justify-content:center;transition:background .4s">{{ p.n }}</span></div>
+        <div style="position:absolute;left:24px;bottom:28px;writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Source Serif 4',serif;font-size:22px;font-weight:700;white-space:nowrap;opacity:{{ p.vOp }};transition:opacity .4s;pointer-events:none">{{ p.title }}</div>
+        <div style="position:absolute;left:0;right:0;bottom:0;padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:14px;max-width:560px;opacity:{{ p.op }};transform:translateY({{ p.ty }});transition:opacity .5s ease {{ p.dl }}, transform .6s ease {{ p.dl }};pointer-events:none">
+          <div style="font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F">{{ p.cat }} · {{ p.town }}</div>
+          <div style="font-family:'Source Serif 4',serif;font-size:clamp(24px,2.4vw,36px);line-height:1.1;font-weight:700;text-wrap:balance">{{ p.title }}</div>
+          <div style="font-size:16px;line-height:26px;color:#E4E5F2;max-width:40ch;text-wrap:pretty">{{ p.desc }}</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <sc-for list="{{ p.tags }}" as="t" hint-placeholder-count="3"><span style="font-size:13px;font-weight:600;padding:7px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.35);background:rgba(15,17,48,.35)">{{ t }}</span></sc-for>
+          </div>
+        </div>
+        <div style="position:absolute;left:0;bottom:0;height:3px;background:#55B847;width:{{ p.barW }};transition:width {{ p.barT }} linear"></div>
+      </a>
+    </sc-for>
+  </div>
+</section>
+
+<section ref="{{ procRef }}" data-screen-label="Process" style="background:#262A78;color:#FFFFFF;position:relative;overflow:hidden">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;flex-direction:column;gap:64px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>How a project runs</div>
+        <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">From an idea<br>to your <span style="color:#55B847">keys.</span></h2>
+      </div>
+      <p style="margin:0;color:#C9CBE0;max-width:40ch;font-size:16px;line-height:26px;text-wrap:pretty">One project lead walks with you from the first site visit to the day we hand it over.</p>
+    </div>
+    <div style="position:relative">
+      <div style="position:relative;display:grid;grid-template-columns:{{ procCols }};gap:56px clamp(32px,4vw,64px)">
+        <sc-for list="{{ procSteps }}" as="s" hint-placeholder-count="4">
+          <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;padding-bottom:0;transform:translateY({{ s.ty }});transition:transform .9s cubic-bezier(.45,0,.2,1)">
+            <div style="position:relative;width:210px;max-width:100%;aspect-ratio:1;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:{{ s.shadow }};transition:box-shadow .8s ease">
+              {{ s.ringEl }}
+              {{ s.art }}
+              <div style="position:absolute;left:50%;bottom:-23px;transform:translateX(-50%);width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;background:{{ s.bg }};color:{{ s.fg }};border:3px solid #262A78;transition:background-color .7s ease, color .7s ease">{{ s.n }}</div>
+            </div>
+            <div style="font-family:'Source Serif 4',serif;margin-top:22px;font-size:clamp(22px,2vw,28px);font-weight:700;color:{{ s.tC }};transition:color .8s ease;text-wrap:balance">{{ s.title }}</div>
+            <div style="font-size:15px;line-height:1.55;color:#E4E5F2;max-width:28ch;opacity:{{ s.dOp }};transition:opacity .8s ease">{{ s.desc }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Awards" style="background:#FFFFFF">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(72px,8vw,110px) clamp(24px,4.5vw,72px);display:grid;grid-template-columns:minmax(0,auto) minmax(0,1fr);align-items:center;gap:32px clamp(32px,5vw,80px)">
+    <div style="display:flex;flex-direction:column;gap:18px;min-width:0">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Recognition</div>
+      <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#262A78;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Awards Of Excellence</h2>
+    </div>
+    <div style="justify-self:end;width:100%;max-width:620px;min-width:0;">
+      <img src="assets/award-plaque.png" alt="50 Years Awards of Excellence, 1973–2023" style="display:block;width:100%;height:auto;filter:drop-shadow(0 18px 30px rgba(15,17,48,.18))">
+    </div>
+  </div>
+</section>
+
+<section id="book" data-screen-label="Contact" style="position:relative;overflow:hidden;background:#0F1130;color:#FFFFFF">
+  <div style="position:absolute;inset:0"><image-slot id="v2home-cta" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/e2ed4fb5-6ace-4fbf-beed-eeaee18f7f69.jpg" placeholder="Background photo"></image-slot></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,17,48,.94) 0%,rgba(15,17,48,.82) 50%,rgba(15,17,48,.6) 100%);pointer-events:none"></div>
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);position:relative;padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,400px),1fr));gap:56px clamp(40px,6vw,96px);align-items:start;pointer-events:none">
+    <div style="display:flex;flex-direction:column;gap:28px;pointer-events:auto">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Work with Us</div>
+      <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Let's walk<br>your <span style="color:#55B847">yard.</span></h2>
+      <p style="margin:0;color:#E4E5F2;max-width:44ch;font-size:16px;line-height:26px;text-wrap:pretty">Create a serene and beautiful oasis right in your backyard. Get in touch with our experienced professionals today so we can begin creating your perfect outdoor retreat.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;border-top:1px solid rgba(255,255,255,.2);padding-top:28px">
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F;font-weight:800">Phone</div>
+          <a href="tel:+19058664111" style="font-family:'Source Serif 4',serif;color:#FFFFFF;font-size:28px;font-weight:700;text-decoration:none" style-hover="color:#55B847">(905) 866-4111</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px">
+          <div style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F;font-weight:800">Hours of Operation</div>
+          <div style="font-size:17px;line-height:1.5">Monday-Friday, 7 a.m.-5 p.m.</div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;grid-column:1/-1">
+          <div style="font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F;font-weight:800">Service Area</div>
+          <div style="font-size:16px;line-height:1.6;color:#E4E5F2">Caledon, Nobleton, King City, Vaughan, Kleinburg, Woodbridge, Muskoka, Collingwood, Toronto, and Surrounding Areas</div>
+        </div>
+      </div>
+    </div>
+    <div style="background:#FFFFFF;color:#0F1130;border-radius:0 0 72px 0;padding:clamp(28px,3vw,44px);pointer-events:auto">
+      <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+        <div style="min-height:340px;display:flex;flex-direction:column;justify-content:center;gap:16px">
+          <div style="width:56px;height:56px;border-radius:50%;background:#55B847;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:800">✓</div>
+          <div style="font-family:'Source Serif 4',serif;font-size:30px;font-weight:700;color:#262A78;text-wrap:balance">Thanks, we've got it.</div>
+          <div style="font-size:16px;line-height:1.6;color:#45475A">Our office will be in touch shortly.</div>
+          <button onClick="{{ reset }}" style="align-self:flex-start;font:inherit;font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:#262A78;background:none;border:none;border-bottom:2px solid #55B847;padding:0 0 4px;cursor:pointer">Send another</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+        <form onSubmit="{{ submit }}" style="display:flex;flex-direction:column;gap:14px">
+          <div style="font-family:'Source Serif 4',serif;font-size:30px;font-weight:700;color:#262A78;padding-bottom:6px;text-wrap:balance">Contact Us</div>
+          <sc-for list="{{ fields }}" as="fd" hint-placeholder-count="4">
+            <input type="{{ fd.type }}" placeholder="{{ fd.label }}" required="{{ fd.req }}" style="font-size:16px;padding:16px 18px;border:1px solid #D9D5CA;border-radius:4px;background:#FBFAF7;color:#0F1130;outline:none" style-focus="border-color:#262A78;background:#FFFFFF">
+          </sc-for>
+          <button type="submit" style="font:inherit;margin-top:6px;background:#55B847;color:#0F1130;border:none;padding:18px;border-radius:999px;font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase;cursor:pointer" style-hover="background:#4AA63D">Send message</button>
+        </form>
+      </sc-if>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,380px" style="display:block;width:100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;seconds&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;min&quot;:3,&quot;max&quot;:10,&quot;step&quot;:1,&quot;unit&quot;:&quot;s&quot;,&quot;default&quot;:5,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Hero&quot;,&quot;label&quot;:&quot;Text panel hold time&quot;}}">
+class Component extends DCLogic {
+  state = { sent: false, picks: [], slide: 0, prev: -1, cycle: 0, ready: false, panel: false, statP: 0, svc: 0, stmtP: 0, procP: 0, stage: -1, vw: typeof window !== 'undefined' ? window.innerWidth : 1400, vh: typeof window !== 'undefined' ? window.innerHeight : 900 };
+  statsRef = React.createRef();
+  stmtRef = React.createRef();
+  procRef = React.createRef();
+  journeyRef = React.createRef();
+  cmpRef = React.createRef();
+  setCmp(p) { const el = this.cmpRef.current; if (!el) return; p = Math.max(2, Math.min(98, p)); el.querySelector('[data-k="after"]').style.clipPath = 'inset(0 0 0 ' + p + '%)'; el.querySelector('[data-k="handle"]').style.left = p + '%'; }
+  cmpSweep() { const t0 = performance.now(); const go = now => { if (this.cmpUser) return; const t = (now - t0) / 1000; this.setCmp(50 + Math.sin(t * .9) * 28); this.cmpRaf = requestAnimationFrame(go); }; this.cmpRaf = requestAnimationFrame(go); }
+  startJourney() {
+    const root = this.journeyRef.current; if (!root) return;
+    const sect = root.parentElement;
+    const L = 18, q = k => root.querySelector('[data-k="' + k + '"]'), qa = k => [...root.querySelectorAll('[data-k="' + k + '"]')];
+    const cl = v => v < 0 ? 0 : v > 1 ? 1 : v, seg = (t, a, b) => cl((t - a) / (b - a));
+    const io = p => p < .5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2, oo = p => 1 - Math.pow(1 - p, 3);
+    const back = p => { const c1 = 1.6, c3 = c1 + 1; return 1 + c3 * Math.pow(p - 1, 3) + c1 * Math.pow(p - 1, 2); };
+    const draws = [...root.querySelectorAll('[data-draw]')].map(el => { const len = el.getTotalLength(); if (!el.getAttribute('stroke-dasharray') || el.dataset.pen !== '1' || el.getAttribute('stroke-dasharray').indexOf(' ') < 0) { el.style.strokeDasharray = len; } return { el, len, a: +el.dataset.a, b: +el.dataset.b, pen: el.dataset.pen === '1', dashed: (el.getAttribute('stroke-dasharray') || '').indexOf(' ') > 0 }; });
+    const E = { all: q('all'), grid: q('grid'), sketch: q('sketch'), labels: q('labels'), pencil: q('pencil'), found: q('found'), walls: q('walls'), roof: q('roofg'), open: q('openings'), wglow: q('wglow'), water: q('water'), coping: q('coping'), lamp: q('lamp'), lampglow: q('lampglow'), grass: q('grass'), dog: q('dog'), tail: q('tail'), head: q('head'), legs: [q('leg1'), q('leg2'), q('leg3'), q('leg4')], hL: q('handL'), hR: q('handR'), spark: q('spark'), welcome: q('welcome'), sun: q('sun'), sunglow: q('sunglow'), bar: sect.querySelector('[data-k="jbar"]'), turb: root.querySelector('feTurbulence') };
+    const blks = qa('blk').map(el => ({ el, a: +el.dataset.a }));
+    let t0 = performance.now(), lastSeed = -1, running = false, offset = 0;
+    const frame = now => {
+      const t = ((now - t0) / 1000) % L;
+      for (const d of draws) { const p = io(seg(t, d.a, d.b)); if (d.dashed) { d.el.style.opacity = p > 0 ? Math.min(1, p * 3) : 0; } else d.el.style.strokeDashoffset = d.len * (1 - p); }
+      let pen = null; for (const d of draws) { if (d.pen && !d.dashed && t > d.a && t < d.b) { pen = d; break; } }
+      if (pen) { const pt = pen.el.getPointAtLength(pen.len * io(seg(t, pen.a, pen.b))); E.pencil.setAttribute('cx', pt.x); E.pencil.setAttribute('cy', pt.y); E.pencil.setAttribute('opacity', 1); } else E.pencil.setAttribute('opacity', 0);
+      const walk = t > .3 && t < 4.2, dx = -80 + 380 * oo(seg(t, .3, 4.2));
+      E.dog.setAttribute('transform', 'translate(' + dx.toFixed(1) + ',' + (430 - (walk ? Math.abs(Math.sin(t * 11)) * 2.5 : 0)).toFixed(1) + ')');
+      const sw = walk ? Math.sin(t * 11) * 24 : 0, piv = [[-18, -26], [-12, -26], [14, -26], [20, -26]], sg = [1, -1, -1, 1];
+      E.legs.forEach((l, i) => l.setAttribute('transform', 'rotate(' + (sw * sg[i]).toFixed(1) + ' ' + piv[i][0] + ' ' + piv[i][1] + ')'));
+      const wag = t > 13.5 ? Math.sin(t * 18) * 22 : Math.sin(t * 5) * 8;
+      E.tail.setAttribute('transform', 'rotate(' + wag.toFixed(1) + ' -27 -34)');
+      const look = t > 4.5 && t < 13.5 ? -6 : t >= 13.5 ? -12 : 0;
+      E.head.setAttribute('transform', 'rotate(' + look + ' 24 -40)');
+      E.grid.setAttribute('opacity', (seg(t, 4.4, 5.2) * (1 - seg(t, 11, 12.6))).toFixed(3));
+      E.sketch.setAttribute('opacity', (1 - .8 * seg(t, 9.6, 12.4)).toFixed(3));
+      E.labels.setAttribute('opacity', (seg(t, 8.2, 8.9) * (1 - seg(t, 10.2, 11))).toFixed(3));
+      E.found.setAttribute('width', (320 * io(seg(t, 9, 9.6))).toFixed(1));
+      const wh = 130 * io(seg(t, 9.5, 10.6)); E.walls.setAttribute('height', wh.toFixed(1)); E.walls.setAttribute('y', (430 - wh).toFixed(1));
+      blks.forEach(b => { const p = seg(t, b.a, b.a + .45); b.el.setAttribute('transform', 'translate(0,' + ((1 - back(p)) * -46).toFixed(1) + ')'); b.el.setAttribute('opacity', p > 0 ? 1 : 0); });
+      const rp = seg(t, 10.8, 11.5); E.roof.setAttribute('opacity', oo(rp).toFixed(3)); E.roof.setAttribute('transform', 'translate(0,' + ((1 - back(rp)) * -60).toFixed(1) + ')');
+      E.open.setAttribute('opacity', seg(t, 11.3, 11.9).toFixed(3));
+      const wl = 34 * io(seg(t, 11.6, 12.7)); E.water.setAttribute('height', wl.toFixed(1)); E.water.setAttribute('y', (470 - wl).toFixed(1));
+      E.coping.setAttribute('opacity', seg(t, 11.5, 11.8).toFixed(3));
+      E.lamp.setAttribute('opacity', seg(t, 12, 12.4).toFixed(3));
+      E.grass.setAttribute('opacity', seg(t, 12.3, 12.9).toFixed(3));
+      const dusk = seg(t, 13.5, 14.6);
+      E.sun.setAttribute('opacity', (dusk * .95).toFixed(3)); E.sunglow.setAttribute('opacity', (dusk * .5).toFixed(3));
+      E.wglow.setAttribute('opacity', seg(t, 13.8, 14.6).toFixed(3)); E.lampglow.setAttribute('opacity', (seg(t, 13.8, 14.6) * .8).toFixed(3));
+      const hp = io(seg(t, 14, 15.3)), shake = t > 15.3 && t < 16.5 ? Math.sin((t - 15.3) * 16) * 6 * (1 - seg(t, 15.3, 16.5)) : 0;
+      E.hL.setAttribute('transform', 'translate(' + (-460 * (1 - hp)).toFixed(1) + ',' + shake.toFixed(1) + ')');
+      E.hR.setAttribute('transform', 'translate(' + (460 * (1 - hp)).toFixed(1) + ',' + shake.toFixed(1) + ')');
+      const spk = seg(t, 15.4, 15.8) * (1 - seg(t, 16.8, 17.3)); E.spark.setAttribute('opacity', spk.toFixed(3));
+      E.welcome.setAttribute('opacity', seg(t, 15.7, 16.5).toFixed(3));
+      E.all.setAttribute('opacity', (seg(t, 0, .4) * (1 - seg(t, 17.3, 18))).toFixed(3));
+      const sd = Math.floor(now / 120) % 6 + 1; if (sd !== lastSeed) { E.turb.setAttribute('seed', sd); lastSeed = sd; }
+      if (E.bar) E.bar.style.width = (t / L * 100).toFixed(2) + '%';
+      const st = t < 4.5 ? 0 : t < 9 ? 1 : t < 13.5 ? 2 : 3; if (st !== this.state.jStage) this.setState({ jStage: st });
+      if (running) this.jraf = requestAnimationFrame(frame);
+    };
+    const start = () => { if (running) return; running = true; t0 = performance.now() - offset; this.jraf = requestAnimationFrame(frame); };
+    const stop = () => { if (!running) return; running = false; offset = (performance.now() - t0) % (L * 1000); cancelAnimationFrame(this.jraf); };
+    if ('IntersectionObserver' in window) { this.jio = new IntersectionObserver(es => es[0].isIntersecting ? start() : stop(), { threshold: .15 }); this.jio.observe(root); } else start();
+  }
+  rail = React.createRef();
+  IMG_ONLY = 2000;
+  get HOLD() { return (this.props.seconds ?? 5) * 1000; }
+  get N() { return 7; }
+  componentDidMount() {
+    this.r = setTimeout(() => this.setState({ ready: true }), 120); this.arm();
+    const el = this.statsRef.current;
+    const run = () => { const t0 = performance.now(); const step = t => { const p = Math.min(1, (t - t0) / 1600); this.setState({ statP: 1 - Math.pow(1 - p, 3) }); if (p < 1) this.raf = requestAnimationFrame(step); }; this.raf = requestAnimationFrame(step); };
+    this.onScroll = () => { if (this.sr) return; this.sr = requestAnimationFrame(() => { this.sr = 0; const vh = window.innerHeight, c = v => Math.max(0, Math.min(1, v));
+      const s = this.stmtRef.current, p = this.procRef.current; const next = {};
+      if (s) { const r = s.getBoundingClientRect(); next.stmtP = c((vh * .85 - r.top) / (r.height * .75)); }
+      if (p) { const r = p.getBoundingClientRect(); next.procP = c((vh * .8 - r.top) / (vh * 1.2)); }
+      this.setState(next); }); };
+    window.addEventListener('scroll', this.onScroll, { passive: true }); this.onScroll();
+    this.cmpSweep();
+    this.wkGo = i => { clearTimeout(this.wkT); this.setState({ wk: i, wkRun: false }, () => requestAnimationFrame(() => requestAnimationFrame(() => { this.setState({ wkRun: true }); this.wkT = setTimeout(() => this.wkGo((i + 1) % 4), 6000); }))); };
+    this.wkGo(0);
+    this.svT = setInterval(() => this.setState(s => ({ svc: (s.svc + 1) % 6, svcN: (s.svcN || 0) + 1 })), 3800);
+    this.onRz = () => this.setState({ vw: window.innerWidth, vh: window.innerHeight }); window.addEventListener('resize', this.onRz);
+    const play = () => { if (this.st) return; let k = -1; const tick = () => { k = k >= 12 ? -1 : k + 1; this.setState(s => ({ stage: k, loop: k === -1 ? (s.loop || 0) + 1 : (s.loop || 0) })); this.st = setTimeout(tick, k === 12 ? 1800 : k === -1 ? 700 : 800); }; tick(); };
+    const pr = this.procRef.current;
+    if (pr && 'IntersectionObserver' in window) { this.io2 = new IntersectionObserver(es => { if (es[0].isIntersecting) { play(); this.io2.disconnect(); } }, { threshold: .3 }); this.io2.observe(pr); } else play();
+    if (el && 'IntersectionObserver' in window) { this.io = new IntersectionObserver(es => { if (es[0].isIntersecting) { run(); this.io.disconnect(); } }, { threshold: .4 }); this.io.observe(el); } else run();
+  }
+  componentWillUnmount() { clearInterval(this.svT); clearTimeout(this.wkT); cancelAnimationFrame(this.cmpRaf); clearTimeout(this.t); clearTimeout(this.p); clearTimeout(this.r); cancelAnimationFrame(this.raf); window.removeEventListener('scroll', this.onScroll); window.removeEventListener('resize', this.onRz); clearTimeout(this.st); this.io2 && this.io2.disconnect(); this.io && this.io.disconnect(); }
+  arm() {
+    clearTimeout(this.t); clearTimeout(this.p);
+    this.p = setTimeout(() => this.setState({ panel: true }), this.IMG_ONLY);
+    this.t = setTimeout(() => this.go((this.state.slide + 1) % this.N), this.IMG_ONLY + this.HOLD);
+  }
+  go(i) { if (i === this.state.slide) return; this.setState(s => ({ prev: s.slide, slide: i, cycle: s.cycle + 1, panel: false }), () => this.arm()); }
+  renderVals() {
+    const S3 = 'https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/';
+    const img = { pool: S3 + '6b71663b-b520-44a7-94bb-a5c470c68ce1.jpg', stone: S3 + '3ba47ee2-7f56-4aaf-9d34-bd3844bda08e.jpg', green: S3 + '8f31a0ce-dd1b-43c0-a698-6acdfd047caa.jpg', kitchen: S3 + 'b77c3889-6717-4556-8bb0-b9d812545c75.jpg', aerial: S3 + 'a7606c2d-5fc9-4d4e-9486-757d5101e8ac.jpg' };
+    const opts = ['Pool', 'Stonework', 'Outdoor living', 'Putting green', 'Full backyard'];
+    const scrollBy = d => { const el = this.rail.current; if (el) el.scrollBy({ left: d * Math.min(580, el.clientWidth * .8), behavior: 'smooth' }); };
+    const IMG = { ...img, crew: S3 + 'e39ef06c-0b14-4e6f-88cc-7956c6082637.jpg', night: S3 + 'e2ed4fb5-6ace-4fbf-beed-eeaee18f7f69.jpg', course: S3 + '79017ad2-7cdf-45a0-9659-e4b04f8f0cd2.jpg', falls: S3 + 'e60daa01-e579-4885-b3b2-9a3ea46940b9.jpg' };
+    const SP = 'Service%20Page.dc.html?s=';
+    const heroData = [
+      { img: 'aerial', kicker: 'In Business Since 1994 | 35 Years of Industry Experience', title: 'Transforming Landscapes, One Project at a Time', cta: 'Creative Outdoor Services', href: SP + 'landscaping' },
+      { img: 'pool', kicker: 'Pools', title: 'The pool and the yard, built as one.', cta: 'Explore pools', href: SP + 'pools' },
+      { img: 'stone', kicker: 'Armour stone walls', title: 'Stone walls set by our own crew and machines.', cta: 'See stonework', href: SP + 'landscaping' },
+      { img: 'green', kicker: 'Backyard putting greens', title: 'Your own short game, steps from the house.', cta: 'See putting greens', href: SP + 'golf' },
+      { img: 'course', kicker: 'Golf course shaping', title: 'Greens and bunkers shaped for real courses.', cta: 'Golf & turf', href: SP + 'golf' },
+      { img: 'kitchen', kicker: 'Outdoor living', title: 'Kitchens, cabanas and fire for long evenings.', cta: 'See outdoor living', href: SP + 'landscaping' },
+      { img: 'night', kicker: 'Landscape lighting', title: 'A yard that works after dark.', cta: 'See lighting', href: SP + 'landscaping' }
+    ];
+    const cur = this.state.slide, prv = this.state.prev, N = heroData.length, TOTAL = this.IMG_ONLY + this.HOLD;
+    const ez = 'cubic-bezier(.77,0,.18,1)', panel = this.state.panel;
+    const slides = heroData.map((h, i) => {
+      const on = i === cur && this.state.ready, was = i === prv, txt = i === cur && panel;
+      return { ...h, id: 'v2home-hero-' + i, src: IMG[h.img],
+        z: on ? 3 : was ? 2 : 1, pe: on ? 'auto' : 'none', tpe: txt ? 'auto' : 'none',
+        clip: (on || was) ? 'inset(0 0 0 0)' : 'inset(0 100% 0 0)', tClip: on ? 'clip-path 1.2s ' + ez : 'none',
+        scale: on ? 1 : 1.1, tScale: on ? 'transform ' + (TOTAL + 1000) + 'ms linear' : 'none',
+        op: txt ? 1 : 0, ty: txt ? '0px' : '18px', textClip: txt ? 'inset(0 0 0 0)' : 'inset(0 0 100% 0)',
+        t1: txt ? 'opacity .5s ease .55s, transform .6s ease .55s' : 'opacity .2s ease, transform .2s ease',
+        t2: txt ? 'clip-path .9s ' + ez + ' .7s' : 'clip-path .2s ease',
+        t3: txt ? 'opacity .5s ease 1.2s, transform .6s ease 1.2s' : 'opacity .2s ease, transform .2s ease' };
+    });
+    const pad = n => String(n).padStart(2, '0');
+    return {
+      slides,
+      panelX: panel ? '0%' : '-101%',
+      panelT: panel ? 'transform .9s ' + ez : 'transform .5s ' + ez,
+      curNum: pad(cur + 1), totalNum: pad(N),
+      bar: React.createElement('div', { key: 'b' + this.state.cycle, style: { height: '100%', width: ((cur + 1) / N * 100) + '%', background: '#262A78', transition: 'width .6s ease' } }),
+      ring: React.createElement('svg', { key: 'r' + this.state.cycle, width: 64, height: 64, viewBox: '0 0 64 64', style: { position: 'absolute', left: -4, top: -4, transform: 'rotate(-90deg)', pointerEvents: 'none' } },
+        React.createElement('circle', { cx: 32, cy: 32, r: 28, fill: 'none', stroke: '#262A78', strokeWidth: 2, strokeDasharray: 176, style: { animation: 'chring ' + TOTAL + 'ms linear forwards' } })),
+      prev: () => this.go((cur - 1 + N) % N),
+      next: () => this.go((cur + 1) % N),
+      nav: [{ label: 'Pools', href: 'Service%20Page.dc.html?s=pools' }, { label: 'Landscaping', href: 'Service%20Page.dc.html?s=landscaping' }, { label: 'Golf & Turf', href: 'Service%20Page.dc.html?s=golf' }, { label: 'Projects', href: 'Projects.dc.html' }, { label: 'About', href: 'About.dc.html' }],
+      services: [
+        { id: 'v2home-c-pools', src: img.pool, name: 'Pools', desc: 'Fiberglass pools, spas and water features, landscaped by the same crew.', href: SP + 'pools' },
+        { id: 'v2home-c-stone', src: img.stone, name: 'Armour stone walls', desc: 'Retaining walls, steps and terraces set with our own machines.', href: SP + 'landscaping' },
+        { id: 'v2home-c-living', src: img.kitchen, name: 'Outdoor living', desc: 'Kitchens, cabanas, pergolas and fireplaces built around how you entertain.', href: SP + 'landscaping' },
+        { id: 'v2home-c-light', src: IMG.night, name: 'Landscape lighting', desc: 'Path, step, tree and pool lighting planned with the layout.', href: SP + 'landscaping' },
+        { id: 'v2home-c-green', src: img.green, name: 'Backyard putting greens', desc: 'Contoured greens with fringe, cups and bunkers.', href: SP + 'golf' },
+        { id: 'v2home-c-golf', src: IMG.course, name: 'Golf course shaping', desc: 'Greens, tees and bunker complexes for golf courses.', href: SP + 'golf' }
+      ],
+      cmpRef: this.cmpRef,
+      cmpDown: e => { this.cmpUser = true; cancelAnimationFrame(this.cmpRaf); const el = this.cmpRef.current; const r = el.getBoundingClientRect(); const mv = ev => this.setCmp((ev.clientX - r.left) / r.width * 100); mv(e); const up = () => { window.removeEventListener('pointermove', mv); window.removeEventListener('pointerup', up); }; window.addEventListener('pointermove', mv); window.addEventListener('pointerup', up); },
+      allServices: ['Landscape design', 'Pools & water features', 'Spas', 'Custom cabanas', 'Outdoor kitchens', 'Pergolas', 'Stonework', 'Woodwork', 'Fireplaces', 'Outdoor lighting'],
+      awards: ['v2home-award-1', 'v2home-award-2', 'v2home-award-3', 'v2home-award-4'],
+      statsRef: this.statsRef, stmtRef: this.stmtRef, procRef: this.procRef,
+      words: (() => { const txt = 'In business since 1994, with 35 years of industry experience, we have designed and built pools, stonework, putting greens and outdoor living for homes across Ontario. One crew, one plan, start to finish.'.split(' '); const hi = new Set(['pools,', 'stonework,', 'putting', 'greens', 'outdoor', 'living']); const n = txt.length, P = this.state.stmtP * n * 1.15; return txt.map((t, i) => ({ t, op: (0.14 + 0.86 * Math.max(0, Math.min(1, P - i))).toFixed(2), c: hi.has(t) ? '#2F7A28' : '#262A78' })); })(),
+      svcList: (() => { const L = [
+          { src: img.pool, name: 'Pools', desc: 'Fiberglass pools, spas and water features, landscaped by the same crew.', href: SP + 'pools' },
+          { src: img.stone, name: 'Armour stone walls', desc: 'Retaining walls, steps and terraces set with our own machines.', href: SP + 'landscaping' },
+          { src: img.kitchen, name: 'Outdoor living', desc: 'Kitchens, cabanas, pergolas and fireplaces built around how you entertain.', href: SP + 'landscaping' },
+          { src: IMG.night, name: 'Landscape lighting', desc: 'Path, step, tree and pool lighting planned with the layout.', href: SP + 'landscaping' },
+          { src: img.green, name: 'Putting greens', desc: 'Contoured backyard greens with fringe, cups and bunkers.', href: SP + 'golf' },
+          { src: IMG.course, name: 'Golf course shaping', desc: 'Greens, tees and bunker complexes for golf courses.', href: SP + 'golf' }];
+        return L.map((s, i) => { const on = i === this.state.svc; return { ...s, id: 'v2home-svc-' + i, n: '0' + (i + 1), op: on ? 1 : 0, sc: on ? 1 : 1.08, tx: on ? '12px' : '0px', nameC: on ? '#262A78' : '#0F1130', numC: on ? '#2F7A28' : '#A8A498', descH: on ? '60px' : '0px', descOp: on ? 1 : 0, arrBg: on ? '#55B847' : 'transparent', arrC: on ? '#0F1130' : '#262A78', arrB: on ? '#55B847' : '#C8C4B8', hover: null, prog: on ? React.createElement('span', { key: 'sp' + (this.state.svcN || 0), style: { display: 'block', height: '100%', background: '#55B847', transformOrigin: 'left', animation: 'chbar 3800ms linear forwards' } }) : null }; }); })(),
+      svcActiveName: ['Pools', 'Armour stone', 'Outdoor living', 'Lighting', 'Putting greens', 'Golf shaping'][this.state.svc],
+      stack: (() => { const L = [
+          { src: img.pool, cat: 'Pools', town: 'King City', title: 'Pool, cabana & terrace', desc: 'A fiberglass pool set into a sloped lot with armour stone terracing and lighting.', tags: ['Fiberglass pool', 'Armour stone', 'Cabana'] },
+          { src: img.stone, cat: 'Stonework', town: 'Caledon', title: 'Hillside retaining walls', desc: 'Three tiers of armour stone turning a steep grade into usable lawn.', tags: ['Armour stone', 'Grading', 'Planting'] },
+          { src: img.green, cat: 'Golf & turf', town: 'Kleinburg', title: 'Backyard short game', desc: 'A contoured putting green with fringe and bunker.', tags: ['Putting green', 'Shaping', 'Turf'] },
+          { src: img.aerial, cat: 'Full backyard', town: 'Vaughan', title: 'The whole estate', desc: 'Pool, terraces, lawn and green planned and built as one property.', tags: ['Pool', 'Stone', 'Green', 'Lighting'] }];
+        const mob = this.state.vw < 820, act = this.state.wk || 0; return L.map((p, i) => { const on = mob || i === act; return { ...p, id: 'v2home-stack-' + i, n: '0' + (i + 1), flex: mob ? '0 0 auto' : on ? '4 1 0%' : '1 1 0%', minH: mob ? '440px' : '0', rad: on && !mob ? '8px 8px 120px 8px' : '8px', sc: on ? 1 : 1.12, op: on ? 1 : 0, ty: on ? '0px' : '24px', dl: on ? '.35s' : '0s', vOp: on ? 0 : 1, nBg: on ? '#55B847' : 'rgba(255,255,255,.18)', nC: on ? '#0F1130' : '#FFFFFF', barW: !mob && on && this.state.wkRun ? '100%' : '0%', barT: !mob && on && this.state.wkRun ? '6s' : '0s', pick: () => { if (mob || i === this.state.wk) return; this.wkGo(i); } }; }); })(),
+      wkDir: this.state.vw < 820 ? 'column' : 'row', wkH: this.state.vw < 820 ? 'auto' : 'min(72vh,640px)',
+      svcCols: this.state.vw >= 820 ? 'minmax(0,1fr) minmax(0,1fr)' : 'minmax(0,1fr)',
+      svcImgMin: this.state.vw >= 820 ? '560px' : '420px',
+      svcPos: this.state.vw >= 820 ? 'sticky' : 'relative',
+      procCols: this.state.vw >= 760 ? 'repeat(4,minmax(0,1fr))' : this.state.vw >= 480 ? 'repeat(2,minmax(0,1fr))' : 'minmax(0,1fr)',
+      procLine: this.state.vw >= 760 ? 'block' : 'none',
+      procW: (() => { const g = this.state.stage; return g < 0 ? '0%' : g >= 12 ? '75%' : (Math.floor(g / 3) * 25) + '%'; })(),
+      procSteps: [
+        { n: '01', img: '3a95cf80-6eb0-412c-8a10-7a4d7dd828a6', title: 'Site walk', desc: 'We walk the property with you and listen to how you want to use it.' },
+        { n: '02', img: 'f1023ca8-3f28-4151-9bb7-78c9632e54a2', title: 'Design', desc: 'A drawn plan with materials and pricing, revised until it’s right.' },
+        { n: '03', img: '47905afa-a719-4571-8892-7caabdd348c3', title: 'Build', desc: 'Our own crews and machines build it piece by piece.' },
+        { n: '04', img: '2b23aed4-6e35-4fb2-9a86-0c73cf8f0b40', title: 'Handover', desc: 'A final walkthrough, a handshake, and the keys are yours.' }].map((s, i) => {
+          const g = this.state.stage, reached = g >= i * 3, tOn = g >= i * 3, dOn = g >= i * 3, cur = reached && g < i * 3 + 3;
+          const art = React.createElement('img', { key: 'art' + i, src: S3 + s.img + '.jpg', alt: s.title, style: { width: '78%', height: '78%', objectFit: 'contain', borderRadius: '50%', animation: 'chbob ' + (cur ? '1.4s' : '3.2s') + ' ease-in-out infinite', animationDelay: (i * -.6) + 's', filter: reached ? 'none' : 'grayscale(.7) opacity(.75)', transition: 'filter .8s ease' } });
+          const ringEl = React.createElement('svg', { key: 'ring' + i + '-' + (this.state.loop || 0) + (reached ? 'r' : 'n'), viewBox: '0 0 100 100', style: { position: 'absolute', inset: -14, width: 'calc(100% + 28px)', height: 'calc(100% + 28px)', transform: 'rotate(-90deg)', pointerEvents: 'none', overflow: 'visible' } },
+            React.createElement('circle', { cx: 50, cy: 50, r: 48, fill: 'none', stroke: 'rgba(255,255,255,.14)', strokeWidth: 1.6 }),
+            reached ? React.createElement('circle', { cx: 50, cy: 50, r: 48, fill: 'none', stroke: '#55B847', strokeWidth: 2.4, strokeLinecap: 'round', pathLength: 100, strokeDasharray: 100, style: { strokeDashoffset: 0, animation: 'chdraw 2400ms cubic-bezier(.45,0,.2,1) both' } }) : null);
+          return { ...s, art, ringEl, ty: cur ? '-12px' : '0px', ring: cur ? '#55B847' : 'transparent', shadow: cur ? '0 18px 40px rgba(15,17,48,.45)' : '0 6px 16px rgba(15,17,48,.25)', bg: reached ? '#55B847' : '#FFFFFF', fg: '#0F1130', tC: tOn ? '#FFFFFF' : '#8A8DB8', dOp: dOn ? 1 : .3 };
+        }),
+
+      stats: [{ to: 35, label: 'Years of industry experience' }, { to: 1, label: 'Crew from first sketch to handover' }, { to: 9, label: 'Towns served, Toronto to Muskoka' }].map((s, i) => ({ ...s, val: Math.round(s.to * this.state.statP), bl: i === 0 ? 'none' : '1px solid rgba(255,255,255,.18)', pl: i === 0 ? '0' : 'clamp(24px,3vw,48px)' })),
+      badge: this.badgeEl || (this.badgeEl = React.createElement('div', { style: { position: 'relative', width: '100%', height: '100%', borderRadius: '50%', background: '#55B847', boxShadow: '0 16px 40px rgba(15,17,48,.25)' } },
+        React.createElement('svg', { viewBox: '0 0 200 200', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', animation: 'chspin 18s linear infinite' } },
+          React.createElement('defs', null, React.createElement('path', { id: 'chBadgeP', d: 'M100 100 m-74 0 a74 74 0 1 1 148 0 a74 74 0 1 1 -148 0' })),
+          React.createElement('text', { fill: '#0F1130', style: { fontFamily: 'Roboto,sans-serif', fontSize: 15.5, fontWeight: 800, letterSpacing: '3px' } }, React.createElement('textPath', { href: '#chBadgeP' }, 'SINCE 1994 • 35 YEARS OF INDUSTRY EXPERIENCE • '))),
+        React.createElement('div', { style: { position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#0F1130', fontFamily: 'Roboto,sans-serif' } },
+          React.createElement('div', { style: { fontSize: 'clamp(30px,3.4vw,46px)', fontWeight: 700, fontStyle: 'normal', fontFamily: "'Source Serif 4',serif", lineHeight: .9 } }, '35'),
+          React.createElement('div', { style: { fontSize: 11, fontWeight: 800, letterSpacing: '.14em', textTransform: 'uppercase' } }, 'Years')))),
+      svcMarquee: this.mqEl || (this.mqEl = (() => { const pics = [img.aerial, IMG.falls, img.pool, img.kitchen, img.stone, IMG.crew, img.kitchen, img.green, IMG.night, IMG.night];
+        const names = ['Landscape design', 'Pools & water features', 'Spas', 'Custom cabanas', 'Stonework', 'Woodwork', 'Outdoor kitchens', 'Pergolas', 'Fireplaces', 'Outdoor lighting'];
+        const chip = (n, i, k) => React.createElement('div', { key: k + i, style: { flex: 'none', display: 'flex', alignItems: 'center', gap: 16, padding: '10px 28px 10px 10px', borderRadius: 999, background: k === 'a' ? '#FFFFFF' : 'rgba(255,255,255,.08)', border: k === 'a' ? 'none' : '1px solid rgba(255,255,255,.18)', color: k === 'a' ? '#262A78' : '#FFFFFF' } },
+          React.createElement('div', { style: { width: 48, height: 48, borderRadius: '50%', backgroundImage: 'url(' + pics[names.indexOf(n)] + ')', backgroundSize: 'cover', backgroundPosition: 'center', flex: 'none' } }),
+          React.createElement('span', { style: { fontFamily: 'Roboto,sans-serif', fontSize: 'clamp(17px,1.4vw,21px)', fontWeight: 700, fontStyle: 'normal', fontFamily: "'Source Serif 4',serif", whiteSpace: 'nowrap' } }, n));
+        const row = (list, k, anim) => React.createElement('div', { key: 'row' + k, style: { display: 'flex', width: 'max-content', gap: 16, animation: anim } }, [...list, ...list].map((n, i) => chip(n, i % list.length, k + (i >= list.length ? 'x' : ''))));
+        return [row(names.slice(0, 5).concat(names.slice(5, 7)), 'a', 'chmarq 46s linear infinite'), row(names.slice(5).concat(names.slice(0, 2)), 'b', 'chmarqR 52s linear infinite')]; })()),
+      facts: [
+        { big: 'Since 1994', small: 'Building backyards across Ontario for over 30 years' },
+        { big: 'One crew', small: 'Design, pools, stone, turf and lighting all in-house' },
+        { big: '9 towns', small: 'From Toronto and Caledon to Muskoka and Collingwood' }
+      ],
+      railRef: this.rail,
+      scrollPrev: () => scrollBy(-1),
+      scrollNext: () => scrollBy(1),
+      projects: [
+        { id: 'v2home-p1', src: img.pool, title: 'Pool & terrace', town: 'King City' },
+        { id: 'v2home-p2', src: img.stone, title: 'Hillside walls', town: 'Caledon' },
+        { id: 'v2home-p3', src: img.green, title: 'Backyard green', town: 'Kleinburg' },
+        { id: 'v2home-p4', src: img.kitchen, title: 'Cabana & kitchen', town: 'Nobleton' },
+        { id: 'v2home-p5', src: img.aerial, title: 'Full estate', town: 'Vaughan' },
+        { id: 'v2home-p6', src: IMG.falls, title: 'Waterfall pool', town: 'Kleinburg' }
+      ],
+      steps: [
+        { n: '01', title: 'Site walk', desc: 'We visit, measure and listen to how you want to use the yard.' },
+        { n: '02', title: 'Design', desc: 'A drawn plan with materials and pricing, revised until it’s right.' },
+        { n: '03', title: 'Build', desc: 'Our crews, our machines, one project lead.' },
+        { n: '04', title: 'Handover', desc: 'A full walkthrough before we call it done.' }
+      ],
+      fields: [
+        { label: 'Enter Name', type: 'text', req: true }, { label: 'Enter your phone number', type: 'tel', req: true },
+        { label: 'Enter Email', type: 'email', req: false }, { label: 'Enter your subject', type: 'text', req: false }
+      ],
+      interests: opts.map(o => { const on = this.state.picks.includes(o); return { label: o, bg: on ? '#262A78' : '#FFFFFF', fg: on ? '#FFFFFF' : '#0F1130', border: on ? '#262A78' : '#D9D5CA', toggle: () => this.setState(s => ({ picks: on ? s.picks.filter(x => x !== o) : [...s.picks, o] })) }; }),
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      submit: e => { e.preventDefault(); this.setState({ sent: true }); },
+      reset: () => this.setState({ sent: false, picks: [] }),
+      footer: [
+        { title: 'Services', links: ['Pools', 'Landscaping', 'Golf & Turf', 'Snow Removal'] },
+        { title: 'Company', links: ['Projects', 'About', 'Our Process', 'Contact'] },
+        { title: 'Call', links: ['(905) 866-4111', 'Mon–Fri, 7–5'] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

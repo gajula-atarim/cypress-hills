@@ -25,7 +25,11 @@ def header():
                  dropdown_border_radius=box(0, 0, 40, 0), width_dropdown_item=px(260),
                  padding_horizontal_dropdown_item=px(16), padding_vertical_dropdown_item=px(13),
                  dropdown_divider_border="none", distance_from_menu=px(12),
-                 toggle_color=WHITE, toggle_hover_color=GREEN_L, toggle_size=px(22),
+                 dropdown_icon={"value": "fas fa-bars", "library": "fa-solid"},
+                 dropdown_close_icon={"value": "fas fa-times", "library": "fa-solid"},
+                 toggle_color=INK, toggle_hover_color=INK, toggle_background_color=GREEN,
+                 toggle_hover_background_color="#7FD16F", toggle_size=px(18),
+                 toggle_border_radius=px(50), resp_align_mobile="right",
                  **typo("menu_typography", size=14, weight=600, lh=1.2),
                  **typo("dropdown_typography", size=14, weight=700, lh=1.35))
 
@@ -64,61 +68,74 @@ def link_list(items, color="#F4F2EC", size=15):
                               "link": {"url": u, "is_external": "", "nofollow": ""}}
                              for l, u in items],
                   text_color=color, text_color_hover=GREEN,
-                  **typo("icon_typography", size=size, weight=400, lh=1.4))
+                  **typo("icon_typography", size=size, weight=400, lh=22, lh_unit="px"))
 
 
 def footer():
-    def col_(title, items):
+    """Brand-kit footer: brand column (logo, areas, social) + Menu / Services / Pools / Contact."""
+    def col_(title, items, cls=""):
         return container([
             widget("heading", title=title, header_size="div", title_color=GREEN,
-                   **typo(size=12, weight=800, ls=1.9, transform="uppercase", lh=1.3)),
+                   _padding=box(0, 0, 6, 0),
+                   **typo(size=12, weight=700, ls=0.16, ls_unit="em", transform="uppercase",
+                          lh=12, lh_unit="px")),
             link_list(items),
         ], content_width="full", flex_direction="column", flex_gap=gap(14), padding=box(0),
-            width=px(15, "%"), width_tablet=px(30, "%"), width_mobile=px(100, "%"))
+            css_classes=("ch-footer-col " + cls).strip())
 
-    svc = "/#services"
     brand = container([
-        widget("image", image=img(M.LOGO), image_size="medium_large", width=px(180, "px"),
+        widget("image", image=img(M.LOGO), image_size="medium_large", width=px(170, "px"),
                align="start", link_to="custom", link={"url": "/", "is_external": "", "nofollow": ""}),
         widget("text-editor", editor="<p>Caledon, Nobleton, King City, Vaughan, Kleinburg, "
-                                     "Woodbridge, Muskoka, Collingwood, Toronto and surrounding areas</p>",
-               text_color="#9A9CB8", **typo(size=14, lh=1.6)),
-    ], content_width="full", flex_direction="column", flex_gap=gap(16), padding=box(0),
-        width=px(22, "%"), width_tablet=px(100, "%"), width_mobile=px(100, "%"))
+                                     "Woodbridge, Muskoka, Collingwood, Toronto, and Surrounding Areas</p>",
+               text_color="#9A9CB8", **typo(size=14, lh=22, lh_unit="px")),
+        widget("social-icons", shape="rounded", align="left", icon_color="custom",
+               icon_primary_color="rgba(0,0,0,0)", icon_secondary_color=GREEN,
+               icon_size=px(17), icon_padding={"unit": "px", "size": 10.5, "sizes": []},
+               icon_spacing=px(10), image_border_border="solid", image_border_width=box(1),
+               image_border_color="#2E3270", border_radius=box(10),
+               hover_primary_color=GREEN, hover_secondary_color=INK, hover_border_color=GREEN,
+               hover_animation="float", css_classes="ch-footer-social",
+               social_icon_list=[
+                   {"_id": "f1a2b3c", "social_icon": {"value": "fab fa-facebook-f", "library": "fa-brands"},
+                    "link": {"url": "https://www.facebook.com/cypresshillslandscaping",
+                             "is_external": "on", "nofollow": ""}},
+                   {"_id": "f1a2b3d", "social_icon": {"value": "fab fa-instagram", "library": "fa-brands"},
+                    "link": {"url": "https://www.instagram.com/cypresshills.landscaping/",
+                             "is_external": "on", "nofollow": ""}}]),
+    ], content_width="full", flex_direction="column", flex_gap=gap(20), padding=box(0),
+        css_classes="ch-footer-brand")
 
+    svc = "/#services"
     cols = container([
         brand,
+        col_("Menu", [("Home", "/"), ("Services", svc), ("Pools", svc), ("Projects", "/#work"),
+                      ("Contact Us", "/#book")]),
         col_("Services", [("Backyard Putting Greens", svc), ("Golf Course Shaping", svc),
                           ("Armor Stone Walls", svc), ("Artificial Grass Installation", svc),
                           ("Synthetic Turf Installation", svc)]),
         col_("Pools", [("Fiberglass Pool Installation", svc),
                        ("Swimming Pool Installation Caledon ON", svc)]),
-        col_("Menu", [("Home", "/"), ("Projects", "/#work"), ("Contact Us", "/#book")]),
         col_("Contact", [("(905) 866-4111", "tel:+19058664111"),
                          ("Monday-Friday, 7 a.m.-5 p.m.", "/#book")]),
-    ], seed="ftr-cols", content_width="full", flex_direction="row", flex_wrap="wrap",
-        flex_justify_content="space-between", flex_gap=gap(32, 40), padding=box(0))
+    ], seed="ftr-cols", content_width="full", padding=box(0), css_classes="ch-footer-grid")
 
     bottom = container([
         widget("copyright", shortcode="© [hfe_current_year] Cypress Hills Landscaping & Snow Removal Inc.",
-               title_color="#9A9CB8", **typo("caption_typography", size=13, lh=1.5)),
-        widget("icon-list", view="inline", space_between=px(20),
-               icon_list=[{"_id": "a1b2c31", "text": "Instagram", "selected_icon": {"value": "", "library": ""},
-                           "link": {"url": "https://www.instagram.com/cypresshills.landscaping/",
-                                    "is_external": "on", "nofollow": ""}},
-                          {"_id": "a1b2c32", "text": "Facebook", "selected_icon": {"value": "", "library": ""},
-                           "link": {"url": "https://www.facebook.com/cypresshillslandscaping",
-                                    "is_external": "on", "nofollow": ""}}],
-               text_color="#9A9CB8", text_color_hover=WHITE, **typo("icon_typography", size=13, lh=1.5)),
+               title_color="#9A9CB8", **typo("caption_typography", size=13, lh=20, lh_unit="px")),
+        widget("heading", title="Book a site visit →", header_size="div", title_color="#9A9CB8",
+               title_hover_color=WHITE, link={"url": "/#book", "is_external": "", "nofollow": ""},
+               **typo(size=13, weight=400, lh=20, lh_unit="px")),
     ], seed="ftr-bottom", content_width="full", flex_direction="row", flex_wrap="wrap",
-        flex_justify_content="space-between", flex_align_items="center", flex_gap=gap(16),
+        flex_justify_content="space-between", flex_align_items="center", flex_gap=gap(24, 12),
         padding=box(24, 0, 0, 0), border_border="solid", border_width=box(1, 0, 0, 0),
         border_color="#262A60")
 
     return mark_inner([container([cols, bottom], seed="ftr", content_width="boxed",
-                                 boxed_width=px(1328), flex_direction="column", flex_gap=gap(56),
-                                 padding=box(80, 56, 40, 56), padding_tablet=box(64, 32, 36, 32),
-                                 padding_mobile=box(56, 20, 32, 20),
+                                 boxed_width=px(1296), flex_direction="column",
+                                 flex_gap=gap(72), flex_gap_tablet=gap(56), flex_gap_mobile=gap(48),
+                                 padding=box(96, 72, 28, 72), padding_tablet=box(72, 40, 28, 40),
+                                 padding_mobile=box(64, 24, 28, 24),
                                  background_background="classic", background_color=INK,
                                  css_classes="ch-footer", overflow="hidden")])
 

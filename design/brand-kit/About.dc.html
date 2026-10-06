@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#F4F2EC;color:#0F1130;font-family:'Roboto',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#262A78;text-underline-offset:3px}
+a:hover{color:#2F7A28}
+input,textarea{font-family:inherit}
+@keyframes chspin{to{transform:rotate(360deg)}}
+@keyframes chdraw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+@keyframes chbob{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-6px) rotate(-1.5deg)}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+</helmet>
+
+<header data-screen-label="Hero" style="background:#F4F2EC;position:relative">
+  <dc-import name="SiteNav" active="about" hint-size="100%,98px"></dc-import>
+  <div style="position:relative;height:auto;min-height:clamp(480px,min(42vw,calc(100vh - 110px)),720px);overflow:hidden;border-bottom-right-radius:clamp(110px,14vw,230px);background:#0F1130">
+    <div style="position:absolute;inset:0;transform:scale({{ heroScale }});transition:transform 2.6s cubic-bezier(.2,.7,.2,1)"><image-slot id="about-hero" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/e39ef06c-0b14-4e6f-88cc-7956c6082637.jpg" placeholder="Hero photo"></image-slot></div>
+    <div style="position:absolute;left:0;right:0;top:0;height:160px;background:linear-gradient(180deg,rgba(15,17,48,.55),rgba(15,17,48,0));pointer-events:none"></div>
+    <div style="position:relative;min-height:inherit;width:clamp(320px,38%,560px);box-sizing:border-box;background:#262A78;color:#FFFFFF;z-index:10;transform:translateX({{ panelX }});transition:transform 1s cubic-bezier(.77,0,.18,1) .25s;display:flex;flex-direction:column;justify-content:center;gap:24px;padding:clamp(120px,11vw,150px) clamp(24px,4vw,64px) 56px;min-height:inherit">
+      <div style="display:flex;gap:10px;font-size:14px;font-weight:600;color:#C9CBE0"><a href="Cypress%20Hills%20Home%20v2.dc.html" style="color:#C9CBE0;text-decoration:none" style-hover="color:#FFFFFF">Home</a><span>/</span><span style="color:#FFFFFF">About</span></div>
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>In Business Since 1994</div>
+      <h1 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;font-size:clamp(32px,3.6vw,54px);line-height:1.1;letter-spacing:-.01em;text-wrap:balance">Transforming landscapes since <span style="color:#55B847">1994.</span></h1>
+      <p style="margin:0;color:#E4E5F2;max-width:40ch;font-size:16px;line-height:26px;text-wrap:pretty">Residential and commercial landscape design in Toronto and the surrounding area, with 35 years of industry experience.</p>
+    </div>
+  </div>
+</header>
+
+<section data-screen-label="Story" style="background:#FFFFFF;overflow:hidden">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;flex-wrap:wrap-reverse;gap:64px clamp(40px,6vw,110px);align-items:center">
+    <div style="flex:1 1 440px;min-width:0;position:relative;aspect-ratio:1/0.95;max-width:640px">
+      <div style="position:absolute;left:0;top:0;width:72%;height:78%;overflow:hidden;border-bottom-right-radius:clamp(90px,10vw,150px)"><image-slot id="about-col-1" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/3ba47ee2-7f56-4aaf-9d34-bd3844bda08e.jpg" placeholder="Project photo"></image-slot></div>
+      <div style="position:absolute;right:0;bottom:0;width:52%;height:54%;overflow:hidden;border-top-left-radius:clamp(70px,8vw,120px);outline:10px solid #FFFFFF"><image-slot id="about-col-2" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/b77c3889-6717-4556-8bb0-b9d812545c75.jpg" placeholder="Detail photo"></image-slot></div>
+      <div style="position:absolute;right:4%;top:6%;width:clamp(120px,13vw,170px);aspect-ratio:1">{{ badge }}</div>
+    </div>
+    <div style="flex:1 1 440px;min-width:0;display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Our story</div>
+      <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#262A78;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">We build the whole yard, <span style="color:#55B847">ourselves.</span></h2>
+      <p style="margin:0;color:#45475A;max-width:52ch;font-size:16px;line-height:26px;text-wrap:pretty">Cypress Hills started in 1994 with landscape construction and grew into a full design-build company. Today our crews handle pools, armour stone, outdoor living, lighting, putting greens and golf course shaping.</p>
+      <p style="margin:0;color:#45475A;max-width:52ch;font-size:16px;line-height:26px;text-wrap:pretty">We keep the work in-house. The people who design your yard talk to the people who build it every day, and one project lead stays with you from the first site walk to the final walkthrough.</p>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Values" style="background:#262A78;color:#FFFFFF">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;flex-direction:column;gap:64px">
+    <div style="display:flex;flex-direction:column;gap:20px"><div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>How we work</div><h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#FFFFFF;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Three things we<br>never <span style="color:#55B847">skip.</span></h2></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:48px clamp(32px,4vw,64px)">
+      <sc-for list="{{ values }}" as="v" hint-placeholder-count="3">
+        <div style="display:flex;flex-direction:column;gap:18px;padding-top:28px;border-top:2px solid {{ v.line }};transition:border-color .5s">
+          <div style="font-family:'Source Serif 4',serif;font-size:clamp(44px,4.1vw,65px);line-height:.8;font-weight:700;color:{{ v.nC }};transition:color .5s;text-wrap:balance">{{ v.n }}</div>
+          <div style="font-family:'Source Serif 4',serif;font-size:clamp(26px,2.4vw,34px);font-weight:700;text-wrap:balance">{{ v.t }}</div>
+          <div style="font-size:16px;line-height:1.6;color:#C9CBE0;max-width:34ch">{{ v.d }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section ref="{{ procRef }}" data-screen-label="Process" style="background:#F4F2EC">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;flex-direction:column;gap:64px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:20px"><div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>How a project runs</div><h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#262A78;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">From an idea<br>to your <span style="color:#55B847">keys.</span></h2></div>
+      <p style="margin:0;color:#45475A;max-width:40ch;font-size:16px;line-height:26px;text-wrap:pretty">One project lead walks with you from the first site visit to the day we hand it over.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:{{ procCols }};gap:56px clamp(32px,4vw,64px)">
+      <sc-for list="{{ procSteps }}" as="s" hint-placeholder-count="4">
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px;transform:translateY({{ s.ty }});transition:transform .9s cubic-bezier(.45,0,.2,1)">
+          <div style="position:relative;width:210px;max-width:100%;aspect-ratio:1;border-radius:50%;background:#FFFFFF;display:flex;align-items:center;justify-content:center;box-shadow:{{ s.shadow }};transition:box-shadow .8s ease">
+            {{ s.ringEl }}
+            {{ s.art }}
+            <div style="position:absolute;left:50%;bottom:-23px;transform:translateX(-50%);width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;background:{{ s.bg }};color:#0F1130;border:3px solid #F4F2EC;transition:background-color .7s ease">{{ s.n }}</div>
+          </div>
+          <div style="font-family:'Source Serif 4',serif;margin-top:22px;font-size:clamp(22px,2vw,28px);font-weight:700;color:{{ s.tC }};transition:color .8s ease;text-wrap:balance">{{ s.title }}</div>
+          <div style="font-size:15px;line-height:1.55;color:#45475A;max-width:28ch;opacity:{{ s.dOp }};transition:opacity .8s ease">{{ s.desc }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Areas" style="background:#FFFFFF">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;flex-wrap:wrap;gap:56px clamp(40px,6vw,110px);align-items:center">
+    <div style="flex:1 1 420px;min-width:0;display:flex;flex-direction:column;gap:24px">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Service Area</div>
+      <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#262A78;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Where we <span style="color:#55B847">build.</span></h2>
+      <p style="margin:0;color:#45475A;max-width:46ch;font-size:16px;line-height:26px;text-wrap:pretty">Caledon, Nobleton, King City, Vaughan, Kleinburg, Woodbridge, Muskoka, Collingwood, Toronto, and Surrounding Areas</p>
+      <div style="display:flex;flex-wrap:wrap;gap:10px">
+        <sc-for list="{{ areas }}" as="a" hint-placeholder-count="9">
+          <span style="font-size:16px;font-weight:700;padding:13px 20px;border-radius:999px;background:{{ a.bg }};color:{{ a.fg }};border:1px solid {{ a.b }};transition:all .4s">{{ a.t }}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="flex:1 1 460px;min-width:0;aspect-ratio:5/4;overflow:hidden;border-bottom-right-radius:clamp(100px,11vw,180px)"><image-slot id="about-areas" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/a7606c2d-5fc9-4d4e-9486-757d5101e8ac.jpg" placeholder="Aerial project photo"></image-slot></div>
+  </div>
+</section>
+
+<section data-screen-label="Awards" style="background:#FFFFFF">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(72px,8vw,110px) clamp(24px,4.5vw,72px);display:grid;grid-template-columns:minmax(0,auto) minmax(0,1fr);align-items:center;gap:32px clamp(32px,5vw,80px)">
+    <div style="display:flex;flex-direction:column;gap:18px;min-width:0"><div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Recognition</div><h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#262A78;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Awards Of Excellence</h2></div>
+    <div style="justify-self:end;width:100%;max-width:620px;min-width:0"><img src="assets/award-plaque.png" alt="50 Years Awards of Excellence, 1973–2023" style="display:block;width:100%;height:auto;filter:drop-shadow(0 18px 30px rgba(15,17,48,.18))"></div>
+  </div>
+</section>
+
+<section data-screen-label="CTA" style="position:relative;overflow:hidden;background:#0F1130;color:#FFFFFF">
+  <div style="position:absolute;inset:0"><image-slot id="about-cta" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/e2ed4fb5-6ace-4fbf-beed-eeaee18f7f69.jpg" placeholder="Background photo"></image-slot></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,17,48,.94) 0%,rgba(15,17,48,.8) 55%,rgba(15,17,48,.5) 100%);pointer-events:none"></div>
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);position:relative;padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;pointer-events:none">
+    <div style="display:flex;flex-direction:column;gap:24px;max-width:720px;pointer-events:auto">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Work with Us</div>
+      <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Let's walk<br>your <span style="color:#55B847">yard.</span></h2>
+      <p style="margin:0;color:#E4E5F2;max-width:44ch;font-size:16px;line-height:26px;text-wrap:pretty">Create a serene and beautiful oasis right in your backyard. Get in touch with our experienced professionals today so we can begin creating your perfect outdoor retreat.</p>
+    </div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;pointer-events:auto">
+      <a href="Contact.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;gap:14px;color:#0F1130;background:#55B847;text-decoration:none;font-size:14px;line-height:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 8px 8px 26px;border-radius:999px" style-hover="background:#7FD16F;color:#0F1130">Book a site visit<span style="width:42px;height:42px;border-radius:50%;background:#0F1130;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:18px">→</span></a>
+      <a href="tel:+19058664111" style="font-family:'Source Serif 4',serif;color:#FFFFFF;text-decoration:none;font-size:22px;font-weight:700;padding:14px 26px;border:2px solid rgba(255,255,255,.5);border-radius:999px" style-hover="border-color:#55B847;color:#FFFFFF">(905) 866-4111</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,380px" style="display:block;width:100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { ready: false, stage: -1, loop: 0, tick: 0, vw: typeof window !== 'undefined' ? window.innerWidth : 1400 };
+  procRef = React.createRef();
+  componentDidMount() { this.r = setTimeout(() => this.setState({ ready: true }), 80); this.mount && this.mount(); }
+  componentWillUnmount() { clearTimeout(this.r); this.unmount && this.unmount(); }
+  heroVals() { const r = this.state.ready; return { panelX: r ? '0%' : '-101%', heroScale: r ? 1 : 1.08 }; }
+  mount() {
+    this.iv = setInterval(() => this.setState(s => ({ tick: s.tick + 1 })), 2200);
+    this.onRz = () => this.setState({ vw: window.innerWidth }); window.addEventListener('resize', this.onRz);
+    const play = () => { if (this.st) return; let k = -1; const tick = () => { k = k >= 12 ? -1 : k + 1; this.setState(s => ({ stage: k, loop: k === -1 ? s.loop + 1 : s.loop })); this.st = setTimeout(tick, k === 12 ? 1800 : k === -1 ? 700 : 800); }; tick(); };
+    const el = this.procRef.current;
+    if (el && 'IntersectionObserver' in window) { this.io = new IntersectionObserver(es => { if (es[0].isIntersecting) { play(); this.io.disconnect(); } }, { threshold: .3 }); this.io.observe(el); } else play();
+  }
+  unmount() { clearInterval(this.iv); clearTimeout(this.st); window.removeEventListener('resize', this.onRz); this.io && this.io.disconnect(); }
+  renderVals() {
+    const S3 = 'https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/';
+    const t = this.state.tick, vw = this.state.vw;
+    const areaNames = ['Caledon', 'Nobleton', 'King City', 'Vaughan', 'Kleinburg', 'Woodbridge', 'Muskoka', 'Collingwood', 'Toronto'];
+    return {
+      ...this.heroVals(),
+      procRef: this.procRef,
+      badge: this.badgeEl || (this.badgeEl = React.createElement('div', { style: { position: 'relative', width: '100%', height: '100%', borderRadius: '50%', background: '#55B847', boxShadow: '0 16px 40px rgba(15,17,48,.25)' } },
+        React.createElement('svg', { viewBox: '0 0 200 200', style: { position: 'absolute', inset: 0, width: '100%', height: '100%', animation: 'chspin 18s linear infinite' } },
+          React.createElement('defs', null, React.createElement('path', { id: 'chBadgeA', d: 'M100 100 m-74 0 a74 74 0 1 1 148 0 a74 74 0 1 1 -148 0' })),
+          React.createElement('text', { fill: '#0F1130', style: { fontFamily: 'Roboto,sans-serif', fontSize: 15.5, fontWeight: 800, letterSpacing: '3px' } }, React.createElement('textPath', { href: '#chBadgeA' }, 'SINCE 1994 • 35 YEARS OF INDUSTRY EXPERIENCE • '))),
+        React.createElement('div', { style: { position: 'absolute', inset: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', color: '#0F1130', fontFamily: 'Roboto,sans-serif' } },
+          React.createElement('div', { style: { fontSize: 'clamp(30px,3.4vw,46px)', fontWeight: 700, fontStyle: 'normal', fontFamily: "'Source Serif 4',serif", lineHeight: .9 } }, '35'),
+          React.createElement('div', { style: { fontSize: 11, fontWeight: 800, letterSpacing: '.14em', textTransform: 'uppercase' } }, 'Years')))),
+      values: [
+        { t: 'Experienced', d: 'Over thirty years of building in Ontario soil and Ontario winters.' },
+        { t: 'Direct', d: 'Clear plans, clear pricing, and straight answers about schedule.' },
+        { t: 'Accountable', d: 'One project lead and one number to call for the whole job.' }
+      ].map((v, i) => { const on = i === t % 3; return { ...v, n: '0' + (i + 1), nC: on ? '#55B847' : 'rgba(255,255,255,.22)', line: on ? '#55B847' : 'rgba(255,255,255,.18)' }; }),
+      areas: areaNames.map((a, i) => { const on = i === t % areaNames.length; return { t: a, bg: on ? '#55B847' : '#F4F2EC', fg: on ? '#0F1130' : '#262A78', b: on ? '#55B847' : '#E2DFD6' }; }),
+      procCols: vw >= 760 ? 'repeat(4,minmax(0,1fr))' : vw >= 480 ? 'repeat(2,minmax(0,1fr))' : 'minmax(0,1fr)',
+      procSteps: [
+        { n: '01', img: '3a95cf80-6eb0-412c-8a10-7a4d7dd828a6', title: 'Site walk', desc: 'We walk the property with you and listen to how you want to use it.' },
+        { n: '02', img: 'f1023ca8-3f28-4151-9bb7-78c9632e54a2', title: 'Design', desc: 'A drawn plan with materials and pricing, revised until it’s right.' },
+        { n: '03', img: '47905afa-a719-4571-8892-7caabdd348c3', title: 'Build', desc: 'Our own crews and machines build it piece by piece.' },
+        { n: '04', img: '2b23aed4-6e35-4fb2-9a86-0c73cf8f0b40', title: 'Handover', desc: 'A final walkthrough, a handshake, and the keys are yours.' }].map((s, i) => {
+          const g = this.state.stage, reached = g >= i * 3, cur = reached && g < i * 3 + 3;
+          const art = React.createElement('img', { key: 'art' + i, src: S3 + s.img + '.jpg', alt: s.title, style: { width: '78%', height: '78%', objectFit: 'contain', borderRadius: '50%', animation: 'chbob ' + (cur ? '1.4s' : '3.2s') + ' ease-in-out infinite', animationDelay: (i * -.6) + 's', filter: reached ? 'none' : 'grayscale(.7) opacity(.75)', transition: 'filter .8s ease' } });
+          const ringEl = React.createElement('svg', { key: 'ring' + i + '-' + this.state.loop + (reached ? 'r' : 'n'), viewBox: '0 0 100 100', style: { position: 'absolute', inset: -14, width: 'calc(100% + 28px)', height: 'calc(100% + 28px)', transform: 'rotate(-90deg)', pointerEvents: 'none', overflow: 'visible' } },
+            React.createElement('circle', { cx: 50, cy: 50, r: 48, fill: 'none', stroke: 'rgba(38,42,120,.14)', strokeWidth: 1.6 }),
+            reached ? React.createElement('circle', { cx: 50, cy: 50, r: 48, fill: 'none', stroke: '#55B847', strokeWidth: 2.4, strokeLinecap: 'round', pathLength: 100, strokeDasharray: 100, style: { strokeDashoffset: 0, animation: 'chdraw 2400ms cubic-bezier(.45,0,.2,1) both' } }) : null);
+          return { ...s, art, ringEl, ty: cur ? '-12px' : '0px', shadow: cur ? '0 18px 40px rgba(15,17,48,.18)' : '0 6px 16px rgba(15,17,48,.08)', bg: reached ? '#55B847' : '#FFFFFF', tC: reached ? '#262A78' : '#A8A498', dOp: reached ? 1 : .4 };
+        })
+    };
+  }
+}
+</script>
+</body>
+</html>

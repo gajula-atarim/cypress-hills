@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&display=swap" rel="stylesheet">
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#F4F2EC;color:#0F1130;font-family:'Roboto',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#262A78;text-underline-offset:3px}
+a:hover{color:#2F7A28}
+input,textarea{font-family:inherit}
+@keyframes chspin{to{transform:rotate(360deg)}}
+@keyframes chdraw{from{stroke-dashoffset:100}to{stroke-dashoffset:0}}
+@keyframes chbob{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-6px) rotate(-1.5deg)}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&display=swap" rel="stylesheet">
+</helmet>
+
+<header data-screen-label="Hero" style="background:#F4F2EC;position:relative">
+  <dc-import name="SiteNav" active="services" hint-size="100%,98px"></dc-import>
+  <div style="position:relative;height:auto;min-height:clamp(480px,min(42vw,calc(100vh - 110px)),720px);overflow:hidden;border-bottom-right-radius:clamp(110px,14vw,230px);background:#0F1130">
+    <div style="position:absolute;inset:0;transform:scale({{ heroScale }});transition:transform 2.6s cubic-bezier(.2,.7,.2,1)"><image-slot id="svcs-hero" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/a7606c2d-5fc9-4d4e-9486-757d5101e8ac.jpg" placeholder="Hero photo"></image-slot></div>
+    <div style="position:absolute;left:0;right:0;top:0;height:160px;background:linear-gradient(180deg,rgba(15,17,48,.55),rgba(15,17,48,0));pointer-events:none"></div>
+    <div style="position:relative;min-height:inherit;width:clamp(320px,38%,560px);box-sizing:border-box;background:#262A78;color:#FFFFFF;z-index:10;transform:translateX({{ panelX }});transition:transform 1s cubic-bezier(.77,0,.18,1) .25s;display:flex;flex-direction:column;justify-content:center;gap:24px;padding:clamp(120px,11vw,150px) clamp(24px,4vw,64px) 56px;min-height:inherit">
+      <div style="display:flex;gap:10px;font-size:14px;font-weight:600;color:#C9CBE0"><a href="Cypress%20Hills%20Home%20v2.dc.html" style="color:#C9CBE0;text-decoration:none" style-hover="color:#FFFFFF">Home</a><span>/</span><span style="color:#FFFFFF">Services</span></div>
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Residential &amp; Commercial Landscaping Services</div>
+      <h1 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;font-size:clamp(32px,3.6vw,54px);line-height:1.1;letter-spacing:-.01em;text-wrap:balance">Landscaping in Toronto, ON and <span style="color:#55B847">Surrounding Areas</span></h1>
+      <p style="margin:0;color:#E4E5F2;max-width:40ch;font-size:16px;line-height:26px;text-wrap:pretty">We provide expert stone work landscaping in Toronto, ON, helping homeowners transform their outdoor spaces into functional and visually striking landscapes.</p>
+    </div>
+  </div>
+</header>
+
+<section data-screen-label="Intro" style="background:#FFFFFF">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:48px clamp(40px,6vw,110px);align-items:start">
+    <div style="display:flex;flex-direction:column;gap:24px;position:sticky;top:120px">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>What we do</div>
+      <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;color:#262A78;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Residential &amp; Commercial <span style="color:#55B847">Landscaping Services</span></h2>
+      <div style="display:flex;flex-wrap:wrap;gap:10px;padding-top:8px">
+        <sc-for list="{{ tags }}" as="t" hint-placeholder-count="8">
+          <span style="font-size:15px;font-weight:700;padding:11px 18px;border-radius:999px;background:{{ t.bg }};color:{{ t.fg }};border:1px solid {{ t.b }};transition:all .4s">{{ t.t }}</span>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:22px">
+      <p style="margin:0;color:#45475A;color:#0F1130;font-size:17px;line-height:27px;text-wrap:pretty">We provide expert stone work landscaping in Toronto, ON, helping homeowners transform their outdoor spaces into functional and visually striking landscapes. Our customized solutions are designed to enhance curb appeal while reflecting your unique vision.</p>
+      <p style="margin:0;color:#45475A;font-size:16px;line-height:26px;text-wrap:pretty">Our full range of services includes synthetic turf installation and artificial grass installation, ideal for low-maintenance, year-round greenery. We also design and install backyard putting greens, perfect for golf enthusiasts looking to elevate their outdoor living space.</p>
+      <p style="margin:0;color:#45475A;font-size:16px;line-height:26px;text-wrap:pretty">In addition, we specialize in interlock installation for patios, walkways, and driveways, as well as golf course shaping to create smooth, professional-grade landscapes. Our expertise extends to landscape stone work, including durable retaining walls and custom armour stone walls built for both strength and style.</p>
+      <p style="margin:0;color:#45475A;font-size:16px;line-height:26px;text-wrap:pretty">To complete your outdoor retreat, we offer pool landscaping that seamlessly blends stone, turf, and hardscape elements to create cohesive and inviting backyard environments.</p>
+      <div style="font-family:'Source Serif 4',serif;border-left:4px solid #55B847;padding:6px 0 6px 22px;font-size:20px;line-height:1.5;font-weight:700;color:#262A78;text-wrap:balance">Ready to transform your outdoor space? Contact Cypress Hills Landscaping Inc. today for a free consultation, and let’s bring your vision to life!</div>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Service list" style="background:#262A78;color:#FFFFFF;overflow:hidden">
+  <div style="max-width:1440px;margin:0 auto;padding:clamp(88px,9vw,140px) clamp(24px,4.5vw,72px);display:flex;flex-direction:column;gap:56px">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap">
+      <div style="display:flex;flex-direction:column;gap:20px">
+        <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Everything outdoors</div>
+        <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Ten services.<br>One <span style="color:#55B847">crew.</span></h2>
+      </div>
+      <p style="margin:0;color:#D9DBF0;max-width:40ch;font-size:16px;line-height:26px;text-wrap:pretty">From the first drawing to the last light fixture, every part of your yard is designed and built by our own team. Pick a service to jump to it.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,220px),1fr));gap:16px">
+      <sc-for list="{{ tiles }}" as="s" hint-placeholder-count="10">
+        <a href="{{ s.anchor }}" style="position:relative;display:block;aspect-ratio:3/4;overflow:hidden;border-bottom-right-radius:{{ s.rad }};background:#0F1130;color:#FFFFFF;text-decoration:none;outline:3px solid {{ s.ol }};outline-offset:-3px;transform:translateY({{ s.ty }});transition:transform .5s cubic-bezier(.2,.7,.2,1), outline-color .5s, border-radius .5s" style-hover="transform:translateY(-10px);outline-color:#55B847;color:#FFFFFF">
+          <div style="position:absolute;inset:0;transform:scale({{ s.sc }});transition:transform 1.2s cubic-bezier(.2,.7,.2,1)"><image-slot id="{{ s.slot }}" shape="rect" src="{{ s.src }}" placeholder="{{ s.alt }}"></image-slot></div>
+          <div style="position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,17,48,.35) 0%,rgba(15,17,48,0) 30%,rgba(15,17,48,.92) 100%);pointer-events:none"></div>
+          <div style="font-family:'Source Serif 4',serif;position:absolute;left:18px;top:18px;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;background:{{ s.nBg }};color:{{ s.nFg }};border:1px solid rgba(255,255,255,.4);transition:all .5s;pointer-events:none;text-wrap:balance">{{ s.n }}</div>
+          <div style="position:absolute;left:20px;right:20px;bottom:20px;display:flex;justify-content:space-between;align-items:flex-end;gap:10px;pointer-events:none">
+            <span style="font-family:'Source Serif 4',serif;font-size:clamp(18px,1.4vw,22px);line-height:1.1;font-weight:700;text-wrap:balance">{{ s.name }}</span>
+            <span style="flex:none;width:36px;height:36px;border-radius:50%;background:#55B847;color:#0F1130;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800">↓</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<section data-screen-label="Services" style="background:#F4F2EC">
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);padding-top:clamp(80px,9vw,128px);padding-bottom:clamp(96px,10vw,150px);display:flex;flex-direction:column;gap:clamp(72px,9vw,130px)">
+    <sc-for list="{{ svcs }}" as="s" hint-placeholder-count="3">
+      <div id="{{ s.id }}" style="display:flex;flex-direction:{{ s.dir }};flex-wrap:wrap;gap:48px clamp(40px,6vw,96px);align-items:center;scroll-margin-top:120px">
+        <div style="flex:1 1 460px;min-width:0;position:relative;aspect-ratio:5/4;overflow:hidden;border-radius:{{ s.rad }}">
+          <image-slot id="{{ s.slot }}" shape="rect" src="{{ s.src }}" placeholder="{{ s.alt }}"></image-slot>
+          <div style="font-family:'Source Serif 4',serif;position:absolute;left:24px;top:24px;width:64px;height:64px;border-radius:50%;background:#55B847;color:#0F1130;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;pointer-events:none;text-wrap:balance">{{ s.n }}</div>
+        </div>
+        <div style="flex:1 1 380px;min-width:0;display:flex;flex-direction:column;gap:22px">
+          <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#2F7A28"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>{{ s.k }}</div>
+          <h3 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;letter-spacing:-.02em;color:#262A78;font-size:clamp(22px,2vw,30px);line-height:1.18;text-wrap:balance">{{ s.name }}</h3>
+          <p style="margin:0;color:#45475A;max-width:54ch;font-size:16px;line-height:26px;text-wrap:pretty">{{ s.d }}</p>
+          <a href="Contact.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;gap:12px;color:#262A78;text-decoration:none;font-size:14px;line-height:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border-bottom:2px solid #55B847;padding-bottom:6px" style-hover="color:#2F7A28">Get a free consultation →</a>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+</section>
+
+<section data-screen-label="CTA" style="position:relative;overflow:hidden;background:#0F1130;color:#FFFFFF">
+  <div style="position:absolute;inset:0"><image-slot id="svcs-cta" shape="rect" src="https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/e2ed4fb5-6ace-4fbf-beed-eeaee18f7f69.jpg" placeholder="Background photo"></image-slot></div>
+  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(15,17,48,.94) 0%,rgba(15,17,48,.8) 55%,rgba(15,17,48,.5) 100%);pointer-events:none"></div>
+  <div style="max-width:1440px;margin:0 auto;padding-left:clamp(24px,4.5vw,72px);padding-right:clamp(24px,4.5vw,72px);position:relative;padding-top:clamp(96px,10vw,150px);padding-bottom:clamp(96px,10vw,150px);display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;pointer-events:none">
+    <div style="display:flex;flex-direction:column;gap:24px;max-width:720px;pointer-events:auto">
+      <div style="display:flex;align-items:center;gap:14px;font-size:12px;line-height:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8FD67F"><span style="width:44px;height:7px;background:#55B847;transform:skewX(-12deg)"></span>Work with Us</div>
+      <h2 style="font-family:'Source Serif 4',serif;margin:0;font-weight:700;font-size:clamp(28px,3vw,44px);line-height:1.12;letter-spacing:-.005em;text-wrap:balance">Let's walk<br>your <span style="color:#55B847">yard.</span></h2>
+      <p style="margin:0;color:#E4E5F2;max-width:44ch;font-size:16px;line-height:26px;text-wrap:pretty">Schedule a consultation with our residential landscaping experts to discuss your exterior renovation and turn your dream landscape project into a reality.</p>
+    </div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;pointer-events:auto">
+      <a href="Contact.dc.html" style="align-self:flex-start;display:inline-flex;align-items:center;gap:14px;color:#0F1130;background:#55B847;text-decoration:none;font-size:14px;line-height:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 8px 8px 26px;border-radius:999px" style-hover="background:#7FD16F;color:#0F1130">Book a site visit<span style="width:42px;height:42px;border-radius:50%;background:#0F1130;color:#FFFFFF;display:flex;align-items:center;justify-content:center;font-size:18px">→</span></a>
+      <a href="tel:+19058664111" style="font-family:'Source Serif 4',serif;color:#FFFFFF;text-decoration:none;font-size:22px;font-weight:700;padding:14px 26px;border:2px solid rgba(255,255,255,.5);border-radius:999px" style-hover="border-color:#55B847;color:#FFFFFF">(905) 866-4111</a>
+    </div>
+  </div>
+</section>
+
+<dc-import name="SiteFooter" hint-size="100%,380px" style="display:block;width:100%"></dc-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { ready: false, tick: 0 };
+  componentDidMount() { this.r = setTimeout(() => this.setState({ ready: true }), 80); this.iv = setInterval(() => this.setState(s => ({ tick: s.tick + 1 })), 1800); }
+  componentWillUnmount() { clearTimeout(this.r); clearInterval(this.iv); this.unmount && this.unmount(); }
+  heroVals() { const r = this.state.ready; return { panelX: r ? '0%' : '-101%', heroScale: r ? 1 : 1.08 }; }
+
+  renderVals() {
+    const S3 = 'https://atarim-wpfeedback-image.s3.eu-west-1.amazonaws.com/generations/';
+    const u = h => S3 + h + '.jpg';
+    const L = [
+      { k: 'Landscape Drawing', name: 'Landscape Design', alt: 'Landscape Drawing', img: 'd29796c7-7bdc-420d-98be-42877f39f314', d: 'The key to making your house stand out is its landscaping. We will work together to review your ideas and develop a well-organized plan that aligns with your vision. Our team provides the necessary analysis, planning, creativity, problem-solving skills, quality materials, and artistic craftsmanship to create a stunning outdoor space.' },
+      { k: 'Pool', name: 'Pools and Water Features', alt: 'Pool', img: '6b71663b-b520-44a7-94bb-a5c470c68ce1', d: 'Turn your vision of the perfect pool into a reality with our swimming pool installation service. Our personalized approach to building water features sets us apart from the rest, ensuring we create a unique outdoor space tailored to your needs and budget. We specialize in steel vinyl liners and fiberglass pools of various shapes and sizes. Let us help you bring your dreams to life.' },
+      { k: 'Hot Tub', name: 'Spas', alt: 'Hot Tub', img: 'e60daa01-e579-4885-b3b2-9a3ea46940b9', d: "We prioritize customer experience and satisfaction by building each hot tub to our customers' specifications. Our commitment to quality is uncompromising, ensuring that every detail is carefully crafted to perfection. Trust us to provide nothing but the best for your relaxing needs." },
+      { k: 'Custom Cabanas', name: 'Custom Cabanas', alt: 'Custom Cabanas', img: 'b77c3889-6717-4556-8bb0-b9d812545c75', d: "Cozy up or entertain in style with our customized cabanas. Our team of skilled carpenters can bring your vision to life, whether you're looking for change rooms, washrooms, outdoor showers, dining areas, wet bars, or spaces to entertain family and friends. Alternatively, you can relax on the couch and enjoy a movie. Whatever your needs, we can create the perfect cabana for you." },
+      { k: 'Outdoor Kitchen', name: 'Outdoor Kitchens', alt: 'Outdoor Kitchen', img: 'b77c3889-6717-4556-8bb0-b9d812545c75', d: "Add an outdoor kitchen to transform your backyard into a vibrant gathering area. It's the perfect spot to prepare delicious gourmet meals, grill vegetables, or whip up a homemade pizza. Imagine savoring your creations while sipping on your favorite wine or enjoying a refreshing cocktail. Enhance your outdoor oasis with an outdoor kitchen that brings joy to both you and your loved ones." },
+      { k: 'Pergolas', name: 'Pergolas', alt: 'Pergolas', img: 'a7606c2d-5fc9-4d4e-9486-757d5101e8ac', d: 'Maximize your outdoor living space with our customizable aluminum louvered pergola. Regardless of your budget, we can work with you to create the perfect solution. Our pergolas feature retractable motorized screens, a back wall for your TV, lights, and weather-resistant, low-maintenance design elements. Enjoy the great outdoors in comfort and style.' },
+      { k: 'Man Doing Stonework', name: 'Stonework', alt: 'Man Doing Stonework', img: '3ba47ee2-7f56-4aaf-9d34-bd3844bda08e', d: 'With over 35 years of experience in masonry and paving stones, our team has extensive knowledge in creating driveways and walkways, designing patios, and installing custom pool decks. We also specialize in customizing staircases and retaining walls. Trust us to bring your dreams to life with our expertise and craftsmanship.' },
+      { k: 'Deck', name: 'Woodwork', alt: 'Deck', img: 'e39ef06c-0b14-4e6f-88cc-7956c6082637', d: "We have perfected the art of designing and building with our over 35 years of experience in custom woodwork. Whether you're looking for an exquisite cabana, elegant pergola, durable shed, stylish fence, or functional deck, we have the expertise to create something tailored to your unique needs and budget. Trust us to bring your vision to life with our exceptional woodworking skills." },
+      { k: 'Fireplace', name: 'Fireplaces', alt: 'Fireplace', img: 'e2ed4fb5-6ace-4fbf-beed-eeaee18f7f69', d: 'Enhance your backyard space and enjoy year-round warmth with our selection of wood-burning and gas fireplaces. Whether you prefer the cozy crackle of a wood fire or the convenience of a gas fireplace, we have options to suit your needs. Consider adding fire tables, fire pits, or fire bowls to elevate your fall and winter outdoor experiences.' },
+      { k: 'Beautiful House With Outdoor Lighting', name: 'Outdoor Lighting', alt: 'Beautiful House With Outdoor Lighting', img: 'e2ed4fb5-6ace-4fbf-beed-eeaee18f7f69', d: 'Transform your backyard into an illuminating outdoor space with a well-designed outdoor lighting plan. Our expert team can showcase the highlights of your property, such as a pool, cabana, pergola, outdoor kitchen, stonework, woodwork, retaining walls, plants, driveway, and pathways. With carefully placed lighting, you can create a soft and warm ambiance that enhances your outdoor living space. Enjoy years of outdoor enjoyment with our professional lighting solutions.' }];
+    const svcs = L.map((s, i) => ({ ...s, n: String(i + 1).padStart(2, '0'), id: 'svc-' + (i + 1), anchor: '#svc-' + (i + 1), slot: 'svcs-' + (i + 1), src: u(s.img), dir: i % 2 ? 'row-reverse' : 'row', rad: i % 2 ? '0 0 0 clamp(100px,11vw,180px)' : '0 0 clamp(100px,11vw,180px) 0' }));
+    const T = ['Stone work', 'Synthetic turf', 'Artificial grass', 'Putting greens', 'Interlock', 'Golf course shaping', 'Retaining walls', 'Armour stone walls', 'Pool landscaping'];
+    const a = this.state.tick % T.length;
+    const act = this.state.tick % svcs.length;
+    const tiles = svcs.map((s, i) => { const on = i === act; return { ...s, ol: on ? '#55B847' : 'transparent', ty: on ? '-10px' : '0px', sc: on ? 1.08 : 1, rad: on ? '64px' : '0px', nBg: on ? '#55B847' : 'rgba(15,17,48,.45)', nFg: on ? '#0F1130' : '#FFFFFF' }; });
+    return { ...this.heroVals(), svcs, tiles, tags: T.map((t, i) => ({ t, bg: i === a ? '#55B847' : '#F4F2EC', fg: i === a ? '#0F1130' : '#262A78', b: i === a ? '#55B847' : '#E2DFD6' })) };
+  }
+}
+</script>
+</body>
+</html>

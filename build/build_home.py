@@ -36,6 +36,8 @@ def row(children, seed=None, gap_px=32, wrap="nowrap", justify="space-between", 
     if stack_on:
         s[f"flex_direction_{stack_on}"] = "column"
         s[f"flex_align_items_{stack_on}"] = "flex-start"
+        if gap_px > 40:  # side-by-side gutters are far too wide once the columns stack
+            s[f"flex_gap_{stack_on}"] = gap(40)
     s.update(extra)
     return container(children, seed=seed, **s)
 

@@ -1090,3 +1090,29 @@ body:not(.ch-js) .ch-step-img img { filter: none; }
 .ch-interests .mf-input-label { display: block !important; float: none !important; width: auto !important; line-height: 1.5 !important; margin: 0 !important; padding-bottom: 12px; }
 .ch-interests .mf-input-wrapper { display: block !important; }
 .ch-interests .mf-checkbox { margin: 0 !important; position: static !important; }
+
+/* --------------------------------------------------------------------------
+   Mobile pass
+   -------------------------------------------------------------------------- */
+/* The closed menu card must not add height to the header pill; only the open one gets padding. */
+@media (max-width: 1024px) {
+	.ch-header-pill nav.hfe-dropdown:not(.menu-is-active) { padding: 0 !important; margin-top: 0 !important; box-shadow: none !important; }
+	.ch-header-pill .elementor-widget-navigation-menu { align-self: center; }
+}
+/* Footer links keep their own colour on pages Elementor doesn't render (404, archives). */
+.ch-footer .elementor-heading-title a,
+.ch-footer .elementor-heading-title a:visited { color: inherit; }
+@media (max-width: 639px) {
+	/* Services tiles: two per row instead of ten full-screen cards. */
+	.ch-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px !important; }
+	.ch-tile > .ch-tile-num { left: 10px; top: 10px; width: 34px !important; height: 34px; }
+	.ch-tile > .ch-tile-foot { left: 12px; right: 12px; bottom: 12px; }
+	.ch-tile > .ch-tile-foot .elementor-heading-title { font-size: 15px !important; line-height: 1.15 !important; }
+	.ch-tile-arrow .elementor-icon { width: 28px; height: 28px; }
+	.ch-tile-arrow .elementor-icon svg, .ch-tile-arrow .elementor-icon i { font-size: 12px; width: 12px; height: 12px; }
+	.ch-tiles > .ch-tile:hover, .ch-tiles > .ch-tile.is-active { transform: none; }
+	.ch-tiles > .ch-tile.is-active { border-bottom-right-radius: 36px; }
+	/* Projects gallery: two per row. */
+	.ch-gallery .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+	.ch-gallery .gallery-icon a::after { transform: scale(.8); right: 6px; bottom: 6px; }
+}

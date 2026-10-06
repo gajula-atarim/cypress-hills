@@ -1289,3 +1289,18 @@ body { overflow-x: clip; }
 		z-index: 50;
 	}
 }
+/* Home banner on tablets: a slightly wider panel and a compact CTA so "Creative outdoor services"
+   stays inside the navy card (it needed ~280px in a ~238px space). Wraps rather than overflows. */
+@media (min-width: 768px) and (max-width: 1024px) {
+	.ch-slide > .ch-slide-panel { width: clamp(320px, 44%, 440px) !important; }
+	.ch-slide-panel > .ch-slide-cta { max-width: 100%; }
+	.ch-slide-panel > .ch-slide-cta .elementor-button {
+		max-width: 100%;
+		font-size: 12px !important;
+		letter-spacing: .06em !important;
+		line-height: 1.3 !important;
+		padding: 13px 18px !important;
+		white-space: normal;
+		text-align: left;
+	}
+}

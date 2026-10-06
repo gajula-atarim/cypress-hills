@@ -1268,3 +1268,8 @@ body { overflow-x: clip; }
 	}
 	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta > a.hfe-menu-item:hover { background-color: #7FD16F !important; color: var(--ch-ink) !important; }
 }
+/* Tablet header: Logo | ……… Contact Us | ☰  (the button sits before the menu toggle, both on the right). */
+@media (min-width: 768px) and (max-width: 1024px) {
+	.ch-header-pill .elementor-widget-button { order: -1; margin-left: auto !important; }
+	.ch-header-pill .elementor-widget-navigation-menu { margin-left: 0 !important; }
+}

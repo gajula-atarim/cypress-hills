@@ -10,7 +10,12 @@ $get = function ( $path ) use ( $gh ) {
 	return wp_remote_retrieve_body( $r );
 };
 $form = get_posts( array( 'post_type' => 'metform-form', 'title' => 'Home Contact Form', 'post_status' => 'any', 'numberposts' => 1 ) );
-$tree = str_replace( '"mf_form_id":"0"', '"mf_form_id":"' . $form[0]->ID . '"', $get( 'build/out/home.json' ) );
+// Re-encode first: the repo file is pretty-printed ("key": "value"), the placeholder match needs compact JSON.
+$tree = wp_json_encode( json_decode( $get( 'build/out/home.json' ), true ) );
+if ( false === strpos( $tree, '"mf_form_id":"0"' ) ) {
+	throw new Exception( 'form placeholder not found' );
+}
+$tree = str_replace( '"mf_form_id":"0"', '"mf_form_id":"' . $form[0]->ID . '"', $tree );
 $data = json_decode( $tree, true );
 if ( ! is_array( $data ) ) {
 	throw new Exception( 'bad home.json' );

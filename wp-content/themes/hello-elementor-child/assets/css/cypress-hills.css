@@ -1316,3 +1316,5 @@ body { overflow-x: clip; }
 	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta { padding: 12px 14px 16px !important; box-sizing: border-box; width: 100% !important; }
 	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta > a.hfe-menu-item { width: 100% !important; box-sizing: border-box; border: 0 !important; margin: 0 !important; }
 }
+/* Banner eyebrow ("In Business Since 1994 | 35 Years …"): room between lines when it wraps. */
+.ch-slide-panel > .ch-slide-kicker .elementor-heading-title { line-height: 1.6 !important; }

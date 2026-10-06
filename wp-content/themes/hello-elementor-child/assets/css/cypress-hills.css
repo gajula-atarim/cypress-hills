@@ -1318,3 +1318,8 @@ body { overflow-x: clip; }
 	}
 	.ch-process .ch-step-desc p { font-size: 14px !important; line-height: 1.55 !important; text-align: center; text-wrap: balance; }
 }
+/* Phone ☰ card: inset the Contact Us pill from the card edges so the card's curved corner doesn't clip it. */
+@media (max-width: 767px) {
+	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta { padding: 12px 14px 16px !important; box-sizing: border-box; width: 100% !important; }
+	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta > a.hfe-menu-item { width: 100% !important; box-sizing: border-box; border: 0 !important; margin: 0 !important; }
+}

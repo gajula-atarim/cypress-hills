@@ -1343,3 +1343,9 @@ body { overflow-x: clip; }
 	.ch-slide > .ch-slide-img.ch-fit > .elementor-widget-container { z-index: 1; }
 	.ch-slide > .ch-slide-img.ch-fit img { position: relative; z-index: 1; object-fit: contain !important; object-position: 68% center !important; }
 }
+/* Stone slide (.ch-fit) on tablet/desktop: stretch the whole photo to fill the banner (no crop, no blur sides). */
+@media (min-width: 768px) {
+	.ch-slide > .ch-slide-img.ch-fit::before,
+	.ch-slide > .ch-slide-img.ch-fit > .elementor-widget-container::before { display: none !important; }
+	.ch-slide > .ch-slide-img.ch-fit img { object-fit: fill !important; }
+}

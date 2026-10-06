@@ -1192,3 +1192,30 @@ body { overflow-x: clip; }
 	line-height: 1;
 }
 }
+/* ☰ menu card: one row height and one left edge for every item. The desktop dropdown panel padding
+   (10px) left ~20px gaps under Services/Pools while collapsed, and items with an arrow sat 5px further in. */
+@media (max-width: 1024px) {
+	.ch-header-pill nav.hfe-dropdown li.menu-item { margin: 0 !important; padding: 0 !important; border: 0 !important; }
+	.ch-header-pill nav.hfe-dropdown .hfe-has-submenu-container { margin: 0 !important; padding: 0 !important; }
+	.ch-header-pill nav.hfe-dropdown > ul > li > a.hfe-menu-item,
+	.ch-header-pill nav.hfe-dropdown > ul > li > .hfe-has-submenu-container > a.hfe-menu-item {
+		display: flex !important;
+		align-items: center;
+		justify-content: space-between;
+		min-height: 46px;
+		padding: 12px 14px !important;
+		line-height: 1.2 !important;
+	}
+	.ch-header-pill nav.hfe-dropdown .sub-arrow,
+	.ch-header-pill nav.hfe-dropdown .hfe-menu-toggle {
+		margin: 0 !important;
+		padding: 0 !important;
+		border: 0 !important;
+		width: 28px; height: 28px;
+		display: inline-flex !important;
+		align-items: center; justify-content: center;
+	}
+	.ch-header-pill nav.hfe-dropdown .sub-menu { padding: 0 !important; margin: 0 !important; box-shadow: none !important; border-radius: 0 !important; min-width: 0 !important; }
+	.ch-header-pill nav.hfe-dropdown .sub-menu a.hfe-sub-menu-item { padding: 10px 14px 10px 28px !important; }
+	.ch-header-pill nav.hfe-dropdown .sub-menu a.hfe-sub-menu-item::after { display: none; }
+}

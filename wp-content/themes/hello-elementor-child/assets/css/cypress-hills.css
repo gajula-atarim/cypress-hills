@@ -1197,8 +1197,8 @@ body { overflow-x: clip; }
 @media (max-width: 1024px) {
 	.ch-header-pill nav.hfe-dropdown li.menu-item { margin: 0 !important; padding: 0 !important; border: 0 !important; }
 	.ch-header-pill nav.hfe-dropdown .hfe-has-submenu-container { margin: 0 !important; padding: 0 !important; }
-	.ch-header-pill nav.hfe-dropdown > ul > li > a.hfe-menu-item,
-	.ch-header-pill nav.hfe-dropdown > ul > li > .hfe-has-submenu-container > a.hfe-menu-item {
+	.ch-header-pill nav.hfe-dropdown > ul.hfe-nav-menu > li.menu-item > a.hfe-menu-item,
+	.ch-header-pill nav.hfe-dropdown > ul.hfe-nav-menu > li.menu-item > .hfe-has-submenu-container > a.hfe-menu-item {
 		display: flex !important;
 		align-items: center;
 		justify-content: space-between;
@@ -1211,7 +1211,7 @@ body { overflow-x: clip; }
 		margin: 0 !important;
 		padding: 0 !important;
 		border: 0 !important;
-		width: 28px; height: 28px;
+		width: 22px; height: 22px;
 		display: inline-flex !important;
 		align-items: center; justify-content: center;
 	}

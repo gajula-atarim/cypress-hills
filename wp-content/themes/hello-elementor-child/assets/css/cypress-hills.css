@@ -78,6 +78,11 @@ body {
 @media (max-width: 480px) {
 	.ch-pill-btn .elementor-button { max-width: 100%; }
 	.ch-pill-btn .elementor-button-text { text-align: left; font-size: 12px !important; letter-spacing: .06em !important; line-height: 1.3 !important; }
+	/* When a label wraps: two even lines (no lone last word) and a pill that hugs the text, so the
+	   arrow sits right after it instead of across a gap. 17em ≈ the longest balanced line. */
+	.ch-pill-btn .elementor-button { width: auto !important; display: inline-flex !important; }
+	.ch-pill-btn .elementor-button-content-wrapper { justify-content: flex-start; }
+	.ch-pill-btn .elementor-button-text { flex: 0 1 auto; max-width: 17em; text-wrap: balance; }
 }
 
 /* Image widgets that fill their box (the widget box itself is sized by its layout class) */

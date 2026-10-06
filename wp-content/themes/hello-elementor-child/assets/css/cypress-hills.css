@@ -1321,10 +1321,15 @@ body { overflow-x: clip; }
                  (the copy is the widget's own background image).
    .ch-pos-top — landscape photo whose subject sits high in the frame: crop from near the top. */
 .ch-slide > .ch-slide-img.ch-pos-top img { object-position: 50% 28% !important; }
-.ch-slide > .ch-slide-img.ch-fit { background-size: 0 0 !important; overflow: hidden; }
+/* Elementor paints the widget background on the widget or on its inner container depending on markup;
+   both are covered. The visible background is hidden and re-drawn blurred by a ::before on each. */
+.ch-slide > .ch-slide-img.ch-fit,
+.ch-slide > .ch-slide-img.ch-fit > .elementor-widget-container { background-size: 0 0 !important; }
+.ch-slide > .ch-slide-img.ch-fit { overflow: hidden; }
 @media (min-width: 768px) {
-	/* Blurred fill: a pseudo-element inherits the widget's background (the same photo) and blurs it. */
-	.ch-slide > .ch-slide-img.ch-fit::before {
+	.ch-slide > .ch-slide-img.ch-fit > .elementor-widget-container { position: relative; isolation: isolate; }
+	.ch-slide > .ch-slide-img.ch-fit::before,
+	.ch-slide > .ch-slide-img.ch-fit > .elementor-widget-container::before {
 		content: "";
 		position: absolute;
 		inset: -40px;
@@ -1333,7 +1338,8 @@ body { overflow-x: clip; }
 		background-size: cover !important;
 		background-position: center !important;
 		filter: blur(24px) brightness(.62);
+		pointer-events: none;
 	}
-	.ch-slide > .ch-slide-img.ch-fit > .elementor-widget-container { position: relative; z-index: 1; }
-	.ch-slide > .ch-slide-img.ch-fit img { object-fit: contain !important; object-position: 68% center !important; }
+	.ch-slide > .ch-slide-img.ch-fit > .elementor-widget-container { z-index: 1; }
+	.ch-slide > .ch-slide-img.ch-fit img { position: relative; z-index: 1; object-fit: contain !important; object-position: 68% center !important; }
 }

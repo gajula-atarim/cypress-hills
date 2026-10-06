@@ -1239,3 +1239,10 @@ body { overflow-x: clip; }
 	.ch-step-ring { left: -11px; top: -11px; width: calc(100% + 22px); height: calc(100% + 22px); }
 	.ch-step-num { width: 40px !important; height: 40px; bottom: -20px; }
 }
+/* What We Build, stacked (≤ 1024px): the selected craft moves to the top of the list, right under the photo. */
+@media (max-width: 1024px) {
+	.ch-js .ch-services .ch-svc-item.is-active { order: -1; }
+	.ch-js .ch-services .ch-svc-item.is-active { animation: chSvcIn .45s ease both; }
+}
+@keyframes chSvcIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .ch-js .ch-services .ch-svc-item.is-active { animation: none; } }

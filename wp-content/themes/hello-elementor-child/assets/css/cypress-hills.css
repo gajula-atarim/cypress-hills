@@ -1316,36 +1316,3 @@ body { overflow-x: clip; }
 	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta { padding: 12px 14px 16px !important; box-sizing: border-box; width: 100% !important; }
 	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta > a.hfe-menu-item { width: 100% !important; box-sizing: border-box; border: 0 !important; margin: 0 !important; }
 }
-/* Banner photo framing (classes set on a slide's image widget):
-   .ch-fit     — portrait photo: shown whole (no crop) on tablet/desktop over a blurred, dimmed copy of itself
-                 (the copy is the widget's own background image).
-   .ch-pos-top — landscape photo whose subject sits high in the frame: crop from near the top. */
-.ch-slide > .ch-slide-img.ch-pos-top img { object-position: 50% 28% !important; }
-/* Elementor paints the widget background on the widget or on its inner container depending on markup;
-   both are covered. The visible background is hidden and re-drawn blurred by a ::before on each. */
-.ch-slide > .ch-slide-img.ch-fit,
-.ch-slide > .ch-slide-img.ch-fit > .elementor-widget-container { background-size: 0 0 !important; }
-.ch-slide > .ch-slide-img.ch-fit { overflow: hidden; }
-@media (min-width: 768px) {
-	.ch-slide > .ch-slide-img.ch-fit > .elementor-widget-container { position: relative; isolation: isolate; }
-	.ch-slide > .ch-slide-img.ch-fit::before,
-	.ch-slide > .ch-slide-img.ch-fit > .elementor-widget-container::before {
-		content: "";
-		position: absolute;
-		inset: -40px;
-		z-index: 0;
-		background: inherit;
-		background-size: cover !important;
-		background-position: center !important;
-		filter: blur(24px) brightness(.62);
-		pointer-events: none;
-	}
-	.ch-slide > .ch-slide-img.ch-fit > .elementor-widget-container { z-index: 1; }
-	.ch-slide > .ch-slide-img.ch-fit img { position: relative; z-index: 1; object-fit: contain !important; object-position: 68% center !important; }
-}
-/* Stone slide (.ch-fit) on tablet/desktop: stretch the whole photo to fill the banner (no crop, no blur sides). */
-@media (min-width: 768px) {
-	.ch-slide > .ch-slide-img.ch-fit::before,
-	.ch-slide > .ch-slide-img.ch-fit > .elementor-widget-container::before { display: none !important; }
-	.ch-slide > .ch-slide-img.ch-fit img { object-fit: fill !important; }
-}

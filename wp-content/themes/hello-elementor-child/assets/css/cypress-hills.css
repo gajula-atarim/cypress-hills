@@ -1252,18 +1252,19 @@ body { overflow-x: clip; }
 	.ch-header-pill li.ch-menu-cta { display: none !important; }
 }
 @media (max-width: 767px) {
-	.ch-header-pill nav li.ch-menu-cta { padding: 10px 0 2px !important; }
-	.ch-header-pill nav li.ch-menu-cta > a.hfe-menu-item {
+	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta { padding: 10px 0 2px !important; }
+	/* Selector outranks the older "menu links are transparent" and cream-hover rules. */
+	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta > a.hfe-menu-item,
+	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta.current-menu-item > a.hfe-menu-item {
 		justify-content: center !important;
 		min-height: 48px;
 		border-radius: 999px !important;
-		background: var(--ch-green) !important;
+		background-color: var(--ch-green) !important;
 		color: var(--ch-ink) !important;
 		font-weight: 800 !important;
 		font-size: 14px !important;
 		letter-spacing: .06em;
 		text-transform: uppercase;
 	}
-	.ch-header-pill nav li.ch-menu-cta > a.hfe-menu-item:hover { background: #7FD16F !important; color: var(--ch-ink) !important; }
-	.ch-header-pill nav li.ch-menu-cta.current-menu-item > a.hfe-menu-item { background: var(--ch-green) !important; }
+	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta > a.hfe-menu-item:hover { background-color: #7FD16F !important; color: var(--ch-ink) !important; }
 }

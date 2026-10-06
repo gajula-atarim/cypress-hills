@@ -224,7 +224,34 @@
 			});
 			set(0);
 			arm();
+			nudge(sec);
 		});
+	}
+
+	/* Stacked layout (≤ 1024px): the selected craft sits under the photo. When the photo scrolls into view
+	   with that item still below the fold, glide the page up just enough to show both — once per visit,
+	   and only while the visitor is scrolling down, so it never fights them. */
+	function nudge(sec) {
+		var media = sec.querySelector('.ch-svc-media');
+		if (!media || reduceMotion || inEditor || !('IntersectionObserver' in window)) { return; }
+		var done = false, lastY = window.pageYOffset;
+		var io = new IntersectionObserver(function (entries) {
+			var e = entries[0], y = window.pageYOffset, down = y >= lastY;
+			lastY = y;
+			if (done || !e.isIntersecting || !down || !window.matchMedia('(max-width: 1024px)').matches) { return; }
+			var item = sec.querySelector('.ch-svc-item.is-active');
+			if (!item) { return; }
+			var vh = window.innerHeight;
+			var mTop = media.getBoundingClientRect().top;
+			var iBot = item.getBoundingClientRect().bottom;
+			if (iBot <= vh - 12) { done = true; io.disconnect(); return; }
+			// Bring the selected item's bottom into view, but never lift the photo's top above 16px.
+			var delta = Math.min(iBot - (vh - 16), mTop - 16);
+			done = true;
+			io.disconnect();
+			if (delta > 8) { window.scrollBy({ top: delta, behavior: 'smooth' }); }
+		}, { threshold: [0.6] });
+		io.observe(media);
 	}
 
 	/* Process: light the steps up in sequence once the section is on screen, then loop. */

@@ -295,6 +295,13 @@
 			var num = sec.querySelector('.ch-golf-num .elementor-heading-title');
 			var cap = sec.querySelector('.ch-golf-cap .elementor-heading-title');
 			var lines = sec.querySelector('.ch-golf-contours');
+			// Light sharpening filter for the photos (several are only 640px wide but fill the screen).
+			if (!document.getElementById('ch-sharpen')) {
+				document.body.insertAdjacentHTML('beforeend', '<svg width="0" height="0" style="position:absolute" aria-hidden="true">' +
+					'<filter id="ch-sharpen" color-interpolation-filters="sRGB"><feConvolveMatrix order="3" preserveAlpha="true" ' +
+					'kernelMatrix="0 -0.6 0 -0.6 3.4 -0.6 0 -0.6 0"></feConvolveMatrix></filter></svg>');
+			}
+			sec.classList.add('ch-golf--sharp');
 			var caps = slides.map(function (w) {
 				var f = w.querySelector('figcaption');
 				var im = w.querySelector('img');

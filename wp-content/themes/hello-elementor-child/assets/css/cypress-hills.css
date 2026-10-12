@@ -1430,3 +1430,6 @@ body { overflow-x: clip; }
 /* Dropdown items: the decorative "→" rendered as a tiny green mark inside the text; remove it. */
 .ch-header-pill .sub-menu a.hfe-sub-menu-item::before,
 .ch-header-pill .sub-menu a.hfe-sub-menu-item::after { content: none !important; display: none !important; }
+/* Golf photos: no zoom (enlarging softens small photos) and a light sharpening + contrast lift. */
+.ch-golf-media > .ch-golf-img.is-run { transform: none; }
+.ch-golf--sharp .ch-golf-img img { filter: url(#ch-sharpen) contrast(1.06) saturate(1.05); image-rendering: auto; }

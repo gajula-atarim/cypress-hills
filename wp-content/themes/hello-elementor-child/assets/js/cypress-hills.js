@@ -286,6 +286,67 @@
 		});
 	}
 
+	/* Golf: cross-fade the photos every 6s (slow zoom), update counter + caption, thumbnail strip, contour lines. */
+	function initGolf() {
+		document.querySelectorAll('.ch-golf').forEach(function (sec) {
+			var slides = Array.prototype.slice.call(sec.querySelectorAll('.ch-golf-img'));
+			if (!slides.length) { return; }
+			var strip = sec.querySelector('.ch-golf-strip');
+			var num = sec.querySelector('.ch-golf-num .elementor-heading-title');
+			var cap = sec.querySelector('.ch-golf-cap .elementor-heading-title');
+			var lines = sec.querySelector('.ch-golf-contours');
+			var caps = slides.map(function (w) {
+				var f = w.querySelector('figcaption');
+				var im = w.querySelector('img');
+				return (f && f.textContent.trim()) || (im && im.getAttribute('alt')) || '';
+			});
+			var thumbs = [];
+			if (strip) {
+				strip.innerHTML = '';
+				slides.forEach(function (w, i) {
+					var im = w.querySelector('img');
+					var b = document.createElement('button');
+					b.type = 'button';
+					b.className = 'ch-golf-thumb';
+					b.setAttribute('aria-label', caps[i]);
+					b.innerHTML = '<span class="ch-golf-thumb-img"></span><span class="ch-golf-thumb-bar"></span>';
+					if (im) { b.firstChild.style.backgroundImage = 'url("' + (im.currentSrc || im.src) + '")'; }
+					b.addEventListener('click', function () { go(i); });
+					strip.appendChild(b);
+					thumbs.push(b);
+				});
+			}
+			if (lines && !lines.querySelector('svg')) {
+				var paths = '';
+				for (var i = 0; i < 9; i++) {
+					var d = 'M-40 ' + (180 + i * 70) + ' C 300 ' + (110 + i * 74) + ', 520 ' + (300 + i * 62) + ', 820 ' + (210 + i * 70) + ' S 1300 ' + (120 + i * 76) + ', 1500 ' + (240 + i * 66);
+					var g = i % 3 === 0;
+					paths += '<path d="' + d + '" fill="none" stroke="' + (g ? '#55B847' : '#FFFFFF') + '" stroke-opacity="' + (g ? 0.55 : 0.18) +
+						'" stroke-width="1.2" stroke-dasharray="1600" style="animation:chcontour ' + (14 + i * 2) + 's ease-in-out ' + (-i * 1.5) + 's infinite alternate"></path>';
+				}
+				lines.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' + paths + '</svg>');
+			}
+			var cur = 0, timer = 0;
+			function go(i) {
+				cur = i;
+				clearTimeout(timer);
+				slides.forEach(function (w, k) { w.classList.toggle('is-active', k === i); w.classList.remove('is-run'); });
+				thumbs.forEach(function (b, k) { b.classList.toggle('is-active', k === i); b.classList.remove('is-run'); });
+				if (num) { num.textContent = (i + 1 < 10 ? '0' : '') + (i + 1); }
+				if (cap) { cap.textContent = caps[i]; }
+				if (reduceMotion || inEditor) { return; }
+				requestAnimationFrame(function () {
+					requestAnimationFrame(function () {
+						slides[i].classList.add('is-run');
+						if (thumbs[i]) { thumbs[i].classList.add('is-run'); }
+					});
+				});
+				timer = setTimeout(function () { go((cur + 1) % slides.length); }, 6000);
+			}
+			go(0);
+		});
+	}
+
 	function init() {
 		initHero();
 		initWork();
@@ -293,6 +354,7 @@
 		initMarquee();
 		initCompare();
 		initServices();
+		initGolf();
 		initProcess();
 	}
 

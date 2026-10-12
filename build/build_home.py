@@ -555,8 +555,81 @@ def contact(form_id):
                    background_overlay_gradient_angle=px(90, "deg"), overflow="hidden")
 
 
+# ---------------------------------------------------------------------------
+# Golf — full-width rotating photos (cross-fade + slow zoom), contour lines, thumbnail strip.
+# Each photo is an image widget with its caption set in the widget (Caption: Custom); the theme
+# script builds the counter, the caption and the thumbnail strip from them.
+# ---------------------------------------------------------------------------
+GOLF_SLIDES = [
+    (M.COURSE, "Fairway shaping"),
+    (M.GREEN, "Backyard putting green"),
+    (M.P_GREEN_BUNKER, "Bunker work"),
+    (M.P_GREEN_MOUNTAINS, "Green contours"),
+    (M.GOLF_AERIAL, "Tee to green"),
+]
+
+
+def golf():
+    photos = container([
+        image(m, cls="ch-golf-img", caption_source="custom", caption=cap)
+        for m, cap in GOLF_SLIDES
+    ], seed="golf-media", content_width="full", padding=box(0), css_classes="ch-golf-media")
+    shade = container([], seed="golf-shade", content_width="full", padding=box(0), css_classes="ch-golf-shade")
+    lines = container([], seed="golf-lines", content_width="full", padding=box(0), css_classes="ch-golf-contours")
+
+    btn_course = widget("button", seed="golf-btn-course", text="Golf Course Shaping",
+                        link={"url": "/golf-course-shaping/", "is_external": "", "nofollow": ""},
+                        selected_icon={"value": "fas fa-arrow-right", "library": "fa-solid"},
+                        icon_align="row-reverse", button_text_color=INK, background_color=GREEN,
+                        hover_color=INK, button_background_hover_color=WHITE,
+                        border_radius=box(999), text_padding=box(8, 8, 8, 24),
+                        css_classes="ch-pill-btn ch-pill-btn--green",
+                        **typo(size=14, weight=700, lh=14, lh_unit="px"))
+    btn_green = widget("button", seed="golf-btn-green", text="Backyard Putting Greens",
+                       link={"url": "/backyard-putting-greens/", "is_external": "", "nofollow": ""},
+                       selected_icon={"value": "fas fa-arrow-right", "library": "fa-solid"},
+                       icon_align="row-reverse", button_text_color=WHITE, background_color="rgba(15,17,48,0.35)",
+                       hover_color=INK, button_background_hover_color=WHITE,
+                       border_border="solid", border_width=box(1), border_color="rgba(255,255,255,0.4)",
+                       button_hover_border_color=WHITE, border_radius=box(999), text_padding=box(8, 8, 8, 24),
+                       css_classes="ch-pill-btn ch-pill-btn--ghost",
+                       **typo(size=14, weight=700, lh=14, lh_unit="px"))
+    top = col([
+        kicker("Golf by Cypress Hills", GREEN_L),
+        display("From the backyard green to the <span class='ch-green'>championship course.</span>",
+                fluid(38, 4.4, 64), WHITE, lh=1.04, ls=0),
+        para("We shape fairways, greens and bunkers for golf courses, and build tour-quality putting "
+             "greens for homes. The same crew handles the contours, drainage and turf on every one.",
+             color="#E4E5F2", lh=24, cls="ch-mw-48"),
+        container([btn_course, btn_green], seed="golf-btns", content_width="full", flex_direction="row",
+                  flex_wrap="wrap", flex_gap=gap(12), padding=box(8, 0, 0, 0)),
+    ], seed="golf-top", gap_px=22, css_classes="ch-golf-top")
+
+    counter = container([
+        widget("heading", seed="golf-num", title="01", header_size="div", title_color=GREEN,
+               css_classes="ch-golf-num", **typo(family=SERIF, size=44, weight=700, lh=1)),
+        widget("heading", seed="golf-cap", title=GOLF_SLIDES[0][1], header_size="div", title_color=WHITE,
+               css_classes="ch-golf-cap",
+               **typo(size=14, weight=700, ls=0.12, ls_unit="em", transform="uppercase", lh=1.2)),
+    ], seed="golf-counter", content_width="full", flex_direction="row", flex_align_items="baseline",
+        flex_gap=gap(16), padding=box(0), css_classes="ch-golf-counter")
+    strip = container([], seed="golf-strip", content_width="full", flex_direction="row",
+                      flex_gap=gap(10), padding=box(0), css_classes="ch-golf-strip")
+    bottom = container([counter, strip], seed="golf-bottom", content_width="full", flex_direction="row",
+                       flex_wrap="wrap", flex_justify_content="space-between", flex_align_items="flex-end",
+                       flex_gap=gap(24), padding=box(0), css_classes="ch-golf-bottom")
+
+    inner = container([top, bottom], seed="golf-inner", content_width="full", flex_direction="column",
+                      flex_justify_content="space-between", flex_gap=gap(56),
+                      padding=box(130, 72, 56, 72), padding_tablet=box(110, 40, 48, 40),
+                      padding_mobile=box(88, 24, 40, 24), css_classes="ch-golf-inner")
+    return container([photos, shade, lines, inner], seed="golf", content_width="full", padding=box(0),
+                     html_tag="section", background_background="classic", background_color=INK,
+                     css_classes="ch-golf")
+
+
 def build(form_id):
-    return mark_inner([hero(), about(), what_we_do(), custom_design(), services(), work(),
+    return mark_inner([hero(), about(), what_we_do(), custom_design(), services(), golf(), work(),
                        process(), awards(), contact(form_id)])
 
 

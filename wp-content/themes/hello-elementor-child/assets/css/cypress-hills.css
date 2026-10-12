@@ -1427,3 +1427,6 @@ body { overflow-x: clip; }
 	.ch-golf-num .elementor-heading-title { font-size: 36px !important; }
 	.ch-golf-cap .elementor-heading-title { font-size: 12px !important; letter-spacing: .08em !important; }
 }
+/* Dropdown items: the decorative "→" rendered as a tiny green mark inside the text; remove it. */
+.ch-header-pill .sub-menu a.hfe-sub-menu-item::before,
+.ch-header-pill .sub-menu a.hfe-sub-menu-item::after { content: none !important; display: none !important; }

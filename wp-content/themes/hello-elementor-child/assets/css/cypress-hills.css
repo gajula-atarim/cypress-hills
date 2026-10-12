@@ -1412,3 +1412,18 @@ body { overflow-x: clip; }
 	.ch-golf-media > .ch-golf-img, .ch-golf-thumb, .ch-golf-thumb-bar { transition: none !important; }
 	.ch-golf-contours path { animation: none !important; }
 }
+/* Golf on phones: text runs full width over the photo, so darken the whole photo evenly. */
+@media (max-width: 767px) {
+	.ch-golf > .ch-golf-shade {
+		background: linear-gradient(180deg, rgba(15, 17, 48, .88) 0%, rgba(15, 17, 48, .72) 55%, rgba(15, 17, 48, .9) 100%) !important;
+	}
+	.ch-golf-strip { gap: 6px !important; flex-wrap: nowrap !important; }
+}
+/* Narrow phones: keep the five thumbnails on one row and the caption on one line. */
+@media (max-width: 379px) {
+	.ch-golf-thumb { width: 42px; height: 50px; }
+	.ch-golf-thumb.is-active { width: 70px; }
+	.ch-golf-counter { gap: 12px !important; }
+	.ch-golf-num .elementor-heading-title { font-size: 36px !important; }
+	.ch-golf-cap .elementor-heading-title { font-size: 12px !important; letter-spacing: .08em !important; }
+}

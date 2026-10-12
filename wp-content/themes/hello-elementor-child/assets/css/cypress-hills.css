@@ -1345,9 +1345,9 @@ body { overflow-x: clip; }
 @keyframes chcontour { from { stroke-dashoffset: 1600; } to { stroke-dashoffset: 0; } }
 .ch-golf-media > .ch-golf-img {
 	position: absolute !important;
-	inset: -2%;
-	width: 104% !important;
-	height: 104%;
+	inset: 0;
+	width: 100% !important;
+	height: 100%;
 	margin: 0 !important;
 	opacity: 0;
 	transform: scale(1);
@@ -1356,7 +1356,7 @@ body { overflow-x: clip; }
 .ch-golf-media > .ch-golf-img:first-child,
 .ch-js .ch-golf-media > .ch-golf-img.is-active { opacity: 1; }
 .ch-js .ch-golf-media > .ch-golf-img:not(.is-active) { opacity: 0; }
-.ch-golf-media > .ch-golf-img.is-run { transform: scale(1.08); }
+.ch-golf-media > .ch-golf-img.is-run { transform: scale(1.03); }
 .ch-golf-img .elementor-widget-container,
 .ch-golf-img figure,
 .ch-golf-img img { width: 100% !important; height: 100% !important; max-width: none !important; margin: 0; }

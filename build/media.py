@@ -61,6 +61,11 @@ G_BUNKERS = _m(262, "9ZDCxv_IMG_2154.jpeg", "Finished bunkers with mountains beh
 G_CONTOURS = _m(264, "sn6eFV_IMG_2261.jpeg", "Contoured turf around a shaped hollow")
 G_TEE_GREEN = _m(261, "otuoja_IMG_2475.jpeg", "Golf course under construction, fairways and greens behind")
 
+# Sharper golf photos (originals >= 1280px) for the Home Golf section.
+G_COURSE_BUILD = _m(43, "mike31.jpeg", "Golf course shaping with fairways and greens")
+G_BUNKER_SHAPE = _m(47, "mike35.jpeg", "Shaping a bunker and green")
+G_CONTOUR_RINGS = _m(42, "mike30.jpeg", "Contoured turf around a shaped hollow")
+
 # Brand-kit image ids (atarim S3 "generations/<id>.jpg") -> media library attachments.
 KIT = {
     "6b71663b-b520-44a7-94bb-a5c470c68ce1": POOL,

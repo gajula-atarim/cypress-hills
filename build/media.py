@@ -66,6 +66,12 @@ G_COURSE_BUILD = _m(43, "mike31.jpeg", "Golf course shaping with fairways and gr
 G_BUNKER_SHAPE = _m(47, "mike35.jpeg", "Shaping a bunker and green")
 G_CONTOUR_RINGS = _m(42, "mike30.jpeg", "Contoured turf around a shaped hollow")
 
+# Golf section photos chosen by the client (2026-10-12).
+G_1 = _m(273, "FgBaCy_IMG_0986.jpeg", "Bunker shaped on a course with mountains behind")
+G_2 = _m(276, "RIgOuS_IMG_0882.jpeg", "Excavator shaping a green with mountains behind")
+G_3 = _m(266, "YLqqKk_IMG_2034.jpeg", "Excavator and truck working on a golf property")
+G_4 = _m(257, "3cmokE_IMG_7469.jpeg", "Sculpted green and bunker between shaped mounds")
+
 # Brand-kit image ids (atarim S3 "generations/<id>.jpg") -> media library attachments.
 KIT = {
     "6b71663b-b520-44a7-94bb-a5c470c68ce1": POOL,

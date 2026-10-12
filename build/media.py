@@ -54,6 +54,13 @@ P_TIMBER = _m(41, "mike28.jpeg", "Timber garden building")
 P_GREEN_BUNKER = _m(48, "mike36.jpeg", "Shaped green with bunker")
 P_GREEN_MOUNTAINS = _m(49, "mike37.jpeg", "Green and bunker with mountains behind")
 
+# Client golf photos (uploaded 2026-10-12) for the Home Golf section.
+G_FAIRWAY = _m(257, "3cmokE_IMG_7469.jpeg", "Sculpted green and bunker between shaped mounds")
+G_BACKYARD = _m(279, "nsZJ50_IMG_0176.jpeg", "Backyard putting green with flag")
+G_BUNKERS = _m(262, "9ZDCxv_IMG_2154.jpeg", "Finished bunkers with mountains behind")
+G_CONTOURS = _m(264, "sn6eFV_IMG_2261.jpeg", "Contoured turf around a shaped hollow")
+G_TEE_GREEN = _m(261, "otuoja_IMG_2475.jpeg", "Golf course under construction, fairways and greens behind")
+
 # Brand-kit image ids (atarim S3 "generations/<id>.jpg") -> media library attachments.
 KIT = {
     "6b71663b-b520-44a7-94bb-a5c470c68ce1": POOL,

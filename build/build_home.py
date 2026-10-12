@@ -561,11 +561,11 @@ def contact(form_id):
 # script builds the counter, the caption and the thumbnail strip from them.
 # ---------------------------------------------------------------------------
 GOLF_SLIDES = [
-    (M.COURSE, "Fairway shaping"),
-    (M.GREEN, "Backyard putting green"),
-    (M.P_GREEN_BUNKER, "Bunker work"),
-    (M.P_GREEN_MOUNTAINS, "Green contours"),
-    (M.GOLF_AERIAL, "Tee to green"),
+    (M.G_FAIRWAY, "Fairway shaping"),
+    (M.G_BACKYARD, "Backyard putting green"),
+    (M.G_BUNKERS, "Bunker work"),
+    (M.G_CONTOURS, "Green contours"),
+    (M.G_TEE_GREEN, "Tee to green"),
 ]
 
 

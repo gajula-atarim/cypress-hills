@@ -311,7 +311,7 @@
 					b.setAttribute('aria-label', caps[i]);
 					b.innerHTML = '<span class="ch-golf-thumb-img"></span><span class="ch-golf-thumb-bar"></span>';
 					if (im) { b.firstChild.style.backgroundImage = 'url("' + (im.currentSrc || im.src) + '")'; }
-					b.addEventListener('click', function () { go(i); });
+					b.addEventListener('click', function () { started = true; go(i); });
 					strip.appendChild(b);
 					thumbs.push(b);
 				});
@@ -321,12 +321,12 @@
 				for (var i = 0; i < 9; i++) {
 					var d = 'M-40 ' + (180 + i * 70) + ' C 300 ' + (110 + i * 74) + ', 520 ' + (300 + i * 62) + ', 820 ' + (210 + i * 70) + ' S 1300 ' + (120 + i * 76) + ', 1500 ' + (240 + i * 66);
 					var g = i % 3 === 0;
-					paths += '<path d="' + d + '" fill="none" stroke="' + (g ? '#55B847' : '#FFFFFF') + '" stroke-opacity="' + (g ? 0.55 : 0.18) +
-						'" stroke-width="1.2" stroke-dasharray="1600" style="animation:chcontour ' + (14 + i * 2) + 's ease-in-out ' + (-i * 1.5) + 's infinite alternate"></path>';
+					paths += '<path d="' + d + '" fill="none" stroke="' + (g ? '#55B847' : '#FFFFFF') + '" stroke-opacity="' + (g ? 0.8 : 0.32) +
+						'" stroke-width="1.6" stroke-dasharray="1600" style="animation:chcontour ' + (14 + i * 2) + 's ease-in-out ' + (-i * 1.5) + 's infinite alternate"></path>';
 				}
 				lines.insertAdjacentHTML('beforeend', '<svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">' + paths + '</svg>');
 			}
-			var cur = 0, timer = 0;
+			var cur = 0, timer = 0, started = false;
 			function go(i) {
 				cur = i;
 				clearTimeout(timer);
@@ -334,7 +334,7 @@
 				thumbs.forEach(function (b, k) { b.classList.toggle('is-active', k === i); b.classList.remove('is-run'); });
 				if (num) { num.textContent = (i + 1 < 10 ? '0' : '') + (i + 1); }
 				if (cap) { cap.textContent = caps[i]; }
-				if (reduceMotion || inEditor) { return; }
+				if (reduceMotion || inEditor || !started) { return; }
 				requestAnimationFrame(function () {
 					requestAnimationFrame(function () {
 						slides[i].classList.add('is-run');
@@ -343,7 +343,10 @@
 				});
 				timer = setTimeout(function () { go((cur + 1) % slides.length); }, 6000);
 			}
+			// Show slide 01 straight away, but only start the timer, zoom and progress bar once the
+			// section is on screen, so visitors always begin at 01.
 			go(0);
+			onVisible(sec, function () { started = true; go(0); }, 0.35);
 		});
 	}
 

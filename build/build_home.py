@@ -560,12 +560,12 @@ def contact(form_id):
 # Each photo is an image widget with its caption set in the widget (Caption: Custom); the theme
 # script builds the counter, the caption and the thumbnail strip from them.
 # ---------------------------------------------------------------------------
-GOLF_SLIDES = [
-    (M.G_1, "Fairway shaping"),
-    (M.G_2, "Backyard putting green"),
-    (M.G_3, "Bunker work"),
-    (M.G_4, "Green contours"),
-    (M.P_PUTTING, "Tee to green"),
+GOLF_SLIDES = [  # the build, start to finish
+    (M.G_1, "Rough shaping"),
+    (M.G_2, "Excavation"),
+    (M.G_3, "Grading & drainage"),
+    (M.G_4, "Turf & finishing"),
+    (M.P_PUTTING, "Ready to play"),
 ]
 
 

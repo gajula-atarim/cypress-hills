@@ -1468,21 +1468,12 @@ body { overflow-x: clip; }
 	.ch-header-pill .elementor-widget-button { display: none !important; }
 	.ch-header-pill .elementor-widget-navigation-menu { margin-left: auto !important; }
 }
-/* Projects gallery: 3 per row from small tablets up (was 2 below 1100px), and a last photo that would sit
-   alone stretches across the empty space so every row is full. */
+/* Projects gallery: 3 per row from small tablets up (was 2 below 1100px). The last photo keeps the same
+   tile size as the rest, even when it sits alone or in a short last row. */
 @media (min-width: 640px) {
 	.ch-gallery .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 14px; }
-	.ch-gallery .gallery-item:nth-child(3n+1):last-child { grid-column: 1 / -1; }
-	.ch-gallery .gallery-item:nth-child(3n+2):last-child { grid-column: span 2; }
-	/* Same row height as the other photos: 2 columns wide -> 8:3, 3 columns wide -> 4:1. */
-	.ch-gallery .gallery-item:nth-child(3n+2):last-child img { aspect-ratio: 8 / 3; }
-	.ch-gallery .gallery-item:nth-child(3n+1):last-child img { aspect-ratio: 4 / 1; }
 }
 @media (min-width: 1100px) { .ch-gallery .gallery { gap: 20px; } }
-@media (max-width: 639px) {
-	.ch-gallery .gallery-item:nth-child(2n+1):last-child { grid-column: 1 / -1; }
-	.ch-gallery .gallery-item:nth-child(2n+1):last-child img { aspect-ratio: 8 / 3; }
-}
 /* Projects gallery: every wrapper around the photo fills its cell (a <picture> or lazy-load wrapper added by
    an image plugin is inline by default, which left the photo at its small natural size in some browsers). */
 .ch-gallery .gallery-item,

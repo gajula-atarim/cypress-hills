@@ -1433,3 +1433,24 @@ body { overflow-x: clip; }
 /* Golf photos: no zoom (enlarging softens small photos) and a light sharpening + contrast lift. */
 .ch-golf-media > .ch-golf-img.is-run { transform: none; }
 .ch-golf--sharp .ch-golf-img img { filter: url(#ch-sharpen) contrast(1.06) saturate(1.05); image-rendering: auto; }
+
+/* --------------------------------------------------------------------------
+   Responsive pass (phones + tablets, whole site)
+   -------------------------------------------------------------------------- */
+/* Eyebrow labels that wrap onto two lines: room between the lines, bar aligned to the first line. */
+.ch-kicker .elementor-heading-title { line-height: 1.45 !important; align-items: flex-start; }
+.ch-kicker .elementor-heading-title::before { margin-top: .32em; }
+/* Inner-page banners on tablets: a wider navy panel so long titles don't squeeze into 5-6 lines. */
+@media (min-width: 768px) and (max-width: 1024px) {
+	.ch-page-hero > .ch-ph-panel { width: clamp(380px, 52%, 520px) !important; }
+}
+/* "How it works" cells: three items sit in one row on tablets instead of 2 + an empty box. */
+@media (min-width: 600px) {
+	.ch-opts:has(> .ch-opt:nth-child(3):last-child) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+/* Home "Recent work" on small tablets (600-819px): two cards per row instead of four tall stacked cards. */
+@media (min-width: 600px) and (max-width: 819px) {
+	.ch-work-acc { display: grid !important; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px !important; }
+	.ch-work-acc > .ch-work-card,
+	.ch-work-acc > .ch-work-card.is-active { min-height: 400px; width: auto !important; }
+}

@@ -1474,8 +1474,9 @@ body { overflow-x: clip; }
 	.ch-gallery .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 14px; }
 	.ch-gallery .gallery-item:nth-child(3n+1):last-child { grid-column: 1 / -1; }
 	.ch-gallery .gallery-item:nth-child(3n+2):last-child { grid-column: span 2; }
-	.ch-gallery .gallery-item:nth-child(3n+1):last-child img,
-	.ch-gallery .gallery-item:nth-child(3n+2):last-child img { aspect-ratio: auto; height: 100%; max-height: calc((100vw - 80px) / 3 * .75); }
+	/* Same row height as the other photos: 2 columns wide -> 8:3, 3 columns wide -> 4:1. */
+	.ch-gallery .gallery-item:nth-child(3n+2):last-child img { aspect-ratio: 8 / 3; }
+	.ch-gallery .gallery-item:nth-child(3n+1):last-child img { aspect-ratio: 4 / 1; }
 }
 @media (min-width: 1100px) { .ch-gallery .gallery { gap: 20px; } }
 @media (max-width: 639px) {

@@ -1468,3 +1468,17 @@ body { overflow-x: clip; }
 	.ch-header-pill .elementor-widget-button { display: none !important; }
 	.ch-header-pill .elementor-widget-navigation-menu { margin-left: auto !important; }
 }
+/* Projects gallery: 3 per row from small tablets up (was 2 below 1100px), and a last photo that would sit
+   alone stretches across the empty space so every row is full. */
+@media (min-width: 640px) {
+	.ch-gallery .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)) !important; gap: 14px; }
+	.ch-gallery .gallery-item:nth-child(3n+1):last-child { grid-column: 1 / -1; }
+	.ch-gallery .gallery-item:nth-child(3n+2):last-child { grid-column: span 2; }
+	.ch-gallery .gallery-item:nth-child(3n+1):last-child img,
+	.ch-gallery .gallery-item:nth-child(3n+2):last-child img { aspect-ratio: auto; height: 100%; max-height: calc((100vw - 80px) / 3 * .75); }
+}
+@media (min-width: 1100px) { .ch-gallery .gallery { gap: 20px; } }
+@media (max-width: 639px) {
+	.ch-gallery .gallery-item:nth-child(2n+1):last-child { grid-column: 1 / -1; }
+	.ch-gallery .gallery-item:nth-child(2n+1):last-child img { aspect-ratio: 8 / 3; }
+}

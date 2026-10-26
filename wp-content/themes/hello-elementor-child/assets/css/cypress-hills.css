@@ -1483,3 +1483,12 @@ body { overflow-x: clip; }
 	.ch-gallery .gallery-item:nth-child(2n+1):last-child { grid-column: 1 / -1; }
 	.ch-gallery .gallery-item:nth-child(2n+1):last-child img { aspect-ratio: 8 / 3; }
 }
+/* Projects gallery: every wrapper around the photo fills its cell (a <picture> or lazy-load wrapper added by
+   an image plugin is inline by default, which left the photo at its small natural size in some browsers). */
+.ch-gallery .gallery-item,
+.ch-gallery .gallery-icon,
+.ch-gallery .gallery-icon > a,
+.ch-gallery .gallery-icon picture,
+.ch-gallery .gallery-icon span { display: block !important; width: 100% !important; max-width: none !important; float: none !important; }
+.ch-gallery .gallery-icon img { width: 100% !important; max-width: none !important; height: auto !important; min-width: 100%; }
+.ch-gallery .gallery-item { justify-self: stretch; align-self: start; }

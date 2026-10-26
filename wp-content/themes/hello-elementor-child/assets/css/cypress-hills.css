@@ -1483,3 +1483,15 @@ body { overflow-x: clip; }
 .ch-gallery .gallery-icon span { display: block !important; width: 100% !important; max-width: none !important; float: none !important; }
 .ch-gallery .gallery-icon img { width: 100% !important; max-width: none !important; height: auto !important; min-width: 100%; }
 .ch-gallery .gallery-item { justify-self: stretch; align-self: start; }
+/* Rotating feature cells on phones and tablets: the big number sits above the title instead of in its own
+   column, so the text uses the full card width (it was squeezed to 2-3 words a line in the 3-up tablet row). */
+@media (max-width: 1024px) {
+	.ch-opts > .ch-opt,
+	.ch-opts > .ch-opt > .e-con-inner { flex-direction: column !important; align-items: flex-start !important; justify-content: flex-start !important; gap: 14px !important; }
+	.ch-opt-num { order: -1; }
+	.ch-opt-text { width: 100% !important; }
+}
+@media (min-width: 600px) and (max-width: 1024px) {
+	.ch-opts > .ch-opt { padding: 28px 24px 32px !important; }
+	.ch-opt-num .elementor-heading-title { font-size: 40px !important; }
+}

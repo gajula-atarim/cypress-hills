@@ -1454,3 +1454,11 @@ body { overflow-x: clip; }
 	.ch-work-acc > .ch-work-card,
 	.ch-work-acc > .ch-work-card.is-active { min-height: 400px; width: auto !important; }
 }
+/* Services tiles on narrow phones: titles wrap beside a smaller arrow instead of running into it. */
+@media (max-width: 379px) {
+	.ch-tile > .ch-tile-foot { left: 10px; right: 8px; bottom: 10px; gap: 6px !important; }
+	.ch-tile > .ch-tile-foot > .elementor-widget-heading { flex: 1 1 auto !important; min-width: 0; }
+	.ch-tile > .ch-tile-foot .elementor-heading-title { font-size: 13px !important; line-height: 1.15 !important; overflow-wrap: anywhere; }
+	.ch-tile-arrow .elementor-icon { width: 24px; height: 24px; }
+	.ch-tile > .ch-tile-num { left: 8px; top: 8px; width: 30px !important; height: 30px; }
+}

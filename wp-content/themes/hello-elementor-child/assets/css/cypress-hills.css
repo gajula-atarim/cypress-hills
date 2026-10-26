@@ -1241,10 +1241,10 @@ body { overflow-x: clip; }
 }
 /* "Contact Us" menu item (class ch-menu-cta): only in the phone ☰ menu, as a green pill button.
    Tablet and desktop keep the Contact Us button in the header bar instead. */
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
 	.ch-header-pill li.ch-menu-cta { display: none !important; }
 }
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
 	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta { padding: 10px 0 2px !important; }
 	/* Selector outranks the older "menu links are transparent" and cream-hover rules. */
 	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta > a.hfe-menu-item,
@@ -1312,7 +1312,7 @@ body { overflow-x: clip; }
 	.ch-process .ch-step-desc p { font-size: 14px !important; line-height: 1.55 !important; text-align: center; text-wrap: balance; }
 }
 /* Phone ☰ card: inset the Contact Us pill from the card edges so the card's curved corner doesn't clip it. */
-@media (max-width: 767px) {
+@media (max-width: 1024px) {
 	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta { padding: 12px 14px 16px !important; box-sizing: border-box; width: 100% !important; }
 	.ch-header-pill nav.hfe-dropdown ul.hfe-nav-menu > li.menu-item.ch-menu-cta > a.hfe-menu-item { width: 100% !important; box-sizing: border-box; border: 0 !important; margin: 0 !important; }
 }
@@ -1461,4 +1461,10 @@ body { overflow-x: clip; }
 	.ch-tile > .ch-tile-foot .elementor-heading-title { font-size: 13px !important; line-height: 1.15 !important; overflow-wrap: anywhere; }
 	.ch-tile-arrow .elementor-icon { width: 24px; height: 24px; }
 	.ch-tile > .ch-tile-num { left: 8px; top: 8px; width: 30px !important; height: 30px; }
+}
+
+/* Tablets work like phones: Contact Us lives in the ☰ menu card, not in the header bar. */
+@media (min-width: 768px) and (max-width: 1024px) {
+	.ch-header-pill .elementor-widget-button { display: none !important; }
+	.ch-header-pill .elementor-widget-navigation-menu { margin-left: auto !important; }
 }

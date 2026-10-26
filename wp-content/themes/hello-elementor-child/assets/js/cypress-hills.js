@@ -255,6 +255,37 @@
 	}
 
 	/* Process: light the steps up in sequence once the section is on screen, then loop. */
+	// Header dropdowns (Services, Pools) on touch screens wide enough for the desktop menu (iPad Pro,
+	// touch laptops): there is no hover, so the first tap opens the dropdown and a second tap on the same
+	// item opens its page. Mouse users keep hover-to-open and click-to-visit.
+	function initMenuTouch() {
+		var touch = false;
+		var items = document.querySelectorAll('.ch-header-pill .hfe-nav-menu > li.menu-item-has-children');
+		if (!items.length) { return; }
+		function closeAll(except) {
+			Array.prototype.forEach.call(items, function (li) {
+				if (li !== except) { li.classList.remove('ch-sub-open'); }
+			});
+		}
+		Array.prototype.forEach.call(items, function (li) {
+			var link = li.querySelector(':scope > .hfe-has-submenu-container > a.hfe-menu-item, :scope > a.hfe-menu-item');
+			if (!link) { return; }
+			link.addEventListener('pointerdown', function (e) { touch = e.pointerType !== 'mouse'; });
+			link.addEventListener('click', function (e) {
+				var nav = li.closest('nav');
+				if (window.innerWidth < 1025 || (nav && nav.classList.contains('hfe-dropdown'))) { return; }
+				if (!touch || li.classList.contains('ch-sub-open')) { return; }
+				e.preventDefault();
+				e.stopPropagation();
+				closeAll(li);
+				li.classList.add('ch-sub-open');
+			}, true);
+		});
+		document.addEventListener('click', function (e) {
+			if (!e.target.closest || !e.target.closest('.ch-header-pill .hfe-nav-menu > li.menu-item-has-children')) { closeAll(null); }
+		});
+	}
+
 	function initProcess() {
 		document.querySelectorAll('.ch-process').forEach(function (sec) {
 			var steps = sec.querySelectorAll('.ch-step');
@@ -366,6 +397,7 @@
 		initServices();
 		initGolf();
 		initProcess();
+		initMenuTouch();
 	}
 
 	if (document.readyState === 'loading') {

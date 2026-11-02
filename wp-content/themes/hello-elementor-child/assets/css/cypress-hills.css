@@ -1534,3 +1534,14 @@ body { overflow-x: clip; }
 @media (max-width: 767px) {
 	.ch-owner-photo { aspect-ratio: 4 / 3; }
 }
+/* Contact grid on desktop: the three columns share one top and bottom edge (the Service Area card grows to
+   fill the info column), and the form card is a little slimmer-padded on small laptops so its two-up
+   fields keep room next to the wider photo column. */
+@media (min-width: 1025px) {
+	.e-con:has(> .ch-form-card--page) { align-items: stretch !important; }
+	.e-con:has(> .ch-form-card--page) > .e-con { align-self: stretch !important; }
+	.e-con:has(> .ch-area-card) > .ch-area-card { flex-grow: 1 !important; }
+}
+@media (min-width: 1025px) and (max-width: 1279px) {
+	.ch-form-card--page { padding: 32px !important; }
+}

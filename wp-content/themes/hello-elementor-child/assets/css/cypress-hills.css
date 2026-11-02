@@ -1519,10 +1519,18 @@ body { overflow-x: clip; }
 	.ch-header-pill .hfe-nav-menu > li > .hfe-has-submenu-container,
 	.ch-header-pill .hfe-nav-menu > li > .hfe-has-submenu-container > a.hfe-menu-item { border-radius: 999px !important; }
 }
-/* Contact page: owners' photo under the Service Area card, rounded like the phone card above it. */
-.ch-owner-photo { aspect-ratio: 4 / 3; border-radius: 8px 8px 64px 8px; }
-.ch-owner-photo img { object-position: 50% 20%; }
-@media (min-width: 768px) and (max-width: 1024px) {
+/* Contact page: owners' photo in its own column to the right of the form. On desktop it runs the full
+   height of the form card (faces kept in frame); once the columns stack it becomes a wide banner. */
+.ch-owner-col { align-self: stretch; }
+.ch-owner-photo { border-radius: 8px 8px 64px 8px; }
+.ch-owner-photo img { object-position: 50% 12%; }
+@media (min-width: 1025px) {
+	.ch-owner-col > .ch-owner-photo { flex: 1 1 auto; min-height: 420px; }
+}
+@media (max-width: 1024px) {
 	.ch-owner-photo { aspect-ratio: 16 / 9; }
-	.ch-owner-photo img { object-position: 50% 18%; }
+	.ch-owner-photo img { object-position: 50% 14%; }
+}
+@media (max-width: 767px) {
+	.ch-owner-photo { aspect-ratio: 4 / 3; }
 }

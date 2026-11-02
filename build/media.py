@@ -121,5 +121,8 @@ GALLERY = [KIT[k] for k in (
 
 # Contact page owners' photo (uploaded 2026-11-02): 4:5 crop used above the info cards; the full-height
 # crop (335) was used by the earlier photo column and is kept in the library.
-OWNERS = _m(333, "cypress-hills-owners.jpg", "The owners of Cypress Hills Landscaping")
+# Sharper stopgap (Real-ESRGAN x4 blended 65/35 with the plain enlargement), uploaded by
+# build/contact_owner_photo_hd.php; swap for the client's original photo when it arrives.
+OWNERS = _m(339, "cypress-hills-owners-hd.jpg", "The owners of Cypress Hills Landscaping")
+OWNERS_SOFT = _m(333, "cypress-hills-owners.jpg", "The owners of Cypress Hills Landscaping")
 OWNERS_TALL = _m(335, "cypress-hills-owners-tall.jpg", "The owners of Cypress Hills Landscaping")

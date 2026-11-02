@@ -496,17 +496,18 @@ def contact_page(form_placeholder="CONTACT_FORM_ID"):
     ], content_width="full", flex_direction="column", flex_gap=gap(14), padding=box(32),
         padding_mobile=box(24), background_background="classic", background_color=WHITE,
         border_radius=box(8), _flex_grow=1, css_classes="ch-area-card")
-    left = col([phone, hours, area], gap_px=16, width=27, width_t=100)
+    owners = image(M.OWNERS, cls="ch-media ch-owner-photo")
+    duo = container([phone, hours], content_width="full", flex_direction="row", flex_gap=gap(16),
+                    padding=box(0), css_classes="ch-contact-duo")
+    left = col([owners, duo, area], gap_px=16, width=45, width_t=100)
 
     card = col([
         display("Send us a message", fluid(22, 2, 30), tag="h3", lh=1.18, ls=0),
         widget("metform", mf_form_id=form_placeholder),
-    ], seed="c-card", gap_px=22, width=43, width_t=100, padding=box(48), padding_tablet=box(36),
+    ], seed="c-card", gap_px=22, width=55, width_t=100, padding=box(48), padding_tablet=box(36),
         padding_mobile=box(28), background_background="classic", background_color=WHITE,
         border_radius=box(8, 8, 72, 8), css_classes="ch-form-card ch-form-card--page")
-    owners = col([image(M.OWNERS, cls="ch-media ch-owner-photo")], seed="c-owners", gap_px=0, width=30,
-                 width_t=100, css_classes="ch-owner-col")
-    grid = row([left, card, owners], seed="c-grid", gap_px=24, align="stretch", stack_on="tablet")
+    grid = row([left, card], seed="c-grid", gap_px=24, align="stretch", stack_on="tablet")
     sec = section([head, grid], CREAM, "contact", flex_gap=gap(56), padding=box(128, 72, 128, 72),
                   padding_tablet=box(96, 40, 96, 40), padding_mobile=box(80, 20, 80, 20))
     return mark_inner([hero, sec, awards()])

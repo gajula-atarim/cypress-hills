@@ -119,5 +119,7 @@ GALLERY = [KIT[k] for k in (
     "1e28f731-a945-416c-92b6-5a6e95975e8a", "3d31ce2b-8dba-470f-9eda-df410c8f5af6",
     "1eb81543-abd2-4b8e-a8b2-372d731c5862")]
 
-# Contact page owners' photo, full-height crop in its own column (uploaded 2026-11-02 by build/contact_owner_column.php).
-OWNERS = _m(335, "cypress-hills-owners-tall.jpg", "The owners of Cypress Hills Landscaping")
+# Contact page owners' photo (uploaded 2026-11-02): 4:5 crop used above the info cards; the full-height
+# crop (335) was used by the earlier photo column and is kept in the library.
+OWNERS = _m(333, "cypress-hills-owners.jpg", "The owners of Cypress Hills Landscaping")
+OWNERS_TALL = _m(335, "cypress-hills-owners-tall.jpg", "The owners of Cypress Hills Landscaping")

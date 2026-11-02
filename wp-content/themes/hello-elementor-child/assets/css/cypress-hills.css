@@ -1519,33 +1519,26 @@ body { overflow-x: clip; }
 	.ch-header-pill .hfe-nav-menu > li > .hfe-has-submenu-container,
 	.ch-header-pill .hfe-nav-menu > li > .hfe-has-submenu-container > a.hfe-menu-item { border-radius: 999px !important; }
 }
-/* Contact page: owners' photo in its own column to the right of the form. On desktop it runs the full
-   height of the form card (faces kept in frame); once the columns stack it becomes a wide banner. */
-.ch-owner-col { align-self: stretch; }
-.ch-owner-photo { border-radius: 8px 8px 64px 8px; }
-.ch-owner-photo img { object-position: 50% 12%; }
-@media (min-width: 1025px) {
-	.ch-owner-col > .ch-owner-photo { flex: 1 1 auto; min-height: 420px; }
-}
-@media (max-width: 1024px) {
-	.ch-owner-photo { aspect-ratio: 16 / 9; }
-	.ch-owner-photo img { object-position: 50% 14%; }
-}
-@media (max-width: 767px) {
-	.ch-owner-photo { aspect-ratio: 4 / 3; }
-}
-/* Contact grid on desktop: the three columns share one top and bottom edge (the Service Area card grows to
-   fill the info column), and the form card is a little slimmer-padded on small laptops so its two-up
-   fields keep room next to the wider photo column. */
+/* Contact grid: photo + info cards on the left (owners' photo on top, Phone and Hours side by side, then
+   Service Area), form on the right. Both columns share one top and bottom edge on desktop. */
+.ch-owner-photo { aspect-ratio: 16 / 10; border-radius: 8px 8px 64px 8px; }
+.ch-owner-photo img { object-position: 50% 22%; }
+.ch-contact-duo > .e-con { flex: 1 1 0 !important; min-width: 0; }
 @media (min-width: 1025px) {
 	.e-con:has(> .ch-form-card--page) { align-items: stretch !important; }
 	.e-con:has(> .ch-form-card--page) > .e-con { align-self: stretch !important; }
 	.e-con:has(> .ch-area-card) > .ch-area-card { flex-grow: 1 !important; }
 }
+/* Small laptops: Phone and Hours stack (the pair is too narrow side by side), and the form card is a
+   little slimmer-padded. */
 @media (min-width: 1025px) and (max-width: 1279px) {
+	.ch-contact-duo { flex-direction: column !important; }
 	.ch-form-card--page { padding: 32px !important; }
-	/* Info cards in the slimmer column: less padding, the phone number on one line, smaller town tags. */
-	.e-con:has(> .ch-area-card) > .e-con { padding: 24px !important; }
-	.ch-phone-card .elementor-widget-heading:nth-child(2) .elementor-heading-title { font-size: 24px !important; white-space: nowrap; }
-	.ch-area-card .ch-town .elementor-heading-title { font-size: 13px !important; padding: 7px 11px; }
+}
+@media (max-width: 1024px) {
+	.ch-owner-photo { aspect-ratio: 16 / 9; }
+}
+@media (max-width: 767px) {
+	.ch-owner-photo { aspect-ratio: 4 / 3; }
+	.ch-contact-duo { flex-direction: column !important; }
 }

@@ -1519,3 +1519,10 @@ body { overflow-x: clip; }
 	.ch-header-pill .hfe-nav-menu > li > .hfe-has-submenu-container,
 	.ch-header-pill .hfe-nav-menu > li > .hfe-has-submenu-container > a.hfe-menu-item { border-radius: 999px !important; }
 }
+/* Contact page: owners' photo under the Service Area card, rounded like the phone card above it. */
+.ch-owner-photo { aspect-ratio: 4 / 3; border-radius: 8px 8px 64px 8px; }
+.ch-owner-photo img { object-position: 50% 20%; }
+@media (min-width: 768px) and (max-width: 1024px) {
+	.ch-owner-photo { aspect-ratio: 16 / 9; }
+	.ch-owner-photo img { object-position: 50% 18%; }
+}

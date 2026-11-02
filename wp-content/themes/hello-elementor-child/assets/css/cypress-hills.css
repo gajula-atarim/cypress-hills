@@ -1544,4 +1544,8 @@ body { overflow-x: clip; }
 }
 @media (min-width: 1025px) and (max-width: 1279px) {
 	.ch-form-card--page { padding: 32px !important; }
+	/* Info cards in the slimmer column: less padding, the phone number on one line, smaller town tags. */
+	.e-con:has(> .ch-area-card) > .e-con { padding: 24px !important; }
+	.ch-phone-card .elementor-widget-heading:nth-child(2) .elementor-heading-title { font-size: 24px !important; white-space: nowrap; }
+	.ch-area-card .ch-town .elementor-heading-title { font-size: 13px !important; padding: 7px 11px; }
 }

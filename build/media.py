@@ -118,3 +118,6 @@ GALLERY = [KIT[k] for k in (
     "dcd86a37-e03c-48cb-af7f-9ecadc50c33c", "ece444b3-20c7-4cd0-9e95-d2d216875970",
     "1e28f731-a945-416c-92b6-5a6e95975e8a", "3d31ce2b-8dba-470f-9eda-df410c8f5af6",
     "1eb81543-abd2-4b8e-a8b2-372d731c5862")]
+
+# Contact page owners' photo (uploaded 2026-11-02 by build/contact_owner_photo.php).
+OWNERS = _m(333, "cypress-hills-owners.jpg", "The owners of Cypress Hills Landscaping")

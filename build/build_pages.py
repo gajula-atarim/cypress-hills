@@ -496,7 +496,8 @@ def contact_page(form_placeholder="CONTACT_FORM_ID"):
     ], content_width="full", flex_direction="column", flex_gap=gap(14), padding=box(32),
         padding_mobile=box(24), background_background="classic", background_color=WHITE,
         border_radius=box(8), _flex_grow=1, css_classes="ch-area-card")
-    left = col([phone, hours, area], gap_px=16, width=33, width_t=100)
+    owners = image(M.OWNERS, cls="ch-media ch-owner-photo")
+    left = col([phone, hours, area, owners], gap_px=16, width=33, width_t=100)
 
     card = col([
         display("Send us a message", fluid(22, 2, 30), tag="h3", lh=1.18, ls=0),

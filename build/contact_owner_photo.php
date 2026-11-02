@@ -2,7 +2,7 @@
 // Uploads design/images/cypress-hills-owners.jpg from the pinned commit (once), then inserts one Image
 // widget right after the "Service Area" card in the live page. Nothing else on the page is touched.
 // Re-running is safe: the upload is reused and the widget is not added twice.
-$ref = 'REF';
+$ref = 'REF'; // replaced with the commit SHA when run (first run: be6ecbe)
 require_once ABSPATH . 'wp-admin/includes/media.php';
 require_once ABSPATH . 'wp-admin/includes/file.php';
 require_once ABSPATH . 'wp-admin/includes/image.php';

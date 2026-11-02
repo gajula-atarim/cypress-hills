@@ -1522,7 +1522,7 @@ body { overflow-x: clip; }
 /* Contact grid: photo + info cards on the left (owners' photo on top, Phone and Hours side by side, then
    Service Area), form on the right. Both columns share one top and bottom edge on desktop. */
 .ch-owner-photo { aspect-ratio: 16 / 10; border-radius: 8px 8px 64px 8px; }
-.ch-owner-photo img { object-position: 50% 22%; }
+.ch-owner-photo img { object-position: 50% 6%; } /* tops of both heads in frame, a little headroom */
 .ch-contact-duo > .e-con { flex: 1 1 0 !important; min-width: 0; }
 @media (min-width: 1025px) {
 	.e-con:has(> .ch-form-card--page) { align-items: stretch !important; }
